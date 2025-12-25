@@ -1,1328 +1,956 @@
 <!DOCTYPE html>
-<html lang="fr">
+<html lang="fr" dir="ltr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Devoir Maison N°2 - Mathématiques CM1</title>
+    <title>Correction DM2 - Mathématiques CM1</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #6a11cb;
-            --secondary: #2575fc;
-            --accent: #ff6b6b;
-            --success: #1dd1a1;
-            --light: #f8f9fa;
-            --dark: #2d3436;
-            --gray: #636e72;
-            --border-radius: 12px;
-            --shadow: 0 6px 15px rgba(0, 0, 0, 0.08);
-            --transition: all 0.3s ease;
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --secondary: #0f766e;
+            --bg: #f3f4f6;
+            --text: #111827;
+            --muted: #6b7280;
+            --card-bg: #ffffff;
+            --radius: 10px;
+            --shadow-soft: 0 10px 25px rgba(15, 23, 42, 0.08);
         }
-        
+
         * {
-            box-sizing: border-box;
             margin: 0;
             padding: 0;
-            font-family: 'Comic Sans MS', 'Segoe UI', 'Arial Rounded MT', sans-serif;
+            box-sizing: border-box;
         }
-        
+
         body {
-            background: linear-gradient(135deg, #f5f7fa 0%, #e3e9f7 100%);
-            color: var(--dark);
+            font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
             line-height: 1.6;
-            padding: 15px;
+            background: radial-gradient(circle at top, #e0f2fe, #eef2ff 40%, #f9fafb 80%);
+            color: var(--text);
             min-height: 100vh;
+            padding: 12px;
+            font-size: 14px;
         }
-        
-        .header {
-            text-align: center;
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+
+        .container {
+            max-width: 100%;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.9);
+            border-radius: 14px;
+            box-shadow: var(--shadow-soft);
+            overflow: hidden;
+            backdrop-filter: blur(6px);
+            border: 1px solid rgba(148, 163, 184, 0.25);
+        }
+
+        /* HEADER */
+        header {
+            background: linear-gradient(135deg, #1d4ed8, #0f172a);
             color: white;
-            padding: 20px;
-            border-radius: var(--border-radius);
-            margin-bottom: 25px;
-            box-shadow: var(--shadow);
+            padding: 16px 18px 14px;
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
             position: relative;
             overflow: hidden;
         }
-        
-        .header::before {
+
+        header::before {
             content: "";
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 1px, transparent 1px);
-            background-size: 20px 20px;
-            opacity: 0.3;
-            z-index: 0;
+            width: 180px;
+            height: 180px;
+            background: radial-gradient(circle, rgba(59,130,246,0.4), transparent 70%);
+            top: -60px;
+            right: -50px;
+            opacity: 0.7;
         }
-        
-        .header-content {
-            position: relative;
-            z-index: 1;
-        }
-        
-        h1 {
-            font-size: 1.8rem;
-            margin-bottom: 10px;
-            color: white;
-        }
-        
-        .subtitle {
-            font-size: 1.1rem;
-            opacity: 0.9;
-            margin-bottom: 5px;
-        }
-        
-        .competences-table {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 15px;
-            margin-bottom: 25px;
-            box-shadow: var(--shadow);
-        }
-        
-        .competences-table table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-        
-        .competences-table th, .competences-table td {
-            border: 2px solid #ddd;
-            padding: 10px;
-            text-align: center;
-        }
-        
-        .competences-table th {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        .student-info {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 15px;
-            margin-bottom: 25px;
-            box-shadow: var(--shadow);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        
-        .info-item {
+
+        .header-main {
             display: flex;
             align-items: center;
             gap: 8px;
-            color: var(--gray);
+            z-index: 1;
         }
-        
-        .info-item i {
-            color: var(--primary);
-        }
-        
-        .container {
-            background-color: white;
-            border-radius: var(--border-radius);
-            box-shadow: var(--shadow);
-            padding: 25px;
-            margin-bottom: 25px;
-            transition: var(--transition);
-            border-top: 5px solid var(--primary);
-        }
-        
-        .container:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
-        }
-        
-        .section-title {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            color: var(--primary);
-            font-size: 1.4rem;
-            margin-bottom: 20px;
-            padding-bottom: 10px;
-            border-bottom: 2px solid #eee;
-        }
-        
-        .section-title i {
-            background-color: rgba(106, 17, 203, 0.1);
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
+
+        .header-icon {
+            width: 34px;
+            height: 34px;
+            border-radius: 12px;
+            background: rgba(15,23,42,0.35);
             display: flex;
             align-items: center;
             justify-content: center;
-            color: var(--primary);
+            font-size: 18px;
         }
-        
-        .question-card {
-            background-color: #f8f9fa;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            border-left: 4px solid var(--primary);
-            transition: var(--transition);
+
+        h1 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            letter-spacing: 0.01em;
         }
-        
-        .question-card:hover {
-            background-color: #f0f5ff;
-        }
-        
-        .question-title {
-            color: var(--dark);
-            font-size: 1.2rem;
-            margin-bottom: 15px;
+
+        .subtitle {
+            font-size: 0.9rem;
+            opacity: 0.9;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 6px;
+            z-index: 1;
         }
-        
-        .question-title i {
-            color: var(--accent);
+
+        .tag {
+            font-size: 0.75rem;
+            background: rgba(15, 23, 42, 0.5);
+            padding: 3px 8px;
+            border-radius: 999px;
+            border: 1px solid rgba(148, 163, 184, 0.5);
         }
-        
-        .question-text {
-            margin-bottom: 15px;
-            color: #495057;
-            font-size: 1.05rem;
+
+        .content {
+            padding: 16px 16px 20px;
         }
-        
+
+        /* SECTION */
+        .section {
+            margin-bottom: 16px;
+            padding: 14px 12px 14px;
+            border-radius: 12px;
+            background: linear-gradient(135deg, #eff6ff, #f9fafb);
+            border: 1px solid rgba(148, 163, 184, 0.4);
+        }
+
+        h2 {
+            color: #0f172a;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding-bottom: 4px;
+            border-bottom: 2px solid rgba(37, 99, 235, 0.25);
+        }
+
+        h2 i {
+            color: var(--primary);
+        }
+
+        h3 {
+            color: var(--primary-dark);
+            margin: 12px 0 8px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        /* BLOCS DE TEXTE */
+        .rule-box {
+            background: linear-gradient(to right, #dcfce7, #ecfdf5);
+            padding: 12px 14px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border: 1px solid rgba(22, 163, 74, 0.3);
+            font-size: 0.95rem;
+        }
+
+        .example-box {
+            background: #ffffff;
+            padding: 14px 14px 12px;
+            border-radius: 10px;
+            margin: 14px 0;
+            border: 1px solid rgba(129, 140, 248, 0.4);
+            box-shadow: 0 4px 10px rgba(148, 163, 184, 0.15);
+        }
+
+        .questions {
+            margin: 14px 0 6px;
+            counter-reset: question-counter;
+        }
+
+        .question-wrapper {
+            margin-bottom: 12px;
+        }
+
+        .question {
+            padding: 12px 12px 10px;
+            background: linear-gradient(to right, #f9fafb, #edf2ff);
+            border-radius: 9px;
+            border: 1px solid rgba(129, 140, 248, 0.4);
+            display: grid;
+            grid-template-columns: auto 1fr;
+            column-gap: 8px;
+            row-gap: 5px;
+            align-items: flex-start;
+        }
+
+        .question::before {
+            content: counter(question-counter);
+            counter-increment: question-counter;
+            font-weight: 600;
+            color: #ffffff;
+            background: linear-gradient(135deg, #6366f1, #4338ca);
+            width: 22px;
+            height: 22px;
+            border-radius: 999px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.85rem;
+            margin-top: 2px;
+        }
+
+        .question-content {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            font-size: 0.95rem;
+        }
+
+        .question .answer-btn {
+            grid-column: 2 / 3;
+        }
+
         .answer-btn {
-            background: linear-gradient(to right, var(--primary), var(--secondary));
+            background: linear-gradient(135deg, var(--primary), var(--primary-dark));
             color: white;
             border: none;
-            border-radius: 8px;
-            padding: 14px 25px;
-            font-size: 1rem;
+            padding: 5px 10px;
+            border-radius: 999px;
             cursor: pointer;
-            transition: var(--transition);
-            width: 100%;
-            margin-top: 10px;
-            font-weight: bold;
-            display: flex;
-            justify-content: space-between;
+            font-size: 0.85rem;
+            transition: all 0.18s ease;
+            display: inline-flex;
             align-items: center;
+            gap: 5px;
+            margin-top: 3px;
         }
-        
+
         .answer-btn:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 5px 12px rgba(106, 17, 203, 0.3);
+            background: linear-gradient(135deg, #1d4ed8, #1e40af);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 10px rgba(37, 99, 235, 0.25);
         }
-        
-        .answer-btn i {
-            font-size: 1.1rem;
-        }
-        
-        .answer-container {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.5s ease;
-        }
-        
-        .answer-container.show {
-            max-height: 800px;
-        }
-        
-        .answer-box {
-            background-color: #e8f4fc;
+
+        .answer {
+            background: linear-gradient(to right, #ecfeff, #e0f2fe);
+            padding: 10px 12px;
             border-radius: 8px;
-            padding: 20px;
-            margin-top: 20px;
-            border-left: 4px solid var(--success);
-        }
-        
-        .result {
-            background-color: white;
-            padding: 15px;
-            border-radius: 8px;
-            margin-bottom: 15px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            color: var(--success);
-            text-align: center;
-            box-shadow: 0 3px 8px rgba(0, 0, 0, 0.05);
-        }
-        
-        .explanation {
-            background-color: white;
-            padding: 18px;
-            border-radius: 8px;
-            border-left: 3px solid #ffc107;
-            margin-top: 15px;
-        }
-        
-        .explanation-title {
-            color: var(--primary);
-            font-weight: bold;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .explanation-text {
-            color: #495057;
-            line-height: 1.7;
-        }
-        
-        .hint {
-            background-color: #fff3cd;
-            border-radius: 8px;
-            padding: 15px;
-            margin-top: 15px;
-            border-left: 3px solid #ffc107;
-            font-size: 0.95rem;
-            color: #856404;
-        }
-        
-        .hint i {
-            margin-right: 5px;
-            color: #ffc107;
-        }
-        
-        .divider {
-            height: 1px;
-            background: linear-gradient(to right, transparent, #ddd, transparent);
-            margin: 30px 0;
-        }
-        
-        .footer {
-            text-align: center;
-            margin-top: 30px;
-            padding-top: 20px;
-            border-top: 1px solid #ddd;
-            color: var(--gray);
+            margin-top: 6px;
+            margin-left: 26px;
+            border-left: 3px solid var(--secondary);
+            display: none;
             font-size: 0.9rem;
         }
-        
-        .signature {
+
+        .answer.show {
+            display: block;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-3px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .note {
+            background: #fffbeb;
+            padding: 10px 12px;
+            border-radius: 8px;
+            margin: 12px 0 6px;
+            border: 1px solid rgba(234, 179, 8, 0.5);
             display: flex;
-            justify-content: space-between;
-            margin-top: 25px;
-            padding-top: 15px;
-            border-top: 1px dashed #ddd;
-            flex-wrap: wrap;
-            gap: 15px;
+            align-items: flex-start;
+            gap: 6px;
+            font-size: 0.85rem;
+            color: #78350f;
         }
-        
-        .signature-box {
+
+        p {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .math-example {
+            font-family: 'Courier New', monospace;
+            font-size: 1.2rem;
             text-align: center;
-            flex: 1;
-            min-width: 150px;
+            margin: 14px 0;
+            padding: 12px;
+            background-color: #f5f5f5;
+            border-radius: 6px;
         }
-        
-        .signature-line {
-            height: 1px;
-            background-color: #aaa;
-            margin: 10px 0;
+
+        .multiples-grid {
+            display: grid;
+            grid-template-columns: repeat(10, 1fr);
+            gap: 5px;
+            margin: 15px 0;
+            padding: 10px;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
         }
-        
-        /* Diagramme adapté aux petits écrans */
-        .graphique-container {
-            background-color: white;
-            border-radius: 10px;
+
+        .multiples-grid div {
+            text-align: center;
+            padding: 8px 5px;
+            background: white;
+            border-radius: 4px;
+            border: 1px solid #d1d5db;
+            font-weight: 500;
+        }
+
+        .multiples-grid .multiple-2 {
+            background: #e0f2fe;
+            border-color: #38bdf8;
+        }
+
+        .multiples-grid .multiple-5 {
+            background: #dcfce7;
+            border-color: #4ade80;
+        }
+
+        .multiples-grid .common-multiple {
+            background: linear-gradient(135deg, #a78bfa, #38bdf8);
+            color: white;
+            border-color: #7c3aed;
+            font-weight: bold;
+        }
+
+        .color-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            margin: 15px 0;
             padding: 15px;
-            margin: 20px 0;
-            border: 2px solid #ddd;
+            background: #f8fafc;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+        }
+
+        .color-grid div {
+            text-align: center;
+            padding: 12px 5px;
+            background: white;
+            border-radius: 6px;
+            border: 2px solid #d1d5db;
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+
+        .color-grid .common {
+            background: linear-gradient(135deg, #fbbf24, #f59e0b);
+            color: #78350f;
+            border-color: #d97706;
+            box-shadow: 0 3px 6px rgba(245, 158, 11, 0.3);
+        }
+
+        /* TABLEAU */
+        .table-container {
             overflow-x: auto;
+            margin: 14px 0;
         }
-        
-        .graphique-wrapper {
-            min-width: 500px; /* Largeur minimale pour le graphique */
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 10px rgba(148, 163, 184, 0.15);
         }
-        
-        .graphique {
+
+        th {
+            background: linear-gradient(135deg, #3b82f6, #1d4ed8);
+            color: white;
+            padding: 10px;
+            text-align: center;
+            font-weight: 600;
+        }
+
+        td {
+            padding: 10px;
+            text-align: center;
+            border-bottom: 1px solid #e5e7eb;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+
+        .correct {
+            color: #16a34a;
+            font-weight: bold;
+        }
+
+        .incorrect {
+            color: #dc2626;
+            font-weight: bold;
+        }
+
+        .graph-container {
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #e5e7eb;
+            margin: 15px 0;
+        }
+
+        .graph-bar {
             display: flex;
             align-items: flex-end;
-            height: 250px;
-            padding: 20px 0 40px 0;
-            border-bottom: 2px solid #aaa;
+            height: 200px;
+            gap: 10px;
+            padding: 20px 0;
+            border-bottom: 2px solid #374151;
             position: relative;
-            width: 100%;
         }
-        
-        .barre {
+
+        .bar {
             flex: 1;
-            margin: 0 4px;
-            background: linear-gradient(to top, var(--primary), var(--secondary));
-            border-radius: 6px 6px 0 0;
+            background: linear-gradient(to top, #3b82f6, #1d4ed8);
+            border-radius: 4px 4px 0 0;
             position: relative;
-            min-width: 40px;
+            min-width: 30px;
         }
-        
-        .barre-label {
-            position: absolute;
-            bottom: -30px;
-            left: 0;
-            right: 0;
-            text-align: center;
-            font-weight: bold;
-            font-size: 1rem;
-        }
-        
-        .barre-value {
+
+        .bar-value {
             position: absolute;
             top: -25px;
             left: 0;
             right: 0;
             text-align: center;
             font-weight: bold;
-            color: var(--primary);
-            font-size: 1rem;
+            color: #1f2937;
         }
-        
+
+        .bar-label {
+            position: absolute;
+            bottom: -30px;
+            left: 0;
+            right: 0;
+            text-align: center;
+            font-weight: 500;
+            color: #4b5563;
+        }
+
         .y-axis {
             position: absolute;
-            left: -35px;
+            left: -30px;
             top: 0;
             bottom: 0;
             display: flex;
             flex-direction: column;
             justify-content: space-between;
-            font-weight: bold;
-            width: 30px;
-        }
-        
-        .x-axis-label {
-            text-align: center;
-            margin-top: 10px;
-            font-weight: bold;
-            font-size: 1.1rem;
-        }
-        
-        /* Tableau adapté aux petits écrans */
-        .table-container {
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-        
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 15px 0;
-            min-width: 600px; /* Largeur minimale pour le tableau */
-        }
-        
-        th, td {
-            border: 1px solid #ddd;
-            padding: 10px;
-            text-align: center;
-            font-size: 0.95rem;
-        }
-        
-        th {
-            background-color: var(--primary);
-            color: white;
-        }
-        
-        tr:nth-child(even) {
-            background-color: #f8f9fa;
-        }
-        
-        /* Multiples adaptés aux petits écrans */
-        .multiples-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
-            gap: 8px;
-            margin: 15px 0;
-        }
-        
-        .multiple-item {
-            background-color: #e8f4fc;
-            padding: 10px;
-            border-radius: 8px;
-            text-align: center;
-            font-weight: bold;
-            color: var(--primary);
-            font-size: 0.95rem;
-        }
-        
-        /* Opérations adaptées aux petits écrans */
-        .operations-container {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 15px;
-            margin: 20px 0;
-        }
-        
-        .operation-item {
-            background-color: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            text-align: center;
-        }
-        
-        /* Emoji */
-        .emoji {
-            font-size: 1.5rem;
-            margin: 0 5px;
-        }
-        
-        /* Tableau des multiples */
-        .multiples-table {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 8px;
-            margin: 20px 0;
-        }
-        
-        .multiples-row {
-            display: grid;
-            grid-template-columns: 40px repeat(10, 1fr);
-            gap: 5px;
-            align-items: center;
-        }
-        
-        .multiples-cell {
-            padding: 10px;
-            text-align: center;
-            border-radius: 5px;
-            background-color: #f8f9fa;
+            color: #6b7280;
             font-size: 0.9rem;
         }
-        
-        /* Grille de nombres à colorier */
-        .color-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 8px;
-            margin: 15px 0;
-        }
-        
-        .color-item {
-            background-color: #e9ecef;
-            padding: 15px;
-            border-radius: 8px;
+
+        /* BOUTON EN BAS DE PAGE */
+        .info-box {
+            background: linear-gradient(135deg, #dbeafe, #e0e7ff);
+            padding: 16px 18px;
+            border-radius: 10px;
+            margin: 18px 0;
+            border: 2px solid #3b82f6;
             text-align: center;
+        }
+
+        .info-box i {
+            color: #1d4ed8;
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        footer {
+            text-align: center;
+            padding: 10px 10px 12px;
+            background: #0f172a;
+            color: #e5e7eb;
+            font-size: 0.85rem;
+            margin-top: 18px;
+        }
+
+        .formula-box {
+            background: linear-gradient(to right, #fce7f3, #fae8ff);
+            padding: 12px;
+            border-radius: 8px;
+            margin: 12px 0;
+            border: 1px solid rgba(192, 38, 211, 0.3);
+            text-align: center;
+        }
+
+        .formula {
+            font-family: 'Courier New', monospace;
+            font-size: 1.3rem;
             font-weight: bold;
-            font-size: 1.2rem;
-            transition: var(--transition);
+            color: #7e22ce;
+            margin: 8px 0;
         }
-        
-        .color-item.common {
-            background-color: #ffd166;
-            color: #856404;
-        }
-        
-        /* Règles de style pour les très petits écrans */
-        @media (max-width: 768px) {
+
+        /* Responsive */
+        @media (max-width: 480px) {
             body {
-                padding: 10px;
+                padding: 8px;
+                font-size: 13px;
             }
-            
+
+            header {
+                padding: 14px 14px 12px;
+            }
+
+            .content {
+                padding: 14px 12px 16px;
+            }
+
+            .section {
+                padding: 12px 10px 12px;
+            }
+
             h1 {
-                font-size: 1.5rem;
-            }
-            
-            .section-title {
                 font-size: 1.2rem;
             }
-            
-            .container {
-                padding: 15px;
+
+            .header-icon {
+                width: 30px;
+                height: 30px;
+                font-size: 16px;
             }
-            
-            .question-card {
-                padding: 15px;
+
+            .answer {
+                margin-left: 20px;
             }
-            
-            .student-info {
-                flex-direction: column;
-                align-items: flex-start;
-                gap: 10px;
+
+            .multiples-grid {
+                grid-template-columns: repeat(5, 1fr);
             }
-            
-            .graphique-wrapper {
-                min-width: 400px;
-            }
-            
-            .graphique {
-                height: 200px;
-            }
-            
-            .barre {
-                min-width: 35px;
-                margin: 0 3px;
-            }
-            
-            .barre-label, .barre-value {
-                font-size: 0.9rem;
-            }
-            
-            .y-axis {
-                left: -30px;
-                width: 25px;
-                font-size: 0.9rem;
-            }
-            
-            table {
-                min-width: 500px;
-            }
-            
-            th, td {
-                padding: 8px;
-                font-size: 0.9rem;
-            }
-            
-            .multiples-row {
-                grid-template-columns: 35px repeat(5, 1fr);
-            }
-            
+
             .color-grid {
                 grid-template-columns: repeat(3, 1fr);
-            }
-        }
-        
-        @media (max-width: 480px) {
-            h1 {
-                font-size: 1.3rem;
-            }
-            
-            .section-title {
-                font-size: 1.1rem;
-            }
-            
-            .answer-btn {
-                padding: 12px 18px;
-                font-size: 0.95rem;
-            }
-            
-            .graphique-wrapper {
-                min-width: 350px;
-            }
-            
-            .graphique {
-                height: 180px;
-            }
-            
-            .barre {
-                min-width: 30px;
-                margin: 0 2px;
-            }
-            
-            .barre-label {
-                bottom: -25px;
-                font-size: 0.85rem;
-            }
-            
-            .barre-value {
-                top: -20px;
-                font-size: 0.85rem;
-            }
-            
-            .y-axis {
-                left: -25px;
-                width: 20px;
-                font-size: 0.85rem;
-            }
-            
-            table {
-                min-width: 450px;
-            }
-            
-            .multiples-grid {
-                grid-template-columns: repeat(auto-fill, minmax(70px, 1fr));
-            }
-            
-            .multiples-row {
-                grid-template-columns: 30px repeat(3, 1fr);
-                font-size: 0.8rem;
-            }
-            
-            .color-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
-        
-        @media (max-width: 360px) {
-            .graphique-wrapper {
-                min-width: 320px;
-            }
-            
-            .graphique {
-                height: 160px;
-            }
-            
-            .barre {
-                min-width: 28px;
-            }
-            
-            table {
-                min-width: 400px;
-            }
-        }
-        
-        /* Pour les écrans très larges */
-        @media (min-width: 1200px) {
-            .graphique-wrapper {
-                min-width: 600px;
-            }
-            
-            .graphique {
-                height: 300px;
             }
         }
     </style>
 </head>
 <body>
-    <div class="header">
-        <div class="header-content">
-            <h1><i class="fas fa-graduation-cap"></i> Devoir Maison N°2 - Mathématiques</h1>
-            <p class="subtitle">CM1 <span class="emoji">💬</span> - Professeur Nabil TAROUS <span class="emoji">📌</span></p>
-            <p class="subtitle">École OUM EL KOURA <span class="emoji">💬</span></p>
-        </div>
-    </div>
-
     <div class="container">
-        <div class="section-title">
-            <i class="fas fa-list-ol"></i>
-            <h2>Exercice 1 : (11 Points)</h2>
+        <header>
+            <div class="header-main">
+                <div class="header-icon">✓</div>
+                <div>
+                    <h1>Correction DM2 - Mathématiques CM1</h1>
+                    <div class="subtitle">
+                        Professeur Nabil TAROUS - École OUM ELKOURA
+                        <span class="tag">Devoir Maison N°2</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="content">
+
+            <!-- Exercice 1 -->
+            <section class="section">
+                <h2><i class="fas fa-calculator"></i> Exercice 1 : Multiples et critères de divisibilité (11 points)</h2>
+                
+                <div class="questions">
+                    <!-- Question 1.1 -->
+                    <div class="question-wrapper">
+                        <div class="question">
+                            <div class="question-content">
+                                1. Je cherche les 10 premiers multiples de 2 et de 5
+                            </div>
+                            <button class="answer-btn" onclick="toggleAnswer(1, event)">
+                                <i class="fas fa-eye"></i> Voir la réponse
+                            </button>
+                        </div>
+                        <div class="answer" id="answer1">
+                            <p><strong>Les 10 premiers multiples de 2 :</strong></p>
+                            <div class="multiples-grid">
+                                <div class="multiple-2">0</div>
+                                <div class="multiple-2">2</div>
+                                <div class="multiple-2">4</div>
+                                <div class="multiple-2">6</div>
+                                <div class="multiple-2">8</div>
+                                <div class="multiple-2">10</div>
+                                <div class="multiple-2">12</div>
+                                <div class="multiple-2">14</div>
+                                <div class="multiple-2">16</div>
+                                <div class="multiple-2">18</div>
+                            </div>
+                            
+                            <p><strong>Les 10 premiers multiples de 5 :</strong></p>
+                            <div class="multiples-grid">
+                                <div class="multiple-5">0</div>
+                                <div class="multiple-5">5</div>
+                                <div class="multiple-5">10</div>
+                                <div class="multiple-5">15</div>
+                                <div class="multiple-5">20</div>
+                                <div class="multiple-5">25</div>
+                                <div class="multiple-5">30</div>
+                                <div class="multiple-5">35</div>
+                                <div class="multiple-5">40</div>
+                                <div class="multiple-5">45</div>
+                            </div>
+                            
+                            <p><strong>Multiples communs de 2 et 5 :</strong></p>
+                            <p>Les nombres qui sont à la fois dans les deux listes : 0, 10, 20, 30, 40...</p>
+                            <p><em>Ce sont les nombres qui se terminent par 0 (divisibles par 10).</em></p>
+                        </div>
+                    </div>
+
+                    <!-- Question 1.2 -->
+                    <div class="question-wrapper">
+                        <div class="question">
+                            <div class="question-content">
+                                2. Je colorie les multiples communs de 2 et de 5
+                            </div>
+                            <button class="answer-btn" onclick="toggleAnswer(2, event)">
+                                <i class="fas fa-eye"></i> Voir la réponse
+                            </button>
+                        </div>
+                        <div class="answer" id="answer2">
+                            <p><strong>Multiples communs de 2 et 5 :</strong></p>
+                            <p>Un nombre est multiple commun de 2 et 5 s'il est divisible à la fois par 2 et par 5.</p>
+                            <p>Cela signifie qu'il doit se terminer par 0 (car divisible par 2 → pair, divisible par 5 → se termine par 0 ou 5, donc par 0 pour être pair).</p>
+                            
+                            <div class="color-grid">
+                                <div class="common">40</div>
+                                <div>2</div>
+                                <div>14</div>
+                                <div>6</div>
+                                <div>25</div>
+                                <div class="common">20</div>
+                                <div class="common">10</div>
+                                <div>18</div>
+                                <div>4</div>
+                                <div>5</div>
+                                <div class="common">30</div>
+                                <div>15</div>
+                            </div>
+                            
+                            <p><strong>Nombres à colorier : 40, 20, 10, 30</strong></p>
+                            <p>Ces nombres se terminent tous par 0, donc sont divisibles par 2 (pairs) et par 5 (se terminent par 0).</p>
+                        </div>
+                    </div>
+
+                    <!-- Question 1.3 -->
+                    <div class="question-wrapper">
+                        <div class="question">
+                            <div class="question-content">
+                                3. Complète par Oui ou Non
+                            </div>
+                            <button class="answer-btn" onclick="toggleAnswer(3, event)">
+                                <i class="fas fa-eye"></i> Voir la réponse
+                            </button>
+                        </div>
+                        <div class="answer" id="answer3">
+                            <p><strong>Tableau complété :</strong></p>
+                            <div class="table-container">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Nombre</th>
+                                            <th>Pair</th>
+                                            <th>Impair</th>
+                                            <th>Divisible par 2</th>
+                                            <th>Divisible par 5</th>
+                                            <th>Somme des chiffres</th>
+                                            <th>Divisible par 3</th>
+                                            <th>Divisible par 9</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>25</td>
+                                            <td class="incorrect">Non</td>
+                                            <td class="correct">Oui</td>
+                                            <td class="incorrect">Non</td>
+                                            <td class="correct">Oui</td>
+                                            <td>2+5=7</td>
+                                            <td class="incorrect">Non</td>
+                                            <td class="incorrect">Non</td>
+                                        </tr>
+                                        <tr>
+                                            <td>600</td>
+                                            <td class="correct">Oui</td>
+                                            <td class="incorrect">Non</td>
+                                            <td class="correct">Oui</td>
+                                            <td class="correct">Oui</td>
+                                            <td>6+0+0=6</td>
+                                            <td class="correct">Oui</td>
+                                            <td class="incorrect">Non</td>
+                                        </tr>
+                                        <tr>
+                                            <td>540</td>
+                                            <td class="correct">Oui</td>
+                                            <td class="incorrect">Non</td>
+                                            <td class="correct">Oui</td>
+                                            <td class="correct">Oui</td>
+                                            <td>5+4+0=9</td>
+                                            <td class="correct">Oui</td>
+                                            <td class="correct">Oui</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            
+                            <p><strong>Explications détaillées :</strong></p>
+                            
+                            <div class="note">
+                                <i class="fas fa-info-circle"></i>
+                                <div>
+                                    <strong>Critères de divisibilité :</strong>
+                                    <p>• <strong>Par 2 :</strong> nombre pair (chiffre des unités : 0, 2, 4, 6, 8)</p>
+                                    <p>• <strong>Par 3 :</strong> somme des chiffres divisible par 3</p>
+                                    <p>• <strong>Par 5 :</strong> chiffre des unités : 0 ou 5</p>
+                                    <p>• <strong>Par 9 :</strong> somme des chiffres divisible par 9</p>
+                                </div>
+                            </div>
+                            
+                            <p><strong>Pour 25 :</strong></p>
+                            <ul style="margin-left: 20px; margin-bottom: 10px;">
+                                <li>Impair (dernier chiffre 5) → Non pair, Oui impair</li>
+                                <li>Divisible par 5 (dernier chiffre 5) → Oui</li>
+                                <li>Somme des chiffres = 2+5=7 → Non divisible par 3 (7÷3≈2.33), Non divisible par 9</li>
+                            </ul>
+                            
+                            <p><strong>Pour 600 :</strong></p>
+                            <ul style="margin-left: 20px; margin-bottom: 10px;">
+                                <li>Pair (dernier chiffre 0) → Oui pair, Non impair</li>
+                                <li>Divisible par 2 (pair) et par 5 (dernier chiffre 0) → Oui et Oui</li>
+                                <li>Somme des chiffres = 6+0+0=6 → Divisible par 3 (6÷3=2) mais pas par 9 (6÷9≈0.67)</li>
+                            </ul>
+                            
+                            <p><strong>Pour 540 :</strong></p>
+                            <ul style="margin-left: 20px;">
+                                <li>Pair (dernier chiffre 0) → Oui pair, Non impair</li>
+                                <li>Divisible par 2 (pair) et par 5 (dernier chiffre 0) → Oui et Oui</li>
+                                <li>Somme des chiffres = 5+4+0=9 → Divisible par 3 (9÷3=3) et par 9 (9÷9=1)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exercice 2 -->
+            <section class="section">
+                <h2><i class="fas fa-chart-bar"></i> Exercice 2 : Lecture d'un diagramme (4 points)</h2>
+                
+                <div class="questions">
+                    <div class="question-wrapper">
+                        <div class="question">
+                            <div class="question-content">
+                                1. J'observe le graphique à bâtons
+                            </div>
+                            <button class="answer-btn" onclick="toggleAnswer(4, event)">
+                                <i class="fas fa-eye"></i> Voir la réponse
+                            </button>
+                        </div>
+                        <div class="answer" id="answer4">
+                            <p><strong>Diagramme à bâtons des notes :</strong></p>
+                            
+                            <div class="graph-container">
+                                <div class="graph-bar">
+                                    <div class="y-axis">
+                                        <span>7</span>
+                                        <span>6</span>
+                                        <span>5</span>
+                                        <span>4</span>
+                                        <span>3</span>
+                                        <span>2</span>
+                                        <span>1</span>
+                                        <span>0</span>
+                                    </div>
+                                    
+                                    <!-- Barre pour note 6 -->
+                                    <div class="bar" style="height: 14.28%;">
+                                        <div class="bar-value">1</div>
+                                        <div class="bar-label">6</div>
+                                    </div>
+                                    
+                                    <!-- Barre pour note 8 -->
+                                    <div class="bar" style="height: 28.57%;">
+                                        <div class="bar-value">2</div>
+                                        <div class="bar-label">8</div>
+                                    </div>
+                                    
+                                    <!-- Barre pour note 10 -->
+                                    <div class="bar" style="height: 42.85%;">
+                                        <div class="bar-value">3</div>
+                                        <div class="bar-label">10</div>
+                                    </div>
+                                    
+                                    <!-- Barre pour note 12 -->
+                                    <div class="bar" style="height: 71.42%;">
+                                        <div class="bar-value">5</div>
+                                        <div class="bar-label">12</div>
+                                    </div>
+                                    
+                                    <!-- Barre pour note 14 -->
+                                    <div class="bar" style="height: 100%;">
+                                        <div class="bar-value">7</div>
+                                        <div class="bar-label">14</div>
+                                    </div>
+                                    
+                                    <!-- Barre pour note 16 -->
+                                    <div class="bar" style="height: 57.14%;">
+                                        <div class="bar-value">4</div>
+                                        <div class="bar-label">16</div>
+                                    </div>
+                                    
+                                    <!-- Barre pour note 18 -->
+                                    <div class="bar" style="height: 28.57%;">
+                                        <div class="bar-value">2</div>
+                                        <div class="bar-label">18</div>
+                                    </div>
+                                    
+                                    <!-- Barre pour note 20 -->
+                                    <div class="bar" style="height: 14.28%;">
+                                        <div class="bar-value">1</div>
+                                        <div class="bar-label">20</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <p><strong>Réponses aux questions :</strong></p>
+                            <p><strong>(a) Quelle est la meilleure note pour cette classe ?</strong></p>
+                            <p class="correct">La meilleure note est 20/20.</p>
+                            
+                            <p><strong>(b) Combien d'élèves ont eu cette note ?</strong></p>
+                            <p class="correct">1 élève a eu 20/20.</p>
+                            
+                            <p><strong>(c) 7 élèves ont eu la même note, laquelle ?</strong></p>
+                            <p class="correct">7 élèves ont eu 14/20 (c'est la barre la plus haute avec 7 élèves).</p>
+                            
+                            <p><strong>(d) Combien d'élèves y a-t-il dans cette classe ?</strong></p>
+                            <p>Total des élèves = 1 + 2 + 3 + 5 + 7 + 4 + 2 + 1 = 25 élèves</p>
+                            <p class="correct">Il y a 25 élèves dans cette classe.</p>
+                            
+                            <div class="note">
+                                <i class="fas fa-lightbulb"></i>
+                                <div>
+                                    <strong>Méthode :</strong>
+                                    <p>Pour trouver le nombre total d'élèves, il faut additionner le nombre d'élèves pour chaque note :</p>
+                                    <p>1 (note 6) + 2 (note 8) + 3 (note 10) + 5 (note 12) + 7 (note 14) + 4 (note 16) + 2 (note 18) + 1 (note 20) = 25 élèves</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Exercice 3 -->
+            <section class="section">
+                <h2><i class="fas fa-calculator"></i> Exercice 3 : Opérations (5 points)</h2>
+                
+                <div class="questions">
+                    <div class="question-wrapper">
+                        <div class="question">
+                            <div class="question-content">
+                                1. Pose et calcule les opérations
+                            </div>
+                            <button class="answer-btn" onclick="toggleAnswer(5, event)">
+                                <i class="fas fa-eye"></i> Voir la réponse
+                            </button>
+                        </div>
+                        <div class="answer" id="answer5">
+                            <p><strong>Calcul A : 221 563 - 54 321</strong></p>
+                            <div class="math-example">
+                                2 2 1 5 6 3<br>
+                                - 5 4 3 2 1<br>
+                                -----------<br>
+                                1 6 7 2 4 2
+                            </div>
+                            <p><strong>Résultat : 167 242</strong></p>
+                            
+                            <p><strong>Calcul B : 12 936 + 725 625</strong></p>
+                            <div class="math-example">
+                                &nbsp;&nbsp;1 2 9 3 6<br>
+                                + 7 2 5 6 2 5<br>
+                                -----------<br>
+                                7 3 8 5 6 1
+                            </div>
+                            <p><strong>Résultat : 738 561</strong></p>
+                            
+                            <p><strong>Calcul C : 69 × 4</strong></p>
+                            <div class="math-example">
+                                6 9<br>
+                × 4<br>
+                --<br>
+                2 7 6
+                            </div>
+                            <p><strong>Résultat : 276</strong></p>
+                            
+                            <div class="note">
+                                <i class="fas fa-ruler-combined"></i>
+                                <div>
+                                    <strong>Conseils pour poser les opérations :</strong>
+                                    <p>• <strong>Soustraction :</strong> Bien aligner les chiffres par colonne (unités sous unités, dizaines sous dizaines...)</p>
+                                    <p>• <strong>Addition :</strong> Faire attention aux retenues quand la somme d'une colonne dépasse 9</p>
+                                    <p>• <strong>Multiplication :</strong> Multiplier chaque chiffre du multiplicateur par chaque chiffre du multiplicande</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Récapitulatif des points -->
+            <div class="info-box">
+                <i class="fas fa-chart-bar"></i>
+                <h3>Récapitulatif des points</h3>
+                <p><strong>Exercice 1 :</strong> 11 points (3 + 2 + 6)</p>
+                <p><strong>Exercice 2 :</strong> 4 points (1 + 1 + 1 + 1)</p>
+                <p><strong>Exercice 3 :</strong> 5 points</p>
+                <p><strong>Total :</strong> 20 points</p>
+                <p style="margin-top: 10px; font-weight: bold;">Note sur 20 : ______ /20</p>
+            </div>
+
+            <!-- Conseils pour les élèves -->
+            <div class="note">
+                <i class="fas fa-lightbulb"></i>
+                <div>
+                    <strong>Conseils pour les élèves :</strong>
+                    <p>• <strong>Multiples :</strong> Un multiple de 2 est pair, un multiple de 5 se termine par 0 ou 5</p>
+                    <p>• <strong>Divisibilité :</strong> 
+                      - Par 2 → dernier chiffre pair (0,2,4,6,8)<br>
+                      - Par 3 → somme des chiffres divisible par 3<br>
+                      - Par 5 → dernier chiffre 0 ou 5<br>
+                      - Par 9 → somme des chiffres divisible par 9
+                    </p>
+                    <p>• <strong>Diagramme :</strong> Lire la hauteur de chaque barre pour connaître le nombre</p>
+                    <p>• <strong>Opérations :</strong> Bien aligner les chiffres, vérifier les retenues</p>
+                </div>
+            </div>
         </div>
         
-        <div class="question-card">
-            <div class="question-title">
-                <i class="fas fa-question-circle"></i>
-                <span>1. Je cherche les 10 premiers multiples de 2 et de 5 :</span>
-            </div>
-            
-            <div class="multiples-table">
-                <div class="multiples-row">
-                    <div class="multiples-cell">↦</div>
-                    <div class="multiples-cell">0</div>
-                    <div class="multiples-cell">1</div>
-                    <div class="multiples-cell">2</div>
-                    <div class="multiples-cell">3</div>
-                    <div class="multiples-cell">4</div>
-                    <div class="multiples-cell">5</div>
-                    <div class="multiples-cell">6</div>
-                    <div class="multiples-cell">7</div>
-                    <div class="multiples-cell">8</div>
-                    <div class="multiples-cell">9</div>
-                </div>
-                <div class="multiples-row">
-                    <div class="multiples-cell">2</div>
-                    <div class="multiples-cell" id="m2-0">?</div>
-                    <div class="multiples-cell" id="m2-1">?</div>
-                    <div class="multiples-cell" id="m2-2">?</div>
-                    <div class="multiples-cell" id="m2-3">?</div>
-                    <div class="multiples-cell" id="m2-4">?</div>
-                    <div class="multiples-cell" id="m2-5">?</div>
-                    <div class="multiples-cell" id="m2-6">?</div>
-                    <div class="multiples-cell" id="m2-7">?</div>
-                    <div class="multiples-cell" id="m2-8">?</div>
-                    <div class="multiples-cell" id="m2-9">?</div>
-                </div>
-                <div class="multiples-row">
-                    <div class="multiples-cell">5</div>
-                    <div class="multiples-cell" id="m5-0">?</div>
-                    <div class="multiples-cell" id="m5-1">?</div>
-                    <div class="multiples-cell" id="m5-2">?</div>
-                    <div class="multiples-cell" id="m5-3">?</div>
-                    <div class="multiples-cell" id="m5-4">?</div>
-                    <div class="multiples-cell" id="m5-5">?</div>
-                    <div class="multiples-cell" id="m5-6">?</div>
-                    <div class="multiples-cell" id="m5-7">?</div>
-                    <div class="multiples-cell" id="m5-8">?</div>
-                    <div class="multiples-cell" id="m5-9">?</div>
-                </div>
-            </div>
-            
-            <button class="answer-btn" onclick="toggleAnswer('answer1')">
-                <span>Voir les réponses et explications</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="answer1" class="answer-container">
-                <div class="answer-box">
-                    <div class="result">Multiples de 2 : 0, 2, 4, 6, 8, 10, 12, 14, 16, 18<br>Multiples de 5 : 0, 5, 10, 15, 20, 25, 30, 35, 40, 45</div>
-                    
-                    <div class="explanation">
-                        <div class="explanation-title">
-                            <i class="fas fa-lightbulb"></i>
-                            Explication :
-                        </div>
-                        <div class="explanation-text">
-                            <p>Les multiples d'un nombre s'obtiennent en multipliant ce nombre par 0, 1, 2, 3, ...</p>
-                            
-                            <div class="hint">
-                                <i class="fas fa-info-circle"></i>
-                                <strong>Pour les multiples de 2 :</strong>
-                                <p>2 × 0 = 0, 2 × 1 = 2, 2 × 2 = 4, 2 × 3 = 6, 2 × 4 = 8, 2 × 5 = 10, 2 × 6 = 12, 2 × 7 = 14, 2 × 8 = 16, 2 × 9 = 18</p>
-                            </div>
-                            
-                            <div class="hint">
-                                <i class="fas fa-info-circle"></i>
-                                <strong>Pour les multiples de 5 :</strong>
-                                <p>5 × 0 = 0, 5 × 1 = 5, 5 × 2 = 10, 5 × 3 = 15, 5 × 4 = 20, 5 × 5 = 25, 5 × 6 = 30, 5 × 7 = 35, 5 × 8 = 40, 5 × 9 = 45</p>
-                            </div>
-                            
-                            <p>Attention : Le tableau demande les 10 premiers multiples à partir de 0. Donc on commence par 0.</p>
-                        </div>
-                    </div>
-                    
-                    <button class="answer-btn" onclick="fillMultiplesTable()" style="background: linear-gradient(to right, var(--success), #10ac84); margin-top: 15px;">
-                        <span>Remplir le tableau avec les réponses</span>
-                        <i class="fas fa-check"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="question-card">
-            <div class="question-title">
-                <i class="fas fa-question-circle"></i>
-                <span>2. Je colorie les multiples communs de 2 et de 5 :</span>
-            </div>
-            
-            <div class="color-grid">
-                <div class="color-item" id="num1">40</div>
-                <div class="color-item" id="num2">2</div>
-                <div class="color-item" id="num3">14</div>
-                <div class="color-item" id="num4">6</div>
-                <div class="color-item" id="num5">25</div>
-                <div class="color-item" id="num6">20</div>
-                <div class="color-item" id="num7">10</div>
-                <div class="color-item" id="num8">18</div>
-                <div class="color-item" id="num9">4</div>
-                <div class="color-item" id="num10">5</div>
-                <div class="color-item" id="num11">30</div>
-                <div class="color-item" id="num12">15</div>
-            </div>
-            
-            <button class="answer-btn" onclick="toggleAnswer('answer2')">
-                <span>Voir les réponses et explications</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="answer2" class="answer-container">
-                <div class="answer-box">
-                    <div class="result">Multiples communs de 2 et 5 : 10, 20, 30, 40</div>
-                    
-                    <div class="explanation">
-                        <div class="explanation-title">
-                            <i class="fas fa-lightbulb"></i>
-                            Explication :
-                        </div>
-                        <div class="explanation-text">
-                            <p>Les multiples communs de 2 et 5 sont les nombres qui sont à la fois multiples de 2 ET multiples de 5.</p>
-                            
-                            <div class="hint">
-                                <i class="fas fa-info-circle"></i>
-                                <strong>Critères :</strong>
-                                <p>• Multiple de 2 : nombre qui se termine par 0, 2, 4, 6, 8 (nombre pair)</p>
-                                <p>• Multiple de 5 : nombre qui se termine par 0 ou 5</p>
-                                <p>• Multiple commun de 2 et 5 : doit se terminer par 0 (car c'est le seul chiffre qui est à la fois pair et multiple de 5)</p>
-                            </div>
-                            
-                            <p>Dans la liste :</p>
-                            <ul style="padding-left: 20px; margin-top: 10px;">
-                                <li><strong>40</strong> : se termine par 0 → multiple de 2 et 5 ✓</li>
-                                <li><strong>2</strong> : se termine par 2 → multiple de 2 seulement ✗</li>
-                                <li><strong>14</strong> : se termine par 4 → multiple de 2 seulement ✗</li>
-                                <li><strong>6</strong> : se termine par 6 → multiple de 2 seulement ✗</li>
-                                <li><strong>25</strong> : se termine par 5 → multiple de 5 seulement ✗</li>
-                                <li><strong>20</strong> : se termine par 0 → multiple de 2 et 5 ✓</li>
-                                <li><strong>10</strong> : se termine par 0 → multiple de 2 et 5 ✓</li>
-                                <li><strong>18</strong> : se termine par 8 → multiple de 2 seulement ✗</li>
-                                <li><strong>4</strong> : se termine par 4 → multiple de 2 seulement ✗</li>
-                                <li><strong>5</strong> : se termine par 5 → multiple de 5 seulement ✗</li>
-                                <li><strong>30</strong> : se termine par 0 → multiple de 2 et 5 ✓</li>
-                                <li><strong>15</strong> : se termine par 5 → multiple de 5 seulement ✗</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <button class="answer-btn" onclick="colorCommonMultiples()" style="background: linear-gradient(to right, #ffd166, #ff9e00); margin-top: 15px;">
-                        <span>Colorier les multiples communs</span>
-                        <i class="fas fa-palette"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div class="question-card">
-            <div class="question-title">
-                <i class="fas fa-question-circle"></i>
-                <span>3. Complète par Oui ou Non</span>
-            </div>
-            
-            <div class="table-container">
-                <table>
-                    <thead>
-                        <tr>
-                            <th>Nombre</th>
-                            <th>Pair</th>
-                            <th>Impair</th>
-                            <th>Divisible par 2</th>
-                            <th>Divisible par 5</th>
-                            <th>Somme des chiffres</th>
-                            <th>Divisible par 3</th>
-                            <th>Divisible par 9</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <tr>
-                            <td>25</td>
-                            <td id="cell1">?</td>
-                            <td id="cell2">?</td>
-                            <td id="cell3">?</td>
-                            <td id="cell4">?</td>
-                            <td id="cell5">?</td>
-                            <td id="cell6">?</td>
-                            <td id="cell7">?</td>
-                        </tr>
-                        <tr>
-                            <td>600</td>
-                            <td id="cell8">?</td>
-                            <td id="cell9">?</td>
-                            <td id="cell10">?</td>
-                            <td id="cell11">?</td>
-                            <td id="cell12">?</td>
-                            <td id="cell13">?</td>
-                            <td id="cell14">?</td>
-                        </tr>
-                        <tr>
-                            <td>540</td>
-                            <td id="cell15">?</td>
-                            <td id="cell16">?</td>
-                            <td id="cell17">?</td>
-                            <td id="cell18">?</td>
-                            <td id="cell19">?</td>
-                            <td id="cell20">?</td>
-                            <td id="cell21">?</td>
-                        </tr>
-                    </tbody>
-                </table>
-            </div>
-            
-            <button class="answer-btn" onclick="toggleAnswer('answer3')">
-                <span>Voir les réponses et explications</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="answer3" class="answer-container">
-                <div class="answer-box">
-                    <div class="result">Tableau complété</div>
-                    
-                    <div class="explanation">
-                        <div class="explanation-title">
-                            <i class="fas fa-lightbulb"></i>
-                            Règles à connaître :
-                        </div>
-                        <div class="explanation-text">
-                            <div class="hint">
-                                <i class="fas fa-info-circle"></i>
-                                <strong>Critères de divisibilité :</strong>
-                                <p>• <strong>Pair / Divisible par 2</strong> : nombre qui se termine par 0, 2, 4, 6, 8</p>
-                                <p>• <strong>Impair</strong> : nombre qui n'est pas pair</p>
-                                <p>• <strong>Divisible par 5</strong> : nombre qui se termine par 0 ou 5</p>
-                                <p>• <strong>Divisible par 3</strong> : si la somme des chiffres est divisible par 3</p>
-                                <p>• <strong>Divisible par 9</strong> : si la somme des chiffres est divisible par 9</p>
-                            </div>
-                            
-                            <h4 style="margin-top: 20px; color: var(--primary);">Pour le nombre 25 :</h4>
-                            <ul style="padding-left: 20px; margin-top: 10px;">
-                                <li><strong>Pair</strong> : Non (se termine par 5)</li>
-                                <li><strong>Impair</strong> : Oui</li>
-                                <li><strong>Divisible par 2</strong> : Non</li>
-                                <li><strong>Divisible par 5</strong> : Oui (se termine par 5)</li>
-                                <li><strong>Somme des chiffres</strong> : 2 + 5 = 7</li>
-                                <li><strong>Divisible par 3</strong> : Non (7 pas divisible par 3)</li>
-                                <li><strong>Divisible par 9</strong> : Non (7 pas divisible par 9)</li>
-                            </ul>
-                            
-                            <h4 style="margin-top: 20px; color: var(--primary);">Pour le nombre 600 :</h4>
-                            <ul style="padding-left: 20px; margin-top: 10px;">
-                                <li><strong>Pair</strong> : Oui (se termine par 0)</li>
-                                <li><strong>Impair</strong> : Non</li>
-                                <li><strong>Divisible par 2</strong> : Oui</li>
-                                <li><strong>Divisible par 5</strong> : Oui (se termine par 0)</li>
-                                <li><strong>Somme des chiffres</strong> : 6 + 0 + 0 = 6</li>
-                                <li><strong>Divisible par 3</strong> : Oui (6 ÷ 3 = 2)</li>
-                                <li><strong>Divisible par 9</strong> : Non (6 pas divisible par 9)</li>
-                            </ul>
-                            
-                            <h4 style="margin-top: 20px; color: var(--primary);">Pour le nombre 540 :</h4>
-                            <ul style="padding-left: 20px; margin-top: 10px;">
-                                <li><strong>Pair</strong> : Oui (se termine par 0)</li>
-                                <li><strong>Impair</strong> : Non</li>
-                                <li><strong>Divisible par 2</strong> : Oui</li>
-                                <li><strong>Divisible par 5</strong> : Oui (se termine par 0)</li>
-                                <li><strong>Somme des chiffres</strong> : 5 + 4 + 0 = 9</li>
-                                <li><strong>Divisible par 3</strong> : Oui (9 ÷ 3 = 3)</li>
-                                <li><strong>Divisible par 9</strong> : Oui (9 ÷ 9 = 1)</li>
-                            </ul>
-                        </div>
-                    </div>
-                    
-                    <button class="answer-btn" onclick="fillTable2()" style="background: linear-gradient(to right, var(--success), #10ac84); margin-top: 15px;">
-                        <span>Remplir le tableau avec les réponses</span>
-                        <i class="fas fa-check"></i>
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="container">
-        <div class="section-title">
-            <i class="fas fa-chart-bar"></i>
-            <h2>Exercice 2 : (4 Points)</h2>
-        </div>
-
-        <div class="question-card">
-            <div class="question-title">
-                <i class="fas fa-question-circle"></i>
-                <span>Graphique à bâtons : Notes des élèves</span>
-            </div>
-            
-            <div class="graphique-container">
-                <div class="graphique-wrapper">
-                    <div class="graphique" id="graphique">
-                        <!-- Les barres seront générées par JavaScript -->
-                    </div>
-                    <div class="x-axis-label">
-                        6 8 10 12 14 16 18 20 Note
-                    </div>
-                </div>
-            </div>
-            
-            <div class="question-text">1. J'observe le graphique à bâtons. Puis je réponds aux questions suivantes :</div>
-            
-            <div class="question-text">a) Quelle est la meilleure note pour cette classe ?</div>
-            <button class="answer-btn" onclick="toggleAnswer('answer4a')">
-                <span>Voir la réponse</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="answer4a" class="answer-container">
-                <div class="answer-box">
-                    <div class="result">20</div>
-                    <div class="explanation">
-                        <div class="explanation-text">
-                            <p>La meilleure note est la note la plus élevée.</p>
-                            <p>Sur le graphique, on voit que la note la plus élevée est 20.</p>
-                            <p>C'est la meilleure note possible, même si seulement 1 élève l'a obtenue.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="question-text">b) Combien d'élèves ont eu cette note ?</div>
-            <button class="answer-btn" onclick="toggleAnswer('answer4b')">
-                <span>Voir la réponse</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="answer4b" class="answer-container">
-                <div class="answer-box">
-                    <div class="result">1 élève</div>
-                    <div class="explanation">
-                        <div class="explanation-text">
-                            <p>En regardant la hauteur de la barre correspondant à la note 20, on voit qu'elle monte jusqu'à 1 sur l'axe vertical.</p>
-                            <p>Donc 1 seul élève a eu la note 20.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="question-text">c) 7 élèves ont eu la même note, laquelle ?</div>
-            <button class="answer-btn" onclick="toggleAnswer('answer4c')">
-                <span>Voir la réponse</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="answer4c" class="answer-container">
-                <div class="answer-box">
-                    <div class="result">14</div>
-                    <div class="explanation">
-                        <div class="explanation-text">
-                            <p>On cherche la barre qui monte jusqu'à 7 sur l'axe vertical.</p>
-                            <p>C'est la barre correspondant à la note 14.</p>
-                            <p>Donc 7 élèves ont eu la note 14.</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            <div class="question-text">d) Combien d'élèves y a-t-il dans cette classe ?</div>
-            <button class="answer-btn" onclick="toggleAnswer('answer4d')">
-                <span>Voir la réponse</span>
-                <i class="fas fa-chevron-down"></i>
-            </button>
-            <div id="answer4d" class="answer-container">
-                <div class="answer-box">
-                    <div class="result">25 élèves</div>
-                    <div class="explanation">
-                        <div class="explanation-text">
-                            <p>Pour trouver le nombre total d'élèves, on additionne tous les élèves pour chaque note :</p>
-                            <ul style="padding-left: 20px; margin-top: 10px;">
-                                <li>Note 6 : 1 élève</li>
-                                <li>Note 8 : 2 élèves</li>
-                                <li>Note 10 : 3 élèves</li>
-                                <li>Note 12 : 5 élèves</li>
-                                <li>Note 14 : 7 élèves</li>
-                                <li>Note 16 : 4 élèves</li>
-                                <li>Note 18 : 2 élèves</li>
-                                <li>Note 20 : 1 élève</li>
-                            </ul>
-                            <p>Total : 1 + 2 + 3 + 5 + 7 + 4 + 2 + 1 = 25 élèves</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="divider"></div>
-
-    <div class="container">
-        <div class="section-title">
-            <i class="fas fa-calculator"></i>
-            <h2>Exercice 3 : (5 Points)</h2>
-        </div>
-
-        <div class="question-card">
-            <div class="question-title">
-                <i class="fas fa-question-circle"></i>
-                <span>1. Pose et calcule :</span>
-            </div>
-            
-            <div class="operations-container">
-                <div class="operation-item">
-                    <div style="font-weight: bold; margin-bottom: 10px;">A) 221563 – 54321</div>
-                    <button class="answer-btn" onclick="toggleAnswer('answer5a')" style="padding: 10px;">
-                        <span>Voir le calcul</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div id="answer5a" class="answer-container">
-                        <div class="answer-box" style="margin-top: 10px;">
-                            <div class="result">167242</div>
-                            <div class="explanation">
-                                <div class="explanation-text">
-                                    <p><strong>Calcul posé :</strong></p>
-                                    <pre style="background-color: #f8f9fa; padding: 10px; border-radius: 8px; direction: ltr;">
-    221563
-  - 54321
-  --------
-    167242
-                                    </pre>
-                                    <p>On aligne les chiffres et on soustrait colonne par colonne en faisant attention aux retenues.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="operation-item">
-                    <div style="font-weight: bold; margin-bottom: 10px;">B) 12936 + 725625</div>
-                    <button class="answer-btn" onclick="toggleAnswer('answer5b')" style="padding: 10px;">
-                        <span>Voir le calcul</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div id="answer5b" class="answer-container">
-                        <div class="answer-box" style="margin-top: 10px;">
-                            <div class="result">738561</div>
-                            <div class="explanation">
-                                <div class="explanation-text">
-                                    <p><strong>Calcul posé :</strong></p>
-                                    <pre style="background-color: #f8f9fa; padding: 10px; border-radius: 8px; direction: ltr;">
-     12936
-  + 725625
-  --------
-    738561
-                                    </pre>
-                                    <p>On aligne les chiffres et on additionne colonne par colonne en faisant attention aux retenues.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                
-                <div class="operation-item">
-                    <div style="font-weight: bold; margin-bottom: 10px;">C) 69 × 4</div>
-                    <button class="answer-btn" onclick="toggleAnswer('answer5c')" style="padding: 10px;">
-                        <span>Voir le calcul</span>
-                        <i class="fas fa-chevron-down"></i>
-                    </button>
-                    <div id="answer5c" class="answer-container">
-                        <div class="answer-box" style="margin-top: 10px;">
-                            <div class="result">276</div>
-                            <div class="explanation">
-                                <div class="explanation-text">
-                                    <p><strong>Calcul posé :</strong></p>
-                                    <pre style="background-color: #f8f9fa; padding: 10px; border-radius: 8px; direction: ltr;">
-       69
-    ×  4
-    ----
-      276
-                                    </pre>
-                                    <p>4 × 9 = 36, on écrit 6 et on retient 3.<br>4 × 6 = 24, plus la retenue 3 = 27.</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <div class="footer">
-        <p>Devoir Maison N°2 - Mathématiques CM1</p>
-        <p>Professeur Nabil TAROUS - École OUM EL KOURA</p>
+        <footer>
+            <p><span>✓ ✗ + − × ÷</span> Correction DM2 - Mathématiques CM1 - Pr. Nabil TAROUS <span>✓ ✗ + − × ÷</span></p>
+            <p style="margin-top: 5px; font-size: 0.8rem;">École OUM ELKOURA - Devoir Maison N°2</p>
+        </footer>
     </div>
 
     <script>
-        function toggleAnswer(answerId) {
-            const answerContainer = document.getElementById(answerId);
-            const button = answerContainer.previousElementSibling;
-            const icon = button.querySelector('i');
+        function toggleAnswer(questionNumber, event) {
+            const answer = document.getElementById(`answer${questionNumber}`);
+            const button = event.currentTarget;
             
-            if (answerContainer.classList.contains('show')) {
-                answerContainer.classList.remove('show');
-                button.querySelector('span').textContent = button.querySelector('span').textContent.replace('Masquer', 'Voir');
-                icon.className = 'fas fa-chevron-down';
+            if (answer.classList.contains('show')) {
+                answer.classList.remove('show');
+                button.innerHTML = '<i class="fas fa-eye"></i> Voir la réponse';
             } else {
-                answerContainer.classList.add('show');
-                button.querySelector('span').textContent = button.querySelector('span').textContent.replace('Voir', 'Masquer');
-                icon.className = 'fas fa-chevron-up';
+                answer.classList.add('show');
+                button.innerHTML = '<i class="fas fa-eye-slash"></i> Cacher la réponse';
             }
         }
-        
-        function fillMultiplesTable() {
-            // Multiples de 2
-            const multiples2 = [0, 2, 4, 6, 8, 10, 12, 14, 16, 18];
-            for (let i = 0; i < 10; i++) {
-                document.getElementById(`m2-${i}`).innerHTML = `<span style="color: var(--primary); font-weight: bold;">${multiples2[i]}</span>`;
-            }
-            
-            // Multiples de 5
-            const multiples5 = [0, 5, 10, 15, 20, 25, 30, 35, 40, 45];
-            for (let i = 0; i < 10; i++) {
-                document.getElementById(`m5-${i}`).innerHTML = `<span style="color: var(--secondary); font-weight: bold;">${multiples5[i]}</span>`;
-            }
-            
-            alert("Le tableau des multiples a été rempli !");
-        }
-        
-        function colorCommonMultiples() {
-            const commonMultiples = [10, 20, 30, 40];
-            const numbers = [40, 2, 14, 6, 25, 20, 10, 18, 4, 5, 30, 15];
-            
-            for (let i = 0; i < numbers.length; i++) {
-                const element = document.getElementById(`num${i+1}`);
-                if (commonMultiples.includes(numbers[i])) {
-                    element.classList.add('common');
-                    element.innerHTML = `<span style="color: #856404; font-weight: bold;">${numbers[i]}</span>`;
-                }
-            }
-            
-            alert("Les multiples communs de 2 et 5 ont été coloriés en jaune !");
-        }
-        
-        function fillTable2() {
-            // Réponses pour le nombre 25
-            document.getElementById('cell1').innerHTML = '<span style="color: red; font-weight: bold;">Non</span>';
-            document.getElementById('cell2').innerHTML = '<span style="color: green; font-weight: bold;">Oui</span>';
-            document.getElementById('cell3').innerHTML = '<span style="color: red; font-weight: bold;">Non</span>';
-            document.getElementById('cell4').innerHTML = '<span style="color: green; font-weight: bold;">Oui</span>';
-            document.getElementById('cell5').innerHTML = '<span style="color: var(--primary); font-weight: bold;">7</span>';
-            document.getElementById('cell6').innerHTML = '<span style="color: red; font-weight: bold;">Non</span>';
-            document.getElementById('cell7').innerHTML = '<span style="color: red; font-weight: bold;">Non</span>';
-            
-            // Réponses pour le nombre 600
-            document.getElementById('cell8').innerHTML = '<span style="color: green; font-weight: bold;">Oui</span>';
-            document.getElementById('cell9').innerHTML = '<span style="color: red; font-weight: bold;">Non</span>';
-            document.getElementById('cell10').innerHTML = '<span style="color: green; font-weight: bold;">Oui</span>';
-            document.getElementById('cell11').innerHTML = '<span style="color: green; font-weight: bold;">Oui</span>';
-            document.getElementById('cell12').innerHTML = '<span style="color: var(--primary); font-weight: bold;">6</span>';
-            document.getElementById('cell13').innerHTML = '<span style="color: green; font-weight: bold;">Oui</span>';
-            document.getElementById('cell14').innerHTML = '<span style="color: red; font-weight: bold;">Non</span>';
-            
-            // Réponses pour le nombre 540 (CORRIGÉ)
-            document.getElementById('cell15').innerHTML = '<span style="color: green; font-weight: bold;">Oui</span>';
-            document.getElementById('cell16').innerHTML = '<span style="color: red; font-weight: bold;">Non</span>';
-            document.getElementById('cell17').innerHTML = '<span style="color: green; font-weight: bold;">Oui</span>';
-            document.getElementById('cell18').innerHTML = '<span style="color: green; font-weight: bold;">Oui</span>';
-            document.getElementById('cell19').innerHTML = '<span style="color: var(--primary); font-weight: bold;">9</span>';
-            document.getElementById('cell20').innerHTML = '<span style="color: green; font-weight: bold;">Oui</span>';
-            document.getElementById('cell21').innerHTML = '<span style="color: green; font-weight: bold;">Oui</span>';
-            
-            alert("Le tableau a été rempli avec les bonnes réponses !");
-        }
-        
-        function createGraphique() {
-            const graphique = document.getElementById('graphique');
-            
-            // Données du diagramme corrigées selon les instructions
-            // Format: note ; nombre d'élèves
-            const notes = [6, 8, 10, 12, 14, 16, 18, 20];
-            const eleves = [1, 2, 3, 5, 7, 4, 2, 1];
-            const maxEleves = Math.max(...eleves); // Trouve la valeur maximale (7)
-            
-            // Créer l'axe Y (vertical)
-            const yAxis = document.createElement('div');
-            yAxis.className = 'y-axis';
-            
-            // Ajouter les valeurs de l'axe Y (de maxEleves à 0)
-            for (let i = maxEleves; i >= 0; i--) {
-                const yLabel = document.createElement('div');
-                yLabel.textContent = i;
-                yAxis.appendChild(yLabel);
-            }
-            
-            // Ajouter un label pour l'axe Y
-            const yAxisLabel = document.createElement('div');
-            yAxisLabel.textContent = "Élèves";
-            yAxisLabel.style.position = 'absolute';
-            yAxisLabel.style.left = '-60px';
-            yAxisLabel.style.top = '50%';
-            yAxisLabel.style.transform = 'rotate(-90deg)';
-            yAxisLabel.style.fontWeight = 'bold';
-            yAxis.appendChild(yAxisLabel);
-            
-            graphique.appendChild(yAxis);
-            
-            // Créer les barres pour chaque note
-            for (let i = 0; i < notes.length; i++) {
-                const barre = document.createElement('div');
-                barre.className = 'barre';
-                
-                // Calculer la hauteur en pourcentage (par rapport à la valeur max)
-                const heightPercentage = (eleves[i] / maxEleves) * 100;
-                barre.style.height = `${heightPercentage}%`;
-                
-                // Utiliser une couleur différente pour chaque barre
-                const hue = (i * 40) % 360; // Varier la teinte
-                barre.style.background = `linear-gradient(to top, hsl(${hue}, 80%, 60%), hsl(${hue}, 90%, 70%))`;
-                
-                // Ajouter la valeur (nombre d'élèves) au-dessus de la barre
-                const valeur = document.createElement('div');
-                valeur.className = 'barre-value';
-                valeur.textContent = eleves[i];
-                barre.appendChild(valeur);
-                
-                // Ajouter le label (note) en bas de la barre
-                const label = document.createElement('div');
-                label.className = 'barre-label';
-                label.textContent = notes[i];
-                barre.appendChild(label);
-                
-                graphique.appendChild(barre);
-            }
-        }
-        
-        // Initialiser le graphique au chargement de la page
+
+        // Initialiser certaines réponses comme visibles
         document.addEventListener('DOMContentLoaded', function() {
-            const answerContainers = document.querySelectorAll('.answer-container');
-            answerContainers.forEach(container => {
-                container.classList.remove('show');
-            });
-            
-            // Créer le graphique avec les bonnes données
-            createGraphique();
+            // Aucune réponse visible par défaut
         });
     </script>
 </body>
