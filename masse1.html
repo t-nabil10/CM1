@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Convertir des masses | kg, g, q, hg - Version mobile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #eef2f8;
+            color: #0a2a3b;
+            padding: 12px;
+            line-height: 1.45;
+        }
+
+        /* Carte principale */
+        .main-card {
+            max-width: 100%;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        /* Header compact pour mobile */
+        .hero {
+            background: linear-gradient(135deg, #1a4a6e 0%, #0f3550 100%);
+            padding: 1.2rem 1.2rem;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+            letter-spacing: -0.2px;
+        }
+
+        .hero h1 i {
+            background: #ffb347;
+            padding: 8px;
+            border-radius: 50px;
+            color: #1e3a4d;
+            font-size: 1.2rem;
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero p {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            opacity: 0.9;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 500;
+            backdrop-filter: blur(2px);
+        }
+
+        .content-padding {
+            padding: 1.2rem;
+        }
+
+        /* Blocs */
+        .rule-block {
+            background: #f5faff;
+            border-left: 4px solid #2c7da0;
+            border-radius: 18px;
+            padding: 0.9rem 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .rule-block h2 {
+            font-size: 1.2rem;
+            color: #1f5a77;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .rule-block p {
+            font-size: 0.85rem;
+            margin-bottom: 6px;
+        }
+
+        .highlight {
+            background: #ffecce;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        /* Tableau responsive - défilement horizontal */
+        .conversion-table-wrapper {
+            overflow-x: auto;
+            margin: 1rem 0;
+            border-radius: 16px;
+            border: 1px solid #e0edf5;
+            background: white;
+            -webkit-overflow-scrolling: touch;
+        }
+
+        .conv-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-family: 'SF Mono', 'Courier New', monospace;
+            font-size: 0.7rem;
+            min-width: 520px;
+        }
+
+        .conv-table th {
+            background: #1f5a77;
+            color: white;
+            padding: 8px 4px;
+            font-weight: 600;
+            text-align: center;
+            font-size: 0.75rem;
+        }
+
+        .conv-table td {
+            border: 1px solid #cfe0ec;
+            text-align: center;
+            padding: 6px 3px;
+            background: #fefefe;
+            font-size: 0.7rem;
+        }
+
+        .exemple-box {
+            background: #fff8ef;
+            border-radius: 20px;
+            padding: 0.9rem 1rem;
+            margin: 1rem 0;
+            border: 1px solid #ffe0b5;
+        }
+
+        .exemple-box h3 {
+            font-size: 1rem;
+            color: #c46b1a;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .grid-convert {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin: 12px 0 8px;
+        }
+
+        .convert-card {
+            background: white;
+            border-radius: 16px;
+            padding: 10px 12px;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.04);
+            border: 1px solid #e2eff7;
+        }
+
+        .convert-card p {
+            font-size: 0.9rem;
+            font-weight: 600;
+            font-family: monospace;
+            margin-bottom: 6px;
+        }
+
+        .convert-card div {
+            font-size: 0.8rem;
+        }
+
+        .exemple-equation {
+            background: #eef3fc;
+            padding: 8px 12px;
+            border-radius: 14px;
+            font-size: 0.85rem;
+            font-family: monospace;
+            margin: 10px 0;
+            word-break: break-word;
+        }
+
+        /* Exercices mobiles */
+        .exercices-section {
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .exo-item {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 0.8rem;
+            margin-bottom: 0.9rem;
+            border: 1px solid #dceaf3;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .exo-question {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+
+        .exo-question strong {
+            background: #eef2ff;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+        }
+
+        .question-text {
+            font-family: monospace;
+            background: #f4f9fe;
+            padding: 5px 10px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .btn-reponse {
+            background: #2c7da0;
+            border: none;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .btn-reponse:active {
+            transform: scale(0.96);
+            background: #1f5e7a;
+        }
+
+        .answer-box {
+            background: #eef6ea;
+            border-radius: 16px;
+            padding: 10px 12px;
+            margin-top: 12px;
+            border-left: 4px solid #2c7da0;
+            display: none;
+            font-size: 0.8rem;
+        }
+
+        .answer-box.show {
+            display: block;
+            animation: fadeSlide 0.2s ease;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-4px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .correction-text {
+            font-family: monospace;
+            font-weight: 700;
+            color: #1f6e43;
+            font-size: 0.9rem;
+        }
+
+        .note-addition {
+            background: #e6f4ff;
+            border-radius: 18px;
+            padding: 0.9rem;
+            margin: 1rem 0;
+            border: 1px solid #cae0f0;
+            font-size: 0.8rem;
+        }
+
+        /* footer */
+        footer {
+            background: #0f2c3f;
+            color: #cde0ec;
+            text-align: center;
+            padding: 0.9rem;
+            font-size: 0.7rem;
+            margin-top: 0.8rem;
+        }
+
+        hr {
+            margin: 12px 0;
+            border-color: #e2eaf0;
+        }
+
+        i.fa, i.far, i.fas {
+            margin-right: 4px;
+        }
+
+        /* tableau astuce compact */
+        .mini-table-hint {
+            background: #f9f6ef;
+            border-radius: 14px;
+            padding: 8px;
+            font-size: 0.7rem;
+            margin-top: 8px;
+            text-align: center;
+        }
+
+        /* amélioration pour très petits écrans */
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+            .content-padding {
+                padding: 1rem;
+            }
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+            .hero h1 i {
+                width: 32px;
+                height: 32px;
+                font-size: 1rem;
+            }
+            .btn-reponse {
+                padding: 5px 12px;
+                font-size: 0.65rem;
+            }
+            .question-text {
+                font-size: 0.8rem;
+                padding: 4px 8px;
+            }
+            .convert-card p {
+                font-size: 0.85rem;
+            }
+            .rule-block h2 {
+                font-size: 1.05rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .exo-question {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .btn-reponse {
+                align-self: flex-end;
+                margin-top: 4px;
+            }
+            .hero h1 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main-card">
+    <div class="hero">
+        <h1>
+            <i class="fas fa-weight-hanging"></i> 
+            Convertir des masses
+        </h1>
+        <p>
+            <span class="badge"><i class="fas fa-mobile-alt"></i> Mobile friendly</span>
+            <span class="badge"><i class="fas fa-chart-simple"></i> g · kg · q · hg</span>
+        </p>
+    </div>
+
+    <div class="content-padding">
+        <!-- Règle -->
+        <div class="rule-block">
+            <h2><i class="fas fa-gavel"></i> a) Règle</h2>
+            <p>✔️ <strong class="highlight">Gramme (g)</strong> et <strong class="highlight">kilogramme (kg)</strong> = unités principales.</p>
+            <p>✔️ On utilise un <strong>tableau de conversion</strong> : chaque colonne = unité (t, q, kg, hg, dag, g, dg, cg, mg).</p>
+            <p>✔️ Décaler la virgule vers la <strong>droite</strong> (×10) ou vers la <strong>gauche</strong> (÷10).</p>
+        </div>
+
+        <!-- Tableau responsive (défilement horizontal) -->
+        <div class="conversion-table-wrapper">
+            <table class="conv-table">
+                <thead>
+                    <tr><th>t</th><th>q</th><th>kg</th><th>hg</th><th>dag</th><th>g</th><th>dg</th><th>cg</th><th>mg</th></tr>
+                </thead>
+                <tbody>
+                    <tr style="background:#fbf9f5;">
+                        <td>tonne</td><td>quintal</td><td>kg</td><td>hg</td><td>dag</td><td>g</td><td>dg</td><td>cg</td><td>mg</td>
+                    </tr>
+                    <tr>
+                        <td colspan="9" style="text-align:center; font-size:0.7rem; background:#f2f6fc;">
+                            <i class="fas fa-arrow-right"></i> 1 décalage = ×10 ou ÷10
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- Exemples tirés de l'image -->
+        <div class="exemple-box">
+            <h3><i class="fas fa-pen-ruler"></i> b) Exemples</h3>
+            <div class="grid-convert">
+                <div class="convert-card">
+                    <p>📌 10 kg = ____ g</p>
+                    <div><i class="fas fa-arrow-right"></i> kg → g (3 rangs à droite) → <strong>10 000 g</strong></div>
+                </div>
+                <div class="convert-card">
+                    <p>📌 25 g = ____ cg</p>
+                    <div><i class="fas fa-arrow-right"></i> g → cg (2 rangs → droite) → <strong>2 500 cg</strong></div>
+                </div>
+                <div class="convert-card">
+                    <p>📌 78 q = ____ hg</p>
+                    <div><i class="fas fa-arrow-right"></i> q → hg : 1 q = 100 kg, puis kg → hg (×10) → <strong>78 000 hg</strong></div>
+                </div>
+            </div>
+            <div class="exemple-equation">
+                <i class="fas fa-calculator"></i> 10 kg = 10 000 g &nbsp;|&nbsp; 25 g = 2 500 cg &nbsp;|&nbsp; 78 q = 78 000 hg
+            </div>
+        </div>
+
+        <!-- Exercices mobiles -->
+        <div class="exercices-section">
+            <h2 style="font-size:1.2rem; margin-bottom: 0.7rem; display:flex; gap:6px;"><i class="fas fa-brain"></i> Exercices interactifs</h2>
+            <p style="font-size:0.75rem; margin-bottom: 0.8rem;">👆 Appuyez sur le bouton pour vérifier votre réponse.</p>
+
+            <!-- EX 1 -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <strong>①</strong>
+                    <span class="question-text">5,3 kg = ______ g</span>
+                    <button class="btn-reponse" data-exo="1"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer1">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>5 300 g</strong><br>
+                    kg → g : ×1000 → 5,3 × 1000 = 5300 g.
+                </div>
+            </div>
+
+            <!-- EX 2 -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <strong>②</strong>
+                    <span class="question-text">450 cg = ______ g</span>
+                    <button class="btn-reponse" data-exo="2"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer2">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>4,5 g</strong><br>
+                    cg → g : 2 rangs à gauche → 450 ÷ 100 = 4,5 g.
+                </div>
+            </div>
+
+            <!-- EX 3 -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <strong>③</strong>
+                    <span class="question-text">12,7 q = ______ kg</span>
+                    <button class="btn-reponse" data-exo="3"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer3">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>1 270 kg</strong><br>
+                    1 q = 100 kg → 12,7 × 100 = 1270 kg.
+                </div>
+            </div>
+
+            <!-- EX 4 -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <strong>④</strong>
+                    <span class="question-text">38 hg = ______ dag</span>
+                    <button class="btn-reponse" data-exo="4"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer4">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>380 dag</strong><br>
+                    hg → dag (1 rang droite) → 38 × 10 = 380 dag.
+                </div>
+            </div>
+
+            <!-- EX 5 -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <strong>⑤</strong>
+                    <span class="question-text">8 250 mg = ______ g</span>
+                    <button class="btn-reponse" data-exo="5"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer5">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>8,25 g</strong><br>
+                    mg → g (3 rangs gauche) → 8250 ÷ 1000 = 8,25 g.
+                </div>
+            </div>
+
+            <!-- EX 6 : kg vers q -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <strong>⑥</strong>
+                    <span class="question-text">3 400 kg = ______ q</span>
+                    <button class="btn-reponse" data-exo="6"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer6">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>34 q</strong><br>
+                    1 q = 100 kg → 3400 ÷ 100 = 34 q.
+                </div>
+            </div>
+
+            <!-- EX 7 : tonne en kg -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <strong>⑦</strong>
+                    <span class="question-text">2,8 t = ______ kg</span>
+                    <button class="btn-reponse" data-exo="7"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer7">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>2 800 kg</strong><br>
+                    1 t = 1000 kg → 2,8 × 1000 = 2800 kg.
+                </div>
+            </div>
+
+            <!-- EX 8 (en plus) hg en g pour mobile -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <strong>⑧</strong>
+                    <span class="question-text">3,2 hg = ______ g</span>
+                    <button class="btn-reponse" data-exo="8"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer8">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>320 g</strong><br>
+                    hg → g (2 rangs droite) → 3,2 × 100 = 320 g.
+                </div>
+            </div>
+        </div>
+
+        <!-- Rappel visuel / méthode -->
+        <div class="note-addition">
+            <i class="fas fa-chalkboard-user"></i> <strong>Méthode du tableau</strong><br>
+            Pour convertir 78 q en hg : place 78 dans la colonne "q", ajoute des zéros jusqu'à "hg" → <strong>78 000 hg</strong>.
+            <div class="mini-table-hint">
+                <code>q | kg | hg → 78 | 0 | 0 → 78 000 hg</code>
+            </div>
+        </div>
+
+        <!-- Résumé des exemples de l'image -->
+        <div class="exemple-box" style="background: #eef4fa;">
+            <h3><i class="fas fa-quote-left"></i> Exemples-clés du cours</h3>
+            <div style="display: flex; flex-direction: column; gap: 6px; font-size: 0.8rem;">
+                <div><i class="fas fa-arrow-right"></i> 10 kg = <strong>10 000 g</strong></div>
+                <div><i class="fas fa-arrow-right"></i> 25 g = <strong>2 500 cg</strong></div>
+                <div><i class="fas fa-arrow-right"></i> 78 q = <strong>78 000 hg</strong></div>
+            </div>
+            <hr style="margin: 8px 0;">
+            <p style="font-size:0.75rem;"><i class="fas fa-lightbulb"></i> Astuce : Pour les grands nombres, utilise le tableau à défilement horizontal !</p>
+        </div>
+
+        <!-- mini tableau récapitulatif -->
+        <div class="conversion-table-wrapper" style="margin-top: 8px;">
+            <table class="conv-table">
+                <thead><tr><th>kg</th><th>hg</th><th>dag</th><th>g</th></tr></thead>
+                <tbody>
+                    <tr><td>1</td><td>10</td><td>100</td><td>1000</td></tr>
+                </tbody>
+            </table>
+            <div class="mini-table-hint" style="border-radius:0 0 16px 16px;">
+                1 kg = 10 hg = 100 dag = 1000 g
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-weight-scale"></i> Tableau de conversion · Gramme · Kilogramme · Quintal · Hectogramme
+    </footer>
+</div>
+
+<script>
+    (function() {
+        // Gestionnaire pour tous les boutons (mobile compatible)
+        const buttons = document.querySelectorAll('.btn-reponse');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const exoNumber = this.getAttribute('data-exo');
+                const answerDiv = document.getElementById(`answer${exoNumber}`);
+                if (!answerDiv) return;
+                const isVisible = answerDiv.classList.contains('show');
+                if (isVisible) {
+                    answerDiv.classList.remove('show');
+                    this.innerHTML = '<i class="fas fa-eye"></i> Réponse';
+                } else {
+                    answerDiv.classList.add('show');
+                    this.innerHTML = '<i class="fas fa-eye-slash"></i> Cacher';
+                }
+            });
+        });
+
+        // Permet de fermer les réponses si on clique ailleurs ? optionnel, mais améliore l'expérience
+        // on laisse simple et ergonomique pour mobile.
+        console.log("Version mobile - Tableau des masses chargé");
+    })();
+</script>
+</body>
+</html>
