@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Contrôle n°1 S2 - Affiche révision | Aires, Fractions, Masses</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(135deg, #f0f4fa 0%, #e2eaf3 100%);
+            padding: 16px 12px;
+            min-height: 100vh;
+        }
+
+        /* Carte principale style affiche */
+        .affiche {
+            max-width: 600px;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 44px;
+            box-shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            transition: all 0.2s;
+        }
+
+        /* Bandeau examen */
+        .header-exam {
+            background: linear-gradient(115deg, #0b2b3b 0%, #154e6b 100%);
+            padding: 1.6rem 1.5rem;
+            color: white;
+            position: relative;
+            text-align: center;
+        }
+
+        .header-exam::after {
+            content: "📐⚖️🧮";
+            position: absolute;
+            bottom: -18px;
+            right: 20px;
+            font-size: 2.5rem;
+            opacity: 0.2;
+            pointer-events: none;
+        }
+
+        .badge-controle {
+            display: inline-block;
+            background: #ffb347;
+            color: #1e3a4a;
+            padding: 6px 16px;
+            border-radius: 60px;
+            font-weight: 800;
+            font-size: 0.75rem;
+            letter-spacing: 1px;
+            margin-bottom: 12px;
+        }
+
+        .header-exam h1 {
+            font-size: 1.9rem;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .header-exam h1 i {
+            background: #ffb347;
+            padding: 8px;
+            border-radius: 50px;
+            color: #154e6b;
+            font-size: 1.3rem;
+            width: 44px;
+            height: 44px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .date-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 18px;
+            margin: 15px 0 8px;
+            font-size: 0.85rem;
+            background: rgba(255,255,255,0.15);
+            padding: 8px 16px;
+            border-radius: 60px;
+            backdrop-filter: blur(4px);
+        }
+
+        .prof-name {
+            margin-top: 12px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-top: 1px solid rgba(255,255,255,0.2);
+            padding-top: 10px;
+            display: inline-block;
+        }
+
+        /* Corps affiche */
+        .content {
+            padding: 1.6rem 1.5rem;
+        }
+
+        /* 3 cartes leçons */
+        .lessons-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 1.4rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .lesson-card {
+            background: #ffffff;
+            border-radius: 32px;
+            overflow: hidden;
+            box-shadow: 0 5px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e0edf5;
+            transition: transform 0.1s ease;
+        }
+
+        .card-header {
+            padding: 0.9rem 1.2rem;
+            background: #f8fafd;
+            border-bottom: 3px solid;
+            display: flex;
+            align-items: center;
+            gap: 12px;
+        }
+
+        .card-header i {
+            font-size: 1.8rem;
+            width: 44px;
+            text-align: center;
+        }
+
+        .card-header h2 {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin: 0;
+        }
+
+        /* couleurs spécifiques */
+        .card-aires .card-header { border-bottom-color: #2c7da0; background: #ecf7fc; }
+        .card-aires .card-header i { color: #2c7da0; }
+        .card-fractions .card-header { border-bottom-color: #e9a23b; background: #fff7ed; }
+        .card-fractions .card-header i { color: #e9a23b; }
+        .card-masses .card-header { border-bottom-color: #5f9c6b; background: #f0f7ef; }
+        .card-masses .card-header i { color: #3b7a4a; }
+
+        .card-body {
+            padding: 1rem 1.2rem 1.2rem;
+        }
+
+        .rule-list {
+            list-style: none;
+            margin: 8px 0;
+        }
+
+        .rule-list li {
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+        }
+
+        .rule-list li i {
+            margin-top: 3px;
+            color: #5f8b9f;
+            font-size: 0.75rem;
+            min-width: 18px;
+        }
+
+        .formula-highlight {
+            background: #f4f9fe;
+            border-radius: 20px;
+            padding: 8px 12px;
+            font-family: 'Courier New', monospace;
+            font-weight: 600;
+            font-size: 0.85rem;
+            margin: 10px 0;
+            text-align: center;
+            border: 1px dashed #bbd4f0;
+        }
+
+        .example-mini {
+            font-size: 0.8rem;
+            background: #fef7e0;
+            padding: 8px 12px;
+            border-radius: 18px;
+            margin-top: 8px;
+            color: #7a5a1a;
+        }
+
+        .example-mini i {
+            margin-right: 6px;
+        }
+
+        .divider-light {
+            height: 1px;
+            background: linear-gradient(to right, #e2eaf0, transparent);
+            margin: 12px 0;
+        }
+
+        /* footer conseils */
+        .conseil-box {
+            background: linear-gradient(115deg, #fef9e6, #fff6e8);
+            border-radius: 28px;
+            padding: 1rem 1.2rem;
+            margin-top: 1.2rem;
+            text-align: center;
+            border: 1px solid #ffdfaa;
+        }
+
+        .conseil-box p {
+            font-size: 0.85rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+        }
+
+        .badge-skill {
+            background: #1f5068;
+            color: white;
+            padding: 4px 10px;
+            border-radius: 30px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        footer {
+            background: #0f2c3f;
+            color: #cbe0ec;
+            text-align: center;
+            padding: 0.9rem;
+            font-size: 0.7rem;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 10px 8px;
+            }
+            .content {
+                padding: 1.2rem;
+            }
+            .header-exam h1 {
+                font-size: 1.5rem;
+            }
+            .card-header h2 {
+                font-size: 1.15rem;
+            }
+            .card-header i {
+                font-size: 1.5rem;
+                width: 36px;
+            }
+            .rule-list li {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .date-info {
+                flex-direction: column;
+                gap: 5px;
+                align-items: center;
+            }
+            .header-exam {
+                padding: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="affiche">
+    <!-- entête contrôle -->
+    <div class="header-exam">
+        <div class="badge-controle">
+            <i class="fas fa-star-of-life"></i> CONTRÔLE N°1 - S2 <i class="fas fa-star-of-life"></i>
+        </div>
+        <h1>
+            <i class="fas fa-chalkboard"></i> 
+            Révisions express
+        </h1>
+        <div class="date-info">
+            <span><i class="far fa-calendar-alt"></i> Semaine du 30/03 au 04/04/2026</span>
+            <span><i class="far fa-hourglass-half"></i> Durée : 1h30</span>
+            <span><i class="fas fa-calculator"></i> Calcul & Problèmes</span>
+        </div>
+        <div class="prof-name">
+            <i class="fas fa-user-graduate"></i> Pr. Nabil TAROUS
+        </div>
+    </div>
+
+    <div class="content">
+        <!-- Titre Leçons visées -->
+        <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 1rem; flex-wrap: wrap;">
+            <div style="display: flex; align-items: center; gap: 8px;">
+                <i class="fas fa-book-open" style="color: #1f5a77; font-size: 1.2rem;"></i>
+                <span style="font-weight: 700; font-size: 1rem; background: #eef3fa; padding: 4px 12px; border-radius: 30px;">📖 Leçons visées</span>
+            </div>
+            <div class="badge-skill"><i class="fas fa-brain"></i> Compétences : Calcul · Résolution</div>
+        </div>
+
+        <!-- 3 cartes : Aire / Fractions / Masses -->
+        <div class="lessons-grid">
+            
+            <!-- CARTE 1 : AIRE -->
+            <div class="lesson-card card-aires">
+                <div class="card-header">
+                    <i class="fas fa-draw-polygon"></i>
+                    <h2>Mesure de l'aire d'une surface</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="rule-list">
+                        <li><i class="fas fa-square"></i> <strong>Définition :</strong> L'aire est la mesure de la surface (intérieur d'une figure).</li>
+                        <li><i class="fas fa-chart-line"></i> <strong>Unités :</strong> m², dm², cm², mm² (1 m² = 10 000 cm²).</li>
+                    </ul>
+                    </div>
+            </div>
+
+            <!-- CARTE 2 : FRACTIONS -->
+            <div class="lesson-card card-fractions">
+                <div class="card-header">
+                    <i class="fas fa-chart-pie"></i>
+                    <h2>Fractions</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="rule-list">
+                        <li><i class="fas fa-fraction"></i> <strong>Définition :</strong> \(\frac{a}{b}\) avec a numérateur, b dénominateur (b ≠ 0).</li>
+                        <li><i class="fas fa-plus-circle"></i> <strong>Addition / Soustraction :</strong> mettre au même dénominateur.</li>
+                        <li><i class="fas fa-balance-scale"></i> <strong>Comparaison :</strong> même dénominateur ou produit en croix.</li>
+                        <li><i class="fas fa-sort-amount-down"></i> <strong>Simplification :</strong> diviser numérateur et dénominateur par un diviseur commun.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- CARTE 3 : MESURE DES MASSES -->
+            <div class="lesson-card card-masses">
+                <div class="card-header">
+                    <i class="fas fa-weight-hanging"></i>
+                    <h2>Mesure des masses</h2>
+                </div>
+                <div class="card-body">
+                    <ul class="rule-list">
+                        <li><i class="fas fa-table"></i> <strong>Unités principales :</strong> gramme (g) et kilogramme (kg).</li>
+                        <li><i class="fas fa-arrows-left-right"></i> <strong>Tableau :</strong> t - q - kg - hg - dag - g - dg - cg - mg.</li>
+                        <li><i class="fas fa-exchange-alt"></i> <strong>Conversion :</strong> 1 kg = 1000 g ; 1 hg = 100 g ; 1 q = 100 kg ; 1 t = 1000 kg.</li>
+                        <li><i class="fas fa-calculator"></i> <strong>Additions / Comparaisons :</strong> toujours utiliser la même unité.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Règles transversales + conseils -->
+        <div class="conseil-box">
+            <p>
+                <i class="fas fa-tasks" style="color:#c46b1a;"></i>
+                <strong>Conseils de révision :</strong> maîtrise les conversions (masses, aires) et les opérations sur fractions.
+            </p>
+            <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 12px; margin-top: 12px;">
+                <span style="background:#e9ecef; padding: 4px 12px; border-radius: 30px; font-size:0.7rem;"><i class="fas fa-ruler"></i> Aires : formules + conversion m²/cm²</span>
+                <span style="background:#e9ecef; padding: 4px 12px; border-radius: 30px; font-size:0.7rem;"><i class="fas fa-chart-simple"></i> Fractions : dénominateur commun</span>
+                <span style="background:#e9ecef; padding: 4px 12px; border-radius: 30px; font-size:0.7rem;"><i class="fas fa-weight-scale"></i> Masses : tableau et même unité</span>
+            </div>
+        </div>
+
+        <!-- Petit rappel durée / préparation -->
+        <div style="margin-top: 18px; background: #eef2fa; border-radius: 24px; padding: 12px; text-align: center; border: 1px solid #cde0ef;">
+            <i class="fas fa-hourglass-start"></i> <strong>Préparez-vous efficacement :</strong> 1h30 – exercices types, conversions, problèmes de comparaison.
+            <div style="margin-top: 6px; font-size: 0.7rem; color:#2c5a7a;">
+                📍 Révisions ciblées : aire de figures simples, addition/soustraction de fractions, conversion de masses.
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-chalkboard"></i> Contrôle n°1 S2 — Leçons : Aire · Fractions · Masses  |  Pr. Nabil TAROUS  |  Bonne chance !
+    </footer>
+</div>
+</body>
+</html>
