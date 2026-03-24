@@ -1,0 +1,560 @@
+<!DOCTYPE html>
+<html lang="fr" dir="ltr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes, viewport-fit=cover">
+    <title>Comparer et calculer des masses | kg, g, mg, dg, hg - Mobile</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background: #eef2f8;
+            color: #0a2a3b;
+            padding: 12px;
+            line-height: 1.45;
+        }
+
+        .main-card {
+            max-width: 100%;
+            margin: 0 auto;
+            background: #ffffff;
+            border-radius: 28px;
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        /* header */
+        .hero {
+            background: linear-gradient(135deg, #1a4a6e 0%, #0f3550 100%);
+            padding: 1.2rem;
+            color: white;
+        }
+
+        .hero h1 {
+            font-size: 1.45rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 i {
+            background: #ffb347;
+            padding: 8px;
+            border-radius: 50px;
+            color: #1e3a4d;
+            font-size: 1.1rem;
+            width: 38px;
+            height: 38px;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .hero p {
+            margin-top: 8px;
+            font-size: 0.8rem;
+            opacity: 0.9;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .badge {
+            background: rgba(255,255,255,0.2);
+            padding: 4px 10px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 500;
+        }
+
+        .content-padding {
+            padding: 1.2rem;
+        }
+
+        /* règles */
+        .rule-block {
+            background: #f5faff;
+            border-left: 4px solid #2c7da0;
+            border-radius: 18px;
+            padding: 0.9rem 1rem;
+            margin-bottom: 1.2rem;
+        }
+
+        .rule-block h2 {
+            font-size: 1.15rem;
+            color: #1f5a77;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-bottom: 8px;
+        }
+
+        .rule-block p {
+            font-size: 0.85rem;
+            margin-bottom: 8px;
+        }
+
+        .highlight {
+            background: #ffecce;
+            font-weight: 600;
+            padding: 2px 6px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            display: inline-block;
+        }
+
+        /* tableau conversion compact */
+        .mini-table {
+            background: #f8fafc;
+            border-radius: 16px;
+            padding: 8px 10px;
+            margin: 10px 0;
+            border: 1px solid #deecf5;
+            overflow-x: auto;
+            white-space: nowrap;
+            font-size: 0.7rem;
+            font-family: monospace;
+        }
+
+        .mini-table span {
+            display: inline-block;
+            background: white;
+            padding: 4px 8px;
+            margin: 0 2px;
+            border-radius: 20px;
+            font-weight: 600;
+        }
+
+        /* exemples box */
+        .example-box {
+            background: #fff8ef;
+            border-radius: 20px;
+            padding: 0.9rem 1rem;
+            margin: 1rem 0;
+            border: 1px solid #ffe0b5;
+        }
+
+        .example-box h3 {
+            font-size: 1rem;
+            color: #c46b1a;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .compare-question {
+            background: #fef3e2;
+            padding: 12px;
+            border-radius: 16px;
+            margin: 12px 0;
+        }
+
+        .calc-question {
+            background: #eef6fc;
+            padding: 12px;
+            border-radius: 16px;
+            margin: 12px 0;
+        }
+
+        .inline-math {
+            font-family: monospace;
+            font-weight: 600;
+            background: #eef2f5;
+            padding: 4px 8px;
+            border-radius: 12px;
+            display: inline-block;
+            font-size: 0.9rem;
+        }
+
+        /* exercices interactifs */
+        .exercices-section {
+            margin: 1.2rem 0 0.8rem;
+        }
+
+        .exo-item {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 0.9rem;
+            margin-bottom: 1rem;
+            border: 1px solid #dceaf3;
+            box-shadow: 0 2px 6px rgba(0, 0, 0, 0.02);
+        }
+
+        .exo-question {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: space-between;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+
+        .exo-num {
+            background: #eef2ff;
+            padding: 4px 12px;
+            border-radius: 30px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .question-text {
+            font-family: monospace;
+            background: #f4f9fe;
+            padding: 6px 12px;
+            border-radius: 40px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            flex: 1;
+            word-break: break-word;
+        }
+
+        .btn-reponse {
+            background: #2c7da0;
+            border: none;
+            color: white;
+            padding: 6px 14px;
+            border-radius: 40px;
+            font-size: 0.7rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: 0.2s;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            white-space: nowrap;
+        }
+
+        .btn-reponse:active {
+            transform: scale(0.96);
+            background: #1f5e7a;
+        }
+
+        .answer-box {
+            background: #eef6ea;
+            border-radius: 16px;
+            padding: 12px;
+            margin-top: 12px;
+            border-left: 4px solid #2c7da0;
+            display: none;
+            font-size: 0.8rem;
+        }
+
+        .answer-box.show {
+            display: block;
+            animation: fadeSlide 0.2s ease;
+        }
+
+        @keyframes fadeSlide {
+            from { opacity: 0; transform: translateY(-4px);}
+            to { opacity: 1; transform: translateY(0);}
+        }
+
+        .correction {
+            font-family: monospace;
+            font-weight: 700;
+            color: #1f6e43;
+            font-size: 0.9rem;
+        }
+
+        .info-note {
+            background: #e6f4ff;
+            border-radius: 18px;
+            padding: 0.9rem;
+            margin: 1rem 0;
+            border: 1px solid #cae0f0;
+            font-size: 0.8rem;
+        }
+
+        footer {
+            background: #0f2c3f;
+            color: #cde0ec;
+            text-align: center;
+            padding: 0.9rem;
+            font-size: 0.7rem;
+            margin-top: 0.8rem;
+        }
+
+        hr {
+            margin: 12px 0;
+            border-color: #e2eaf0;
+        }
+
+        i.fa, i.far, i.fas {
+            margin-right: 4px;
+        }
+
+        @media (max-width: 480px) {
+            body {
+                padding: 8px;
+            }
+            .content-padding {
+                padding: 1rem;
+            }
+            .hero h1 {
+                font-size: 1.3rem;
+            }
+            .btn-reponse {
+                padding: 5px 12px;
+                font-size: 0.65rem;
+            }
+            .question-text {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 380px) {
+            .exo-question {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+            .btn-reponse {
+                align-self: flex-end;
+                margin-top: 5px;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="main-card">
+    <div class="hero">
+        <h1>
+            <i class="fas fa-balance-scale"></i> 
+            Calculer et Comparer des masses
+        </h1>
+        <p>
+            <span class="badge"><i class="fas fa-mobile-alt"></i> Version mobile</span>
+            <span class="badge"><i class="fas fa-calculator"></i> Addition · Soustraction · Comparaison</span>
+        </p>
+    </div>
+
+    <div class="content-padding">
+        <!-- Règle principale -->
+        <div class="rule-block">
+            <h2><i class="fas fa-gavel"></i> a) Règles</h2>
+            <p>✔️ Pour <strong class="highlight">additionner ou soustraire</strong> deux mesures, <strong>on doit utiliser la même unité de mesure</strong>.</p>
+            <p>✔️ Pour <strong class="highlight">comparer</strong> deux mesures, <strong>on doit utiliser la même unité de mesure</strong>.</p>
+            <p>✔️ On procède de la même manière pour ranger <strong>des longueurs, des masses et des aires</strong> dans l'ordre croissant ou décroissant.</p>
+            <div class="mini-table">
+                <span>kg</span> → <span>hg</span> → <span>dag</span> → <span>g</span> → <span>dg</span> → <span>cg</span> → <span>mg</span><br>
+                <i class="fas fa-arrow-right"></i> 1 kg = 1000 g &nbsp;&nbsp; 1 hg = 100 g &nbsp;&nbsp; 1 dg = 0,1 g
+            </div>
+        </div>
+
+        <!-- Exemples tirés de l'image (comparer et calculer) -->
+        <div class="example-box">
+            <h3><i class="fas fa-pen-ruler"></i> b) Exemples du cours</h3>
+            
+            <div class="compare-question">
+                <p><strong><i class="fas fa-chart-simple"></i> 1) Comparer :</strong></p>
+                <p>🔹 (1) 163 mg est-il plus grand ou plus petit que 23 dg ?</p>
+                <p>🔹 (2) 1 hg est-il plus grand ou plus petit que 1 200 cg ?</p>
+                <div style="background:#e9f0f5; border-radius: 12px; padding: 8px; margin-top: 6px; font-size:0.8rem;">
+                    <i class="fas fa-lightbulb"></i> <strong>Réponses :</strong><br>
+                    (1) 23 dg = 2 300 mg → 163 mg < 2 300 mg → <strong>163 mg est plus PETIT</strong><br>
+                    (2) 1 hg = 10 000 cg → 10 000 cg > 1 200 cg → <strong>1 hg est plus GRAND</strong>
+                </div>
+            </div>
+
+            <div class="calc-question">
+                <p><strong><i class="fas fa-calculator"></i> 2) Calculer :</strong></p>
+                <p>📌 (1) 163 mg + 23 dg = ?</p>
+                <p>📌 (2) 1 hg - 1 200 cg = ?</p>
+                <div style="background:#e9f0f5; border-radius: 12px; padding: 8px; margin-top: 6px; font-size:0.8rem;">
+                    <i class="fas fa-check-circle"></i> <strong>Résultats :</strong><br>
+                    (1) 23 dg = 2 300 mg → 163 + 2 300 = <strong>2 463 mg</strong> (soit 2,463 g)<br>
+                    (2) 1 hg = 10 000 cg → 10 000 - 1 200 = <strong>8 800 cg</strong> (soit 88 g)
+                </div>
+            </div>
+        </div>
+
+        <!-- Partie interactive : exercices comparer + calculer -->
+        <div class="exercices-section">
+            <h2 style="font-size:1.2rem; margin-bottom: 0.7rem;"><i class="fas fa-brain"></i> Exercices interactifs</h2>
+            <p style="font-size:0.75rem; margin-bottom: 0.8rem;">👆 Cliquez sur "Voir réponse" pour vérifier chaque conversion et calcul.</p>
+
+            <!-- EXERCICE 1 : Comparer 450 mg et 25 cg -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <span class="exo-num">① Comparer</span>
+                    <span class="question-text">450 mg &nbsp;◯&nbsp; 25 cg</span>
+                    <button class="btn-reponse" data-exo="comp1"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer-comp1">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>450 mg < 25 cg</strong><br>
+                    Explication : 25 cg = 250 mg (car 1 cg = 10 mg). 450 mg > 250 mg → <span class="correction">450 mg est plus grand</span>.
+                </div>
+            </div>
+
+            <!-- EXERCICE 2 : Comparer 2 hg et 15 000 mg -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <span class="exo-num">② Comparer</span>
+                    <span class="question-text">2 hg &nbsp;◯&nbsp; 15 000 mg</span>
+                    <button class="btn-reponse" data-exo="comp2"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer-comp2">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>2 hg > 15 000 mg</strong><br>
+                    2 hg = 200 g = 200 000 mg. 200 000 mg > 15 000 mg → 2 hg est plus grand.
+                </div>
+            </div>
+
+            <!-- EXERCICE 3 : Comparer 3,5 kg et 350 dag -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <span class="exo-num">③ Comparer</span>
+                    <span class="question-text">3,5 kg &nbsp;◯&nbsp; 350 dag</span>
+                    <button class="btn-reponse" data-exo="comp3"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer-comp3">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>3,5 kg = 350 dag</strong><br>
+                    1 kg = 100 dag → 3,5 × 100 = 350 dag. Les deux mesures sont égales.
+                </div>
+            </div>
+
+            <!-- EXERCICE 4 : Calculer 7 g + 320 mg (résultat en mg) -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <span class="exo-num">④ Calculer</span>
+                    <span class="question-text">7 g + 320 mg = ______ mg</span>
+                    <button class="btn-reponse" data-exo="calc1"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer-calc1">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>7 320 mg</strong><br>
+                    7 g = 7 000 mg → 7 000 + 320 = 7 320 mg.
+                </div>
+            </div>
+
+            <!-- EXERCICE 5 : Calculer 12 hg - 800 g (résultat en g) -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <span class="exo-num">⑤ Calculer</span>
+                    <span class="question-text">12 hg - 800 g = ______ g</span>
+                    <button class="btn-reponse" data-exo="calc2"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer-calc2">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>400 g</strong><br>
+                    12 hg = 1 200 g → 1 200 - 800 = 400 g.
+                </div>
+            </div>
+
+            <!-- EXERCICE 6 : Calculer 5,2 kg + 780 dag (résultat en kg) -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <span class="exo-num">⑥ Calculer</span>
+                    <span class="question-text">5,2 kg + 780 dag = ______ kg</span>
+                    <button class="btn-reponse" data-exo="calc3"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer-calc3">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>13 kg</strong><br>
+                    780 dag = 7,8 kg (car 10 dag = 0,1 kg → 780 dag = 7,8 kg). 5,2 + 7,8 = 13 kg.
+                </div>
+            </div>
+
+            <!-- EXERCICE 7 : 2,4 hg - 9 500 mg = ? (résultat en cg) -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <span class="exo-num">⑦ Calculer</span>
+                    <span class="question-text">2,4 hg - 9 500 mg = ______ cg</span>
+                    <button class="btn-reponse" data-exo="calc4"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer-calc4">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>14 500 cg</strong><br>
+                    2,4 hg = 24 000 cg (1 hg = 10 000 cg). 9 500 mg = 950 cg (1 mg = 0,1 cg). 24 000 - 950 = 23 050 cg. <br>
+                    <span class="correction">Résultat = 23 050 cg</span>
+                </div>
+            </div>
+
+            <!-- EXERCICE 8 : 163 mg + 23 dg (exactement comme dans l'image) -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <span class="exo-num">⑧ Calculer</span>
+                    <span class="question-text">163 mg + 23 dg = ______ mg</span>
+                    <button class="btn-reponse" data-exo="calc5"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer-calc5">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>2 463 mg</strong><br>
+                    23 dg = 2 300 mg (1 dg = 100 mg). 163 + 2 300 = 2 463 mg.
+                </div>
+            </div>
+
+            <!-- EXERCICE 9 : 1 hg - 1 200 cg (exemple de l'image) -->
+            <div class="exo-item">
+                <div class="exo-question">
+                    <span class="exo-num">⑨ Calculer</span>
+                    <span class="question-text">1 hg - 1 200 cg = ______ cg</span>
+                    <button class="btn-reponse" data-exo="calc6"><i class="fas fa-eye"></i> Réponse</button>
+                </div>
+                <div class="answer-box" id="answer-calc6">
+                    <i class="fas fa-check-circle" style="color:#2c7da0;"></i> <strong>8 800 cg</strong><br>
+                    1 hg = 10 000 cg → 10 000 - 1 200 = 8 800 cg.
+                </div>
+            </div>
+        </div>
+
+        <!-- Méthode rapide pour comparer / calculer -->
+        <div class="info-note">
+            <i class="fas fa-chalkboard-user"></i> <strong>Méthode en 2 étapes</strong><br>
+            1️⃣ Convertir les deux mesures dans la <strong>même unité</strong> (la plus petite ou celle demandée).<br>
+            2️⃣ Effectuer l'addition / soustraction ou comparer les nombres.<br>
+            <div class="mini-table" style="margin-top:8px; background:#fff;">
+                <i class="fas fa-arrow-right"></i> Exemple : 163 mg + 23 dg → convertir 23 dg en mg (23 × 100 = 2 300 mg) → additionner.
+            </div>
+        </div>
+
+        <!-- Tableau de conversion rapide -->
+        <div style="background: #f2f6fc; border-radius: 18px; padding: 12px; margin: 12px 0;">
+            <p style="font-weight: 600; margin-bottom: 5px;"><i class="fas fa-table"></i> Équivalences utiles :</p>
+            <div style="display: flex; flex-wrap: wrap; gap: 8px; justify-content: space-between; font-size:0.7rem;">
+                <span>1 kg = 1000 g</span>
+                <span>1 hg = 100 g</span>
+                <span>1 dag = 10 g</span>
+                <span>1 dg = 0,1 g</span>
+                <span>1 cg = 0,01 g</span>
+                <span>1 mg = 0,001 g</span>
+                <span>1 q = 100 kg</span>
+            </div>
+            <hr style="margin: 8px 0;">
+            <p><i class="fas fa-lightbulb"></i> Pour comparer 163 mg et 23 dg, tout convertir en mg : 23 dg = 2 300 mg → 163 < 2 300.</p>
+        </div>
+    </div>
+
+    <footer>
+        <i class="fas fa-weight-scale"></i> Addition, soustraction, comparaison de masses | Même unité obligatoire | Exercices interactifs
+    </footer>
+</div>
+
+<script>
+    (function() {
+        // Gestionnaire pour tous les boutons "Voir réponse"
+        const buttons = document.querySelectorAll('.btn-reponse');
+        buttons.forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                e.preventDefault();
+                const exoKey = this.getAttribute('data-exo');
+                const answerDiv = document.getElementById(`answer-${exoKey}`);
+                if (!answerDiv) return;
+                const isVisible = answerDiv.classList.contains('show');
+                if (isVisible) {
+                    answerDiv.classList.remove('show');
+                    this.innerHTML = '<i class="fas fa-eye"></i> Réponse';
+                } else {
+                    answerDiv.classList.add('show');
+                    this.innerHTML = '<i class="fas fa-eye-slash"></i> Cacher';
+                }
+            });
+        });
+        console.log("Version mobile - Calculer et Comparer des masses prêt");
+    })();
+</script>
+</body>
+</html>
