@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Multiplication posée : facteurs, produit, technique opératoire</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', 'Poppins', system-ui, 'Roboto', sans-serif;
+            background: linear-gradient(145deg, #f1f5f9 0%, #e2e8f0 100%);
+            padding: 1.8rem;
+            color: #0f172a;
+        }
+
+        .main-container {
+            max-width: 1300px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.97);
+            border-radius: 2rem;
+            box-shadow: 0 25px 45px -12px rgba(0, 0, 0, 0.2);
+            overflow: hidden;
+            backdrop-filter: blur(1px);
+            border: 1px solid rgba(37, 99, 235, 0.2);
+        }
+
+        .hero {
+            background: linear-gradient(115deg, #1e3a5f, #2c5282, #1e4a76);
+            padding: 1.8rem 2rem;
+            color: #fef9e6;
+            border-bottom: 5px solid #fbbf24;
+        }
+
+        .hero h1 {
+            font-size: 2rem;
+            font-weight: 800;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            flex-wrap: wrap;
+        }
+
+        .hero h1 i {
+            background: #fbbf24;
+            color: #1e3a5f;
+            padding: 8px 16px;
+            border-radius: 50px;
+            font-size: 1.5rem;
+        }
+
+        .badge-group {
+            display: flex;
+            gap: 12px;
+            margin-top: 12px;
+            flex-wrap: wrap;
+        }
+
+        .badge {
+            background: #3b6e9e;
+            padding: 5px 15px;
+            border-radius: 30px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        /* Grille principale */
+        .grid-mult {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.8rem;
+            padding: 1.8rem;
+        }
+
+        @media (max-width: 780px) {
+            .grid-mult {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+                padding: 1.2rem;
+            }
+            body {
+                padding: 0.9rem;
+            }
+        }
+
+        /* Cartes */
+        .card {
+            background: #ffffff;
+            border-radius: 1.5rem;
+            overflow: hidden;
+            box-shadow: 0 8px 18px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
+            height: 100%;
+        }
+
+        .card-header {
+            background: #fef9e6;
+            padding: 1rem 1.5rem;
+            border-bottom: 3px solid #fbbf24;
+            font-weight: 800;
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .card-header i {
+            color: #e67e22;
+        }
+
+        .card-body {
+            padding: 1.5rem;
+        }
+
+        .def-box {
+            background: #f0f9ff;
+            border-radius: 1rem;
+            padding: 1rem 1.2rem;
+            border-right: 6px solid #3b82f6;
+            margin-bottom: 1.2rem;
+        }
+
+        .multiplication-posée {
+            background: #f8fafc;
+            border-radius: 1rem;
+            padding: 1rem;
+            font-family: 'Courier New', monospace;
+            font-size: 1.1rem;
+            text-align: center;
+            margin: 1rem 0;
+            box-shadow: inset 0 1px 3px rgba(0,0,0,0.05);
+        }
+
+        .multiplication-posée pre {
+            font-family: 'Courier New', monospace;
+            font-size: 1rem;
+            background: #f1f5f9;
+            display: inline-block;
+            padding: 0.5rem 1rem;
+            border-radius: 0.8rem;
+        }
+
+        .step-box {
+            background: #fef3c7;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            margin-top: 0.8rem;
+        }
+
+        .exo-card {
+            background: #fefce8;
+            border-radius: 1rem;
+            padding: 1rem;
+            margin-top: 1rem;
+        }
+
+        .exo-question {
+            background: #ffffffdd;
+            border-radius: 1rem;
+            padding: 0.8rem;
+            margin: 10px 0;
+            border: 1px solid #fde68a;
+        }
+
+        .btn-reveal {
+            background: #2c5282;
+            border: none;
+            padding: 6px 18px;
+            border-radius: 2rem;
+            color: white;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 8px;
+            transition: 0.1s;
+        }
+
+        .btn-reveal:hover {
+            background: #1e3a5f;
+        }
+
+        .answer-box {
+            display: none;
+            background: #e6f0fa;
+            padding: 12px;
+            border-radius: 1rem;
+            margin-top: 10px;
+            border-right: 4px solid #3b82f6;
+            font-family: monospace;
+        }
+
+        .highlight {
+            background: #fde047;
+            padding: 2px 8px;
+            border-radius: 20px;
+            font-weight: bold;
+        }
+
+        footer {
+            background: #1e3a5f;
+            color: #fef2df;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.8rem;
+            margin-top: 0.5rem;
+        }
+
+        .vertical-example {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin: 0.5rem 0;
+        }
+        .calc-cell {
+            font-family: monospace;
+            font-size: 1.2rem;
+            background: #f1f5f9;
+            padding: 0.3rem 0.8rem;
+            border-radius: 12px;
+        }
+        .btn-calc {
+            background: #3b82f6;
+            border: none;
+            color: white;
+            padding: 8px 16px;
+            border-radius: 2rem;
+            font-weight: 600;
+            cursor: pointer;
+        }
+        .btn-calc:hover {
+            background: #2563eb;
+        }
+    </style>
+</head>
+<body>
+<div class="main-container">
+    <div class="hero">
+        <h1>
+            <i class="fas fa-times-circle"></i>
+            Multiplication posée : facteurs, produit, technique
+        </h1>
+        <div class="badge-group">
+            <span class="badge"><i class="fas fa-calculator"></i> Facteurs · Produit</span>
+            <span class="badge"><i class="fas fa-chalkboard"></i> Technique opératoire</span>
+            <span class="badge"><i class="fas fa-arrow-down"></i> Multiplication à plusieurs chiffres</span>
+        </div>
+        <p style="margin-top: 12px; font-size:0.85rem;"><i class="fas fa-lightbulb"></i> Les nombres que l'on multiplie sont les <strong>facteurs</strong>, le résultat est le <strong>produit</strong>. Pour multiplier des grands nombres, on pose l'opération verticalement.</p>
+    </div>
+
+    <div class="grid-mult">
+        <!-- Partie définitions + propriétés -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-book-open"></i>
+                <span>1) Définitions & Propriétés</span>
+            </div>
+            <div class="card-body">
+                <div class="def-box">
+                    <i class="fas fa-arrow-right"></i> 
+                    <strong>Définitions :</strong>
+                    <ul style="margin-top: 8px; margin-right: 1.2rem;">
+                        <li>🔹 Les nombres que l’on multiplie s’appellent les <strong class="highlight">facteurs</strong>.</li>
+                        <li>🔹 Le résultat d’une multiplication s’appelle le <strong class="highlight">produit</strong>.</li>
+                    </ul>
+                </div>
+
+                <div class="multiplication-posée">
+                    <strong>📌 Exemple :</strong><br>
+                    <div style="font-family: monospace; font-size: 1.3rem; background: #eef2ff; display: inline-block; padding: 0.3rem 1rem; border-radius: 1rem;">
+                        25 × 5 = 125
+                    </div>
+                    <div style="margin-top: 6px;">
+                        <span class="calc-cell">25</span> et <span class="calc-cell">5</span> sont les <strong>facteurs</strong>.<br>
+                        <span class="calc-cell">125</span> est le <strong>produit</strong>.
+                    </div>
+                </div>
+
+                <div class="step-box">
+                    <i class="fas fa-cog"></i> <strong>Propriétés (multiplication posée) :</strong>
+                    <ul style="margin-top: 8px; margin-right: 1.2rem;">
+                        <li>✔ On pose l’opération <strong>verticalement</strong>.</li>
+                        <li>✔ On écrit le <strong>plus grand facteur</strong> en premier (en haut).</li>
+                        <li>✔ On multiplie d’abord le multiplicande par les unités du multiplicateur, puis par les dizaines, etc.</li>
+                        <li>✔ On <strong>additionne</strong> les résultats partiels (produits intermédiaires).</li>
+                    </ul>
+                </div>
+
+                <!-- deuxième exemple détaillé (765 × 34) -->
+                <div class="multiplication-posée" style="margin-top: 1rem;">
+                    <strong>🔢 Exemple détaillé : 765 × 34</strong>
+                    <div style="font-family: monospace; text-align: left; display: inline-block; background: #f1f5f9; padding: 0.8rem; border-radius: 1rem; margin-top: 8px;">
+                        <pre style="margin:0">
+     7 6 5
+   ×    3 4
+   ────────
+     3 0 6 0   (765 × 4)
+   2 2 9 5 .   (765 × 30)
+   ────────
+   2 6 0 1 0
+                        </pre>
+                    </div>
+                    <div style="margin-top: 8px;">
+                        • 765 et 34 sont les <strong>facteurs</strong><br>
+                        • 26 010 est le <strong>produit</strong>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exercices d'application -->
+        <div class="card">
+            <div class="card-header">
+                <i class="fas fa-pen-ruler"></i>
+                <span>b) Applications : Pose et calcule</span>
+            </div>
+            <div class="card-body">
+                <div class="exo-card">
+                    <p><i class="fas fa-question-circle"></i> Effectue les multiplications posées suivantes :</p>
+                    
+                    <div class="exo-question">
+                        <p><strong>1️⃣</strong> 356 × 51 = ?</p>
+                        <button class="btn-reveal" data-ansid="ans1">Voir le détail du calcul</button>
+                        <div id="ans1" class="answer-box">
+                            ✅ <strong>356 × 51</strong><br>
+                            356 × 1 = 356<br>
+                            356 × 50 = 17 800<br>
+                            ➜ 356 + 17 800 = <strong>18 156</strong><br>
+                            📌 Résultat : <strong>18 156</strong>
+                        </div>
+                    </div>
+
+                    <div class="exo-question">
+                        <p><strong>2️⃣</strong> 236 × 25 = ?</p>
+                        <button class="btn-reveal" data-ansid="ans2">Voir le détail du calcul</button>
+                        <div id="ans2" class="answer-box">
+                            ✅ <strong>236 × 25</strong><br>
+                            236 × 5 = 1 180<br>
+                            236 × 20 = 4 720<br>
+                            ➜ 1 180 + 4 720 = <strong>5 900</strong><br>
+                            📌 Résultat : <strong>5 900</strong>
+                        </div>
+                    </div>
+
+                    <div class="exo-question">
+                        <p><strong>3️⃣</strong> 1275 × 67 = ?</p>
+                        <button class="btn-reveal" data-ansid="ans3">Voir le détail du calcul</button>
+                        <div id="ans3" class="answer-box">
+                            ✅ <strong>1275 × 67</strong><br>
+                            1275 × 7 = 8 925<br>
+                            1275 × 60 = 76 500<br>
+                            ➜ 8 925 + 76 500 = <strong>85 425</strong><br>
+                            📌 Résultat : <strong>85 425</strong>
+                        </div>
+                    </div>
+
+                    <div class="exo-question">
+                        <p><strong>4️⃣ (Bonus)</strong> 548 × 32 = ?</p>
+                        <button class="btn-reveal" data-ansid="ans4">Voir la solution</button>
+                        <div id="ans4" class="answer-box">
+                            ✅ <strong>548 × 32</strong><br>
+                            548 × 2 = 1 096<br>
+                            548 × 30 = 16 440<br>
+                            ➜ Total = 1 096 + 16 440 = <strong>17 536</strong>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- mini simulateur interactif (pose verticale simple) -->
+                <div style="margin-top: 1.2rem; background: #eef2ff; border-radius: 1rem; padding: 1rem;">
+                    <h4><i class="fas fa-calculator"></i> Mini simulateur : multiplication à 2 chiffres</h4>
+                    <div style="display: flex; gap: 10px; flex-wrap: wrap; align-items: flex-end;">
+                        <div style="flex:1">
+                            <label>Nombre A (multiplicande) :</label>
+                            <input type="number" id="numA" value="356" style="width:100%; padding: 6px; border-radius: 12px; border:1px solid #ccc;">
+                        </div>
+                        <div style="flex:1">
+                            <label>Nombre B (multiplicateur) :</label>
+                            <input type="number" id="numB" value="51" style="width:100%; padding: 6px; border-radius: 12px; border:1px solid #ccc;">
+                        </div>
+                        <div>
+                            <button id="simulateBtn" class="btn-calc" style="margin-top: 20px;"><i class="fas fa-play"></i> Calculer produit</button>
+                        </div>
+                    </div>
+                    <div id="simulateResult" style="margin-top: 12px; background: white; border-radius: 1rem; padding: 8px; font-weight: bold; text-align: center;">
+                        Produit = 
+                    </div>
+                    <p style="font-size:0.7rem; margin-top: 6px;"><i class="fas fa-info-circle"></i> Le résultat s'obtient en multipliant les deux facteurs (produit).</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Rappel visuel : technique de multiplication posée (explication) -->
+    <div style="margin: 0 1.8rem 1.5rem 1.8rem;">
+        <div style="background: #fef9e6; border-radius: 1.2rem; padding: 1rem 1.4rem;">
+            <h4><i class="fas fa-chalkboard-user"></i> Technique de multiplication posée (rappel) :</h4>
+            <div style="display: flex; flex-wrap: wrap; gap: 1rem; justify-content: space-between; margin-top: 8px;">
+                <div style="flex:1; min-width: 180px;">
+                    <i class="fas fa-check-circle" style="color:#2b9348;"></i> 1. Écrire le plus grand nombre en haut.<br>
+                    <i class="fas fa-check-circle" style="color:#2b9348;"></i> 2. Multiplier par les unités du bas.<br>
+                    <i class="fas fa-check-circle" style="color:#2b9348;"></i> 3. Multiplier par les dizaines (décaler).<br>
+                    <i class="fas fa-check-circle" style="color:#2b9348;"></i> 4. Additionner les résultats partiels.
+                </div>
+                <div style="font-family: monospace; background:#e2e8f0; padding: 0.5rem; border-radius: 12px;">
+                    <strong>Exemple visuel :</strong><br>
+                      3 5 6<br>
+                    ×   5 1<br>
+                    ──────<br>
+                      3 5 6   (×1)<br>
+                    1 7 8 0   (×50)<br>
+                    ──────<br>
+                    1 8 1 6
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Terminologie -->
+    <div style="margin: 0 1.8rem 1.5rem 1.8rem; display: flex; flex-wrap: wrap; justify-content: center; gap: 12px;">
+        <span style="background:#f1f5f9; padding: 4px 16px; border-radius: 30px;"><i class="fas fa-times"></i> Facteurs | عوامل</span>
+        <span style="background:#f1f5f9; padding: 4px 16px; border-radius: 30px;"><i class="fas fa-chart-simple"></i> Produit | حاصل الضرب</span>
+        <span style="background:#f1f5f9; padding: 4px 16px; border-radius: 30px;"><i class="fas fa-arrow-down"></i> Multiplication posée | الضرب العمودي</span>
+    </div>
+
+    <footer>
+        <i class="fas fa-calculator"></i> Multiplication posée : facteurs × facteurs = produit. Technique en colonnes.
+    </footer>
+</div>
+
+<script>
+    // Affichage des solutions pour les exercices
+    const revealBtns = document.querySelectorAll('.btn-reveal');
+    revealBtns.forEach(btn => {
+        btn.addEventListener('click', function() {
+            const ansId = this.getAttribute('data-ansid');
+            const answerDiv = document.getElementById(ansId);
+            if (answerDiv.style.display === 'none' || answerDiv.style.display === '') {
+                answerDiv.style.display = 'block';
+                this.innerHTML = 'Masquer le détail <i class="fas fa-eye-slash"></i>';
+            } else {
+                answerDiv.style.display = 'none';
+                this.innerHTML = 'Voir le détail du calcul <i class="fas fa-eye"></i>';
+            }
+        });
+    });
+    document.querySelectorAll('.answer-box').forEach(el => el.style.display = 'none');
+
+    // Simulateur interactif de multiplication
+    const numA = document.getElementById('numA');
+    const numB = document.getElementById('numB');
+    const simulateBtn = document.getElementById('simulateBtn');
+    const simulateResult = document.getElementById('simulateResult');
+
+    function updateSimulate() {
+        let a = parseInt(numA.value, 10);
+        let b = parseInt(numB.value, 10);
+        if (isNaN(a)) a = 0;
+        if (isNaN(b)) b = 0;
+        let produit = a * b;
+        simulateResult.innerHTML = `<strong>${a} × ${b} = ${produit}</strong><br>
+                                    <span style="font-size:0.85rem;">${a} et ${b} sont les facteurs, ${produit} est le produit.</span>`;
+    }
+
+    simulateBtn.addEventListener('click', updateSimulate);
+    window.addEventListener('DOMContentLoaded', () => {
+        updateSimulate();
+    });
+</script>
+</body>
+</html>
