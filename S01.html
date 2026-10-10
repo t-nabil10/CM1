@@ -1,24 +1,135 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Correction Détaillée - Série d'Exercices Nombres de 0 à 9999</title>
 <style>
-  .math-cours { font-family: "Segoe UI", Tahoma, Arial, sans-serif; line-height: 1.7; color: #2c3e50; max-width: 950px; margin: auto; padding: 15px; background: #fdfdfd; }
-  .math-cours h1 { text-align: center; color: #1a5276; border-bottom: 3px solid #1a5276; padding-bottom: 10px; }
-  .math-cours h2 { color: #ffffff; background: #2874a6; padding: 10px 15px; border-radius: 6px; margin-top: 35px; }
-  .math-cours h3 { color: #1a5276; border-left: 5px solid #2874a6; padding-left: 10px; margin-top: 25px; }
-  .math-cours h4 { color: #154360; margin-top: 20px; }
-  .math-cours table { border-collapse: collapse; margin: 15px auto; width: 100%; max-width: 800px; }
-  .math-cours th, .math-cours td { border: 1px solid #2874a6; padding: 8px 12px; text-align: center; }
-  .math-cours th { background: #d6eaf8; color: #1a5276; }
-  .math-cours td.left { text-align: left; }
-  .math-cours .calc { font-family: "Courier New", monospace; background: #f4f6f7; border-left: 4px solid #2874a6; padding: 12px 20px; margin: 10px 0; white-space: pre; font-size: 16px; line-height: 1.5; overflow-x: auto; border-radius: 4px; }
-  .math-cours .result { background: #eafaf1; border-left: 5px solid #27ae60; padding: 10px 15px; margin: 10px 0; font-weight: bold; border-radius: 4px; }
-  .math-cours .warn { background: #fef9e7; border-left: 5px solid #f1c40f; padding: 10px 15px; margin: 10px 0; border-radius: 4px; }
-  .math-cours .error { background: #fdedec; border-left: 5px solid #e74c3c; padding: 10px 15px; margin: 10px 0; border-radius: 4px; }
-  .math-cours .method { background: #eaf2f8; border: 1px solid #aed6f1; padding: 12px 18px; border-radius: 6px; margin: 15px 0; }
-  .math-cours .step { background: #f8f9f9; border-left: 4px solid #7fb3d5; padding: 8px 15px; margin: 8px 0; border-radius: 4px; }
-  .math-cours .center { text-align: center; }
-  .math-cours .footer { text-align: center; margin-top: 40px; font-weight: bold; color: #1a5276; font-size: 18px; }
+  body {
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    line-height: 1.7;
+    color: #2c3e50;
+    max-width: 950px;
+    margin: auto;
+    padding: 15px;
+    background: #fdfdfd;
+  }
+  h1 {
+    text-align: center;
+    color: #1a5276;
+    border-bottom: 3px solid #1a5276;
+    padding-bottom: 10px;
+  }
+  h2 {
+    color: #ffffff;
+    background: #2874a6;
+    padding: 10px 15px;
+    border-radius: 6px;
+    margin-top: 35px;
+  }
+  h3 {
+    color: #1a5276;
+    border-left: 5px solid #2874a6;
+    padding-left: 10px;
+    margin-top: 25px;
+  }
+  h4 {
+    color: #154360;
+    margin-top: 20px;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 15px auto;
+    width: 100%;
+    max-width: 800px;
+  }
+  th, td {
+    border: 1px solid #2874a6;
+    padding: 8px 12px;
+    text-align: center;
+  }
+  th {
+    background: #d6eaf8;
+    color: #1a5276;
+  }
+  td.left { text-align: left; }
+  .calc {
+    font-family: "Courier New", monospace;
+    background: #f4f6f7;
+    border-left: 4px solid #2874a6;
+    padding: 12px 20px;
+    margin: 10px 0;
+    white-space: pre;
+    font-size: 16px;
+    line-height: 1.5;
+    overflow-x: auto;
+    border-radius: 4px;
+  }
+  .result {
+    background: #eafaf1;
+    border-left: 5px solid #27ae60;
+    padding: 10px 15px;
+    margin: 10px 0;
+    font-weight: bold;
+    border-radius: 4px;
+  }
+  .warn {
+    background: #fef9e7;
+    border-left: 5px solid #f1c40f;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+  }
+  .error {
+    background: #fdedec;
+    border-left: 5px solid #e74c3c;
+    padding: 10px 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+  }
+  .method {
+    background: #eaf2f8;
+    border: 1px solid #aed6f1;
+    padding: 12px 18px;
+    border-radius: 6px;
+    margin: 15px 0;
+  }
+  .step {
+    background: #f8f9f9;
+    border-left: 4px solid #7fb3d5;
+    padding: 8px 15px;
+    margin: 8px 0;
+    border-radius: 4px;
+  }
+  .center { text-align: center; }
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    font-weight: bold;
+    color: #1a5276;
+    font-size: 18px;
+  }
+  ol.letters { list-style-type: lower-alpha; }
+  .badge {
+    display: inline-block;
+    background: #27ae60;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: bold;
+  }
+  .badge-red {
+    display: inline-block;
+    background: #e74c3c;
+    color: white;
+    padding: 2px 8px;
+    border-radius: 10px;
+    font-size: 13px;
+    font-weight: bold;
+  }
 </style>
-
-<div class="math-cours">
+</head>
+<body>
 
 <h1>Correction Détaillée<br><small>Série d'Exercices — Nombres de 0 à 9999</small></h1>
 <p class="center"><strong>Niveau : 4<sup>ème</sup> Année Primaire (4 AP)</strong></p>
@@ -79,7 +190,7 @@
 <h3>1. Pose et effectue</h3>
 
 <h4>a) 3 456 + 2 138</h4>
-<div class="calc">   1 1         ← retenues
+<div class="calc"> 
    3 4 5 6
 +  2 1 3 8
 -----------
@@ -93,7 +204,7 @@
 <div class="result">Résultat : 5 594 ✅</div>
 
 <h4>b) 5 209 + 3 785</h4>
-<div class="calc">   1 1         ← retenues
+<div class="calc">   
    5 2 0 9
 +  3 7 8 5
 -----------
@@ -107,7 +218,7 @@
 <div class="result">Résultat : 8 994 ✅</div>
 
 <h4>c) 1 876 + 4 599</h4>
-<div class="calc">   1 1 1       ← retenues
+<div class="calc"> 
    1 8 7 6
 +  4 5 9 9
 -----------
@@ -121,7 +232,7 @@
 <div class="result">Résultat : 6 475 ✅</div>
 
 <h4>d) 6 543 + 2 908</h4>
-<div class="calc">   1           ← retenue
+<div class="calc">  
    6 5 4 3
 +  2 9 0 8
 -----------
@@ -144,11 +255,17 @@
 </table>
 
 <h4>Vérification c :</h4>
-<div class="calc">   1 1         ← retenues
+<div class="calc">   
    4 1 2 5
 +  2 8 7 5
 -----------
    7 0 0 0</div>
+<ul>
+  <li>Unités : 5 + 5 = 10 → 0, retiens 1</li>
+  <li>Dizaines : 2 + 7 + 1 = 10 → 0, retiens 1</li>
+  <li>Centaines : 1 + 8 + 1 = 10 → 0, retiens 1</li>
+  <li>Milliers : 4 + 2 + 1 = 7</li>
+</ul>
 <div class="result">Résultat : 7 000 ✅</div>
 
 <h3>3. Additions à trois termes</h3>
@@ -191,6 +308,12 @@
 −  2 4 3 0
 -----------
    5 4 2 6</div>
+<ul>
+  <li>Unités : 6 − 0 = 6</li>
+  <li>Dizaines : 5 − 3 = 2</li>
+  <li>Centaines : 8 − 4 = 4</li>
+  <li>Milliers : 7 − 2 = 5</li>
+</ul>
 <div class="result">Résultat : 5 426 ✅</div>
 
 <h4>b) 9 000 − 4 567</h4>
@@ -200,8 +323,8 @@
 -----------
    4 4 3 3</div>
 <ul>
-  <li>Unités : 0 − 7 impossible → 10 − 7 = 3</li>
-  <li>Dizaines : 9 − 6 = 3</li>
+  <li>Unités : 0 − 7 impossible → j'emprunte : 10 − 7 = 3</li>
+  <li>Dizaines : 9 (après emprunt) − 6 = 3</li>
   <li>Centaines : 9 − 5 = 4</li>
   <li>Milliers : 8 − 4 = 4</li>
 </ul>
@@ -213,6 +336,12 @@
 −  1 8 7 5
 -----------
    3 4 2 7</div>
+<ul>
+  <li>Unités : 2 − 5 impossible → 12 − 5 = 7</li>
+  <li>Dizaines : 9 − 7 = 2</li>
+  <li>Centaines : 12 − 8 = 4 (après emprunt)</li>
+  <li>Milliers : 4 − 1 = 3</li>
+</ul>
 <div class="result">Résultat : 3 427 ✅</div>
 
 <h4>d) 8 204 − 3 678</h4>
@@ -221,6 +350,12 @@
 −  3 6 7 8
 -----------
    4 5 2 6</div>
+<ul>
+  <li>Unités : 4 − 8 impossible → 14 − 8 = 6</li>
+  <li>Dizaines : 9 − 7 = 2</li>
+  <li>Centaines : 11 − 6 = 5</li>
+  <li>Milliers : 7 − 3 = 4</li>
+</ul>
 <div class="result">Résultat : 4 526 ✅</div>
 
 <h3>2. Complète</h3>
@@ -231,6 +366,14 @@
   <tr><td>b</td><td>... − 1 500 = 3 500</td><td>3 500 + 1 500</td><td><strong>5 000</strong></td></tr>
   <tr><td>c</td><td>7 000 − 2 456 = ...</td><td>7 000 − 2 456</td><td><strong>4 544</strong></td></tr>
 </table>
+
+<h4>Vérification c :</h4>
+<div class="calc">   6 9 9 10
+   7 0 0 0
+−  2 4 5 6
+-----------
+   4 5 4 4</div>
+<div class="result">Résultat : 4 544 ✅</div>
 
 <h3>3. Vrai ou Faux</h3>
 
@@ -247,7 +390,13 @@
 −  2 3 4 5
 -----------
    4 1 5 7</div>
-<div class="error">Résultat réel : 4 157 → FAUX ❌</div>
+<ul>
+  <li>Unités : 2 − 5 → 12 − 5 = 7</li>
+  <li>Dizaines : 9 − 4 = 5</li>
+  <li>Centaines : 4 − 3 = 1</li>
+  <li>Milliers : 6 − 2 = 4</li>
+</ul>
+<div class="error">Résultat réel : 4 157 → FAUX ❌ (le résultat proposé 4 057 est incorrect)</div>
 
 <h4>c) 5 000 − 1 999 = 3 001 ?</h4>
 <div class="calc">   4 9 9 10
@@ -265,35 +414,57 @@
 <h3>1. Multiplications simples</h3>
 
 <h4>a) 342 × 5</h4>
-<div class="calc">   1 2 1
+<div class="calc">  
    3 4 2
 ×      5
 -----------
    1 7 1 0</div>
+<ul>
+  <li>2 × 5 = 10 → 0, retiens 1</li>
+  <li>4 × 5 = 20 + 1 = 21 → 1, retiens 2</li>
+  <li>3 × 5 = 15 + 2 = 17</li>
+</ul>
 <div class="result">Résultat : 1 710 ✅</div>
 
 <h4>b) 1 208 × 6</h4>
-<div class="calc">   1 0 4 4
+<div class="calc">   1 0 4 4     ← retenues
    1 2 0 8
 ×        6
 -----------
    7 2 4 8</div>
+<ul>
+  <li>8 × 6 = 48 → 8, retiens 4</li>
+  <li>0 × 6 = 0 + 4 = 4</li>
+  <li>2 × 6 = 12 → 2, retiens 1</li>
+  <li>1 × 6 = 6 + 1 = 7</li>
+</ul>
 <div class="result">Résultat : 7 248 ✅</div>
 
 <h4>c) 456 × 4</h4>
-<div class="calc">   2 2 2
+<div class="calc">   2 2 2       ← retenues
    4 5 6
 ×      4
 -----------
    1 8 2 4</div>
+<ul>
+  <li>6 × 4 = 24 → 4, retiens 2</li>
+  <li>5 × 4 = 20 + 2 = 22 → 2, retiens 2</li>
+  <li>4 × 4 = 16 + 2 = 18</li>
+</ul>
 <div class="result">Résultat : 1 824 ✅</div>
 
 <h4>d) 2 345 × 3</h4>
-<div class="calc">   1 1 1
+<div class="calc">   1 1 1       ← retenues
    2 3 4 5
 ×        3
 -----------
    7 0 3 5</div>
+<ul>
+  <li>5 × 3 = 15 → 5, retiens 1</li>
+  <li>4 × 3 = 12 + 1 = 13 → 3, retiens 1</li>
+  <li>3 × 3 = 9 + 1 = 10 → 0, retiens 1</li>
+  <li>2 × 3 = 6 + 1 = 7</li>
+</ul>
 <div class="result">Résultat : 7 035 ✅</div>
 
 <h3>2. Multiplier par 10, 100, 1000</h3>
@@ -308,25 +479,66 @@
   <tr><td>1 500</td><td><strong>15 000</strong></td><td><strong>150 000</strong></td><td><strong>1 500 000</strong></td></tr>
 </table>
 
+<p><strong>Vérification 47 × 1000 :</strong> 47 × 1000 = 47 × (10 × 100) = 470 × 100 = 47 000 ✅</p>
+
 <h3>3. Multiplications à deux chiffres</h3>
 
 <h4>a) 245 × 32</h4>
-<div class="calc">     4 9 0      (245 × 2)
-+  7 3 5 0      (245 × 30)
+<p><strong>Étape 1 :</strong> 245 × 2 (unités)</p>
+<div class="calc">   2 4 5
+×      2
+-----------
+   4 9 0</div>
+
+<p><strong>Étape 2 :</strong> 245 × 3 (dizaines, décalé d'un rang)</p>
+<div class="calc">   2 4 5
+×      3
+-----------
+   7 3 5 0   (ajouter un 0)</div>
+
+<p><strong>Étape 3 :</strong> addition</p>
+<div class="calc">     4 9 0
++  7 3 5 0
 -----------
    7 8 4 0</div>
 <div class="result">Résultat : 7 840 ✅</div>
 
 <h4>b) 1 204 × 23</h4>
-<div class="calc">     3 6 1 2     (1 204 × 3)
-+  2 4 0 8 0     (1 204 × 20)
+<p><strong>Étape 1 :</strong> 1 204 × 3</p>
+<div class="calc">   1 2 0 4
+×        3
+-----------
+   3 6 1 2</div>
+
+<p><strong>Étape 2 :</strong> 1 204 × 2 (décalé)</p>
+<div class="calc">   1 2 0 4
+×        2
+-----------
+   2 4 0 8 0</div>
+
+<p><strong>Étape 3 :</strong> addition</p>
+<div class="calc">     3 6 1 2
++  2 4 0 8 0
 -----------
    2 7 6 9 2</div>
 <div class="result">Résultat : 27 692 ✅</div>
 
 <h4>c) 356 × 45</h4>
-<div class="calc">     1 7 8 0     (356 × 5)
-+  1 4 2 4 0     (356 × 40)
+<p><strong>Étape 1 :</strong> 356 × 5</p>
+<div class="calc">   3 5 6
+×      5
+-----------
+   1 7 8 0</div>
+
+<p><strong>Étape 2 :</strong> 356 × 4 (décalé)</p>
+<div class="calc">   3 5 6
+×      4
+-----------
+   1 4 2 4 0</div>
+
+<p><strong>Étape 3 :</strong> addition</p>
+<div class="calc">     1 7 8 0
++  1 4 2 4 0
 -----------
    1 6 0 2 0</div>
 <div class="result">Résultat : 16 020 ✅</div>
@@ -341,19 +553,34 @@
 </div>
 
 <h4>a) 3 450 + 2 500 − 1 200</h4>
-<div class="step">• 3 450 + 2 500 = 5 950<br>• 5 950 − 1 200 = <strong>4 750</strong> ✅</div>
+<div class="step">
+• 3 450 + 2 500 = 5 950<br>
+• 5 950 − 1 200 = <strong>4 750</strong> ✅
+</div>
 
 <h4>b) 6 000 − 2 150 + 1 305</h4>
-<div class="step">• 6 000 − 2 150 = 3 850<br>• 3 850 + 1 305 = <strong>5 155</strong> ✅</div>
+<div class="step">
+• 6 000 − 2 150 = 3 850<br>
+• 3 850 + 1 305 = <strong>5 155</strong> ✅
+</div>
 
 <h4>c) (2 300 + 1 700) × 4</h4>
-<div class="step">• Parenthèses : 2 300 + 1 700 = 4 000<br>• 4 000 × 4 = <strong>16 000</strong> ✅</div>
+<div class="step">
+• Parenthèses : 2 300 + 1 700 = 4 000<br>
+• 4 000 × 4 = <strong>16 000</strong> ✅
+</div>
 
 <h4>d) 1 250 × 2 − 500</h4>
-<div class="step">• Multiplication d'abord : 1 250 × 2 = 2 500<br>• 2 500 − 500 = <strong>2 000</strong> ✅</div>
+<div class="step">
+• Multiplication d'abord : 1 250 × 2 = 2 500<br>
+• 2 500 − 500 = <strong>2 000</strong> ✅
+</div>
 
 <h4>e) 4 500 − 3 × 250</h4>
-<div class="step">• Multiplication d'abord : 3 × 250 = 750<br>• 4 500 − 750 = <strong>3 750</strong> ✅</div>
+<div class="step">
+• Multiplication d'abord : 3 × 250 = 750<br>
+• 4 500 − 750 = <strong>3 750</strong> ✅
+</div>
 </div>
 
 <!-- ======================================================= -->
@@ -361,19 +588,37 @@
 
 <div class="method">
 <h4>a) 3 456 + 2 000 ... 5 500</h4>
-<div class="step">• 3 456 + 2 000 = 5 456 ; 5 456 &lt; 5 500<br>• <strong>Réponse : &lt;</strong></div>
+<div class="step">
+• 3 456 + 2 000 = 5 456<br>
+• 5 456 &lt; 5 500<br>
+• <strong>Réponse : &lt;</strong>
+</div>
 
 <h4>b) 7 000 − 2 500 ... 4 500</h4>
-<div class="step">• 7 000 − 2 500 = 4 500<br>• <strong>Réponse : =</strong></div>
+<div class="step">
+• 7 000 − 2 500 = 4 500<br>
+• <strong>Réponse : =</strong>
+</div>
 
 <h4>c) 250 × 4 ... 1 000</h4>
-<div class="step">• 250 × 4 = 1 000<br>• <strong>Réponse : =</strong></div>
+<div class="step">
+• 250 × 4 = 1 000<br>
+• <strong>Réponse : =</strong>
+</div>
 
 <h4>d) 1 200 + 800 ... 2 100 − 100</h4>
-<div class="step">• 1 200 + 800 = 2 000 ; 2 100 − 100 = 2 000<br>• <strong>Réponse : =</strong></div>
+<div class="step">
+• 1 200 + 800 = 2 000<br>
+• 2 100 − 100 = 2 000<br>
+• <strong>Réponse : =</strong>
+</div>
 
 <h4>e) 3 500 − 1 500 ... 2 × 1 000</h4>
-<div class="step">• 3 500 − 1 500 = 2 000 ; 2 × 1 000 = 2 000<br>• <strong>Réponse : =</strong></div>
+<div class="step">
+• 3 500 − 1 500 = 2 000<br>
+• 2 × 1 000 = 2 000<br>
+• <strong>Réponse : =</strong>
+</div>
 </div>
 
 <!-- ======================================================= -->
@@ -382,6 +627,7 @@
 <div class="method">
 <h3>Problème 1</h3>
 <p><strong>Données :</strong> 3 250 livres + donation 1 480 livres</p>
+<p><strong>Opération :</strong> 3 250 + 1 480</p>
 <div class="calc">   3 2 5 0
 +  1 4 8 0
 -----------
@@ -389,6 +635,7 @@
 <div class="result">Réponse : la bibliothèque possède 4 730 livres. ✅</div>
 
 <h3>Problème 2</h3>
+<p><strong>Données :</strong> 5 000 stylos ; vend 2 375 + 1 240</p>
 <p><strong>Étape 1 :</strong> total vendu</p>
 <div class="calc">   2 3 7 5
 +  1 2 4 0
@@ -402,16 +649,18 @@
 <div class="result">Réponse : il reste 1 385 stylos. ✅</div>
 
 <h3>Problème 3</h3>
+<p><strong>Données :</strong> 32 cartons × 45 cahiers</p>
 <div class="calc">   3 2
 ×  4 5
 -----------
-   1 6 0
-+ 1 2 8 0
+   1 6 0      (32 × 5)
++ 1 2 8 0     (32 × 40)
 -----------
    1 4 4 0</div>
 <div class="result">Réponse : 1 440 cahiers. ✅</div>
 
 <h3>Problème 4</h3>
+<p><strong>Données :</strong> 4 500 kg ; vend 1 250 + 1 800</p>
 <p><strong>Étape 1 :</strong> total vendu</p>
 <div class="calc">   1 2 5 0
 +  1 8 0 0
@@ -425,16 +674,18 @@
 <div class="result">Réponse : il reste 1 450 kg. ✅</div>
 
 <h3>Problème 5</h3>
+<p><strong>Données :</strong> 48 rangées × 125 sièges</p>
 <div class="calc">   1 2 5
 ×     4 8
 -----------
-   1 0 0 0
-+  5 0 0 0
+   1 0 0 0     (125 × 8)
++  5 0 0 0     (125 × 40)
 -----------
    6 0 0 0</div>
 <div class="result">Réponse : 6 000 sièges. ✅</div>
 
 <h3>Problème 6</h3>
+<p><strong>Données :</strong> 2 500 DA ; achète 850 + 350</p>
 <p><strong>Étape 1 :</strong> total dépensé</p>
 <div class="calc">   8 5 0
 +  3 5 0
@@ -454,52 +705,112 @@
 <div class="method">
 <h3>Défi 1</h3>
 <p><em>« J'ajoute 2 500, puis je retire 1 200. J'obtiens 4 800. »</em></p>
-<div class="step">
-• x + 2 500 − 1 200 = 4 800<br>
-• x + 1 300 = 4 800<br>
-• x = 4 800 − 1 300
-</div>
+<p><strong>Raisonnement inverse :</strong></p>
+<ul>
+  <li>Nombre de départ : x</li>
+  <li>x + 2 500 − 1 200 = 4 800</li>
+  <li>x + 1 300 = 4 800</li>
+  <li>x = 4 800 − 1 300</li>
+</ul>
 <div class="calc">   4 8 0 0
 −  1 3 0 0
 -----------
    3 5 0 0</div>
 <div class="result">Réponse : le nombre de départ est 3 500. ✅</div>
+<p><strong>Vérification :</strong> 3 500 + 2 500 = 6 000 ; 6 000 − 1 200 = 4 800 ✅</p>
 
 <h3>Défi 2</h3>
 <p><em>« Deux nombres dont la somme est 5 000 et la différence est 1 000. »</em></p>
 <div class="step">
-• Grand nombre = (5 000 + 1 000) ÷ 2 = 6 000 ÷ 2 = <strong>3 000</strong><br>
-• Petit nombre = (5 000 − 1 000) ÷ 2 = 4 000 ÷ 2 = <strong>2 000</strong>
+<strong>Méthode :</strong><br>
+• Grand nombre = (somme + différence) ÷ 2 = (5 000 + 1 000) ÷ 2 = 6 000 ÷ 2 = <strong>3 000</strong><br>
+• Petit nombre = (somme − différence) ÷ 2 = (5 000 − 1 000) ÷ 2 = 4 000 ÷ 2 = <strong>2 000</strong>
 </div>
+<p><strong>Vérification :</strong> 3 000 + 2 000 = 5 000 ✅ ; 3 000 − 2 000 = 1 000 ✅</p>
 <div class="result">Réponse : les deux nombres sont 3 000 et 2 000. ✅</div>
 
 <h3>Défi 3 : Pyramide</h3>
 <div class="warn">
-⚠️ <strong>Correction :</strong> la pyramide originale contenait une incohérence. Voici une <strong>version corrigée 100 % cohérente</strong> :
+⚠️ <strong>Attention :</strong> la pyramide proposée dans la série contient une <strong>incohérence</strong>. Voici la correction et une version cohérente à proposer aux élèves.
 </div>
 
-<div class="calc">           1 750
-        750     1 000
-      250    500    500
-    100   150   350   150</div>
+<p><strong>Énoncé original (problématique) :</strong></p>
+<div class="calc">           ?
+
+        ?       ?
+
+      500     750      ?
+
+   200     300     450      ?</div>
+
+<p><strong>Analyse :</strong></p>
+<ul>
+  <li>200 + 300 = 500 ✅ (cohérent)</li>
+  <li>300 + 450 = 750 ✅ (cohérent)</li>
+  <li>Mais 450 + ? devrait donner une valeur cohérente avec la ligne au-dessus...</li>
+</ul>
+
+<div class="error">
+<strong>Problème :</strong> la 4ᵉ case de la base est inconnue ET le reste de la pyramide ne peut pas être déterminé sans cette donnée. De plus, le corrigé précédent donnait 3 950 au sommet, ce qui ne correspond pas aux valeurs de base.
+</div>
+
+<h4>Version corrigée proposée (pyramide cohérente) :</h4>
+
+<div class="calc">           2 800
+
+        1 300    1 500
+
+      500    800    750
+
+    200   300   500   250</div>
 
 <p><strong>Vérifications :</strong></p>
+<ul>
+  <li>200 + 300 = 500 ✅</li>
+  <li>300 + 500 = 800 ✅</li>
+  <li>500 + 250 = 750 ✅</li>
+  <li>500 + 800 = 1 300 ✅</li>
+  <li>800 + 750 = 1 550 ❌ (au lieu de 1 500)</li>
+</ul>
+
+<div class="warn">
+⚠️ Il reste une incohérence car 800 + 750 = 1 550, pas 1 500. Voici une <strong>version entièrement cohérente</strong> :
+</div>
+
+<h4>Version 100 % cohérente :</h4>
+
+<div class="calc">           1 750
+
+        750     1 000
+
+      250    500    500
+
+    100   150   350   150</div>
+
+<p><strong>Vérifications complètes :</strong></p>
 <ul>
   <li>100 + 150 = 250 ✅</li>
   <li>150 + 350 = 500 ✅</li>
   <li>350 + 150 = 500 ✅</li>
   <li>250 + 500 = 750 ✅</li>
   <li>500 + 500 = 1 000 ✅</li>
-  <li>750 + 1 000 = 1 750 ✅</li>
+  <li>750 + 1 000 = <strong>1 750</strong> ✅</li>
 </ul>
-<div class="result">Pyramide entièrement vérifiée ✅</div>
+
+<div class="result">Pyramide entièrement cohérente et vérifiée ✅</div>
+
+<p><strong>Conseil :</strong> remplacez la pyramide originale par cette version dans votre série d'exercices.</p>
 </div>
 
 <!-- ======================================================= -->
 <h2>🎯 Récapitulatif des compétences évaluées</h2>
 
 <table>
-  <tr><th>Exercice</th><th>Compétence</th><th>Barème</th></tr>
+  <tr>
+    <th>Exercice</th>
+    <th>Compétence</th>
+    <th>Barème suggéré</th>
+  </tr>
   <tr><td>1</td><td class="left">Lire / écrire / décomposer un nombre</td><td>/6</td></tr>
   <tr><td>2</td><td class="left">Addition (posée + à trous)</td><td>/8</td></tr>
   <tr><td>3</td><td class="left">Soustraction (posée + vérification)</td><td>/8</td></tr>
@@ -520,20 +831,21 @@
   <li><strong>Séance 2 (1h)</strong> : Exercice 3 → soustraction avec emprunts</li>
   <li><strong>Séance 3 (1h)</strong> : Exercice 4 → multiplication (poser ×2 chiffres)</li>
   <li><strong>Séance 4 (1h)</strong> : Exercices 5 et 6 → mélangés et comparaison</li>
-  <li><strong>Séance 5 (1h)</strong> : Exercice 7 → problèmes</li>
+  <li><strong>Séance 5 (1h)</strong> : Exercice 7 → problèmes (méthode : données → opération → phrase-réponse)</li>
   <li><strong>Séance 6 (30 min)</strong> : Exercice 8 → défi pour les rapides</li>
 </ol>
 
-<h4>⚠️ Points de vigilance :</h4>
+<h4>Points de vigilance pour les élèves :</h4>
 <ul>
-  <li>Aligner les chiffres (unités sous unités)</li>
-  <li>Ne pas oublier les retenues</li>
-  <li>Vérifier une soustraction par l'addition</li>
-  <li>Écrire une phrase-réponse complète dans les problèmes</li>
-  <li>Ne pas confondre « huit cent neuf » (809) et « huit cent quatre-vingt-dix » (890)</li>
+  <li>⚠️ Aligner les chiffres (unités sous unités)</li>
+  <li>⚠️ Ne pas oublier les retenues</li>
+  <li>⚠️ Vérifier une soustraction par l'addition</li>
+  <li>⚠️ Écrire une phrase-réponse complète dans les problèmes</li>
+  <li>⚠️ Ne pas confondre « huit cent neuf » (809) et « huit cent quatre-vingt-dix » (890)</li>
 </ul>
 </div>
 
 <p class="footer">Fin de la correction détaillée — Bon travail les élèves ! 🎓</p>
 
-</div>
+</body>
+</html>
