@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<title>Cours de Mathématiques - Les Quadrilatères</title>
+<style>
+  body {
+    font-family: "Segoe UI", Tahoma, Arial, sans-serif;
+    line-height: 1.6;
+    color: #2c3e50;
+    max-width: 900px;
+    margin: auto;
+    padding: 15px;
+    background: #fdfdfd;
+  }
+  h1 {
+    text-align: center;
+    color: #1a5276;
+    border-bottom: 3px solid #1a5276;
+    padding-bottom: 10px;
+  }
+  h2 {
+    color: #ffffff;
+    background: #2874a6;
+    padding: 8px 12px;
+    border-radius: 6px;
+    margin-top: 30px;
+  }
+  h3 {
+    color: #1a5276;
+    border-left: 5px solid #2874a6;
+    padding-left: 10px;
+    margin-top: 20px;
+  }
+  table {
+    border-collapse: collapse;
+    margin: 15px auto;
+    width: 100%;
+    max-width: 700px;
+  }
+  th, td {
+    border: 1px solid #2874a6;
+    padding: 8px 12px;
+    text-align: center;
+  }
+  th {
+    background: #d6eaf8;
+    color: #1a5276;
+  }
+  .calc {
+    font-family: "Courier New", monospace;
+    background: #f4f6f7;
+    border-left: 4px solid #2874a6;
+    padding: 10px 20px;
+    margin: 10px 0;
+    white-space: pre;
+    font-size: 16px;
+    line-height: 1.4;
+    overflow-x: auto;
+  }
+  .note {
+    background: #fef9e7;
+    border-left: 5px solid #f1c40f;
+    padding: 10px 15px;
+    margin: 15px 0;
+    border-radius: 4px;
+  }
+  .result {
+    background: #eafaf1;
+    border-left: 5px solid #27ae60;
+    padding: 8px 15px;
+    margin: 10px 0;
+    font-weight: bold;
+  }
+  .exercise {
+    background: #eaf2f8;
+    border: 1px solid #aed6f1;
+    padding: 12px 18px;
+    border-radius: 6px;
+    margin: 15px 0;
+  }
+  .correction {
+    background: #fdedec;
+    border: 1px solid #f5b7b1;
+    padding: 12px 18px;
+    border-radius: 6px;
+    margin: 15px 0;
+  }
+  .defbox {
+    background: #eaf2f8;
+    border-left: 5px solid #2874a6;
+    padding: 12px 18px;
+    margin: 15px 0;
+    border-radius: 6px;
+  }
+  .propbox {
+    background: #eafaf1;
+    border-left: 5px solid #27ae60;
+    padding: 12px 18px;
+    margin: 15px 0;
+    border-radius: 6px;
+  }
+  .figure {
+    background: #f8f9f9;
+    border: 1px dashed #7fb3d5;
+    padding: 15px;
+    margin: 15px 0;
+    text-align: center;
+    border-radius: 6px;
+  }
+  ul.checklist {
+    list-style: none;
+    padding-left: 0;
+  }
+  ul.checklist li::before {
+    content: "✅ ";
+  }
+  .center {
+    text-align: center;
+  }
+  .footer {
+    text-align: center;
+    margin-top: 40px;
+    font-weight: bold;
+    color: #1a5276;
+    font-size: 18px;
+  }
+</style>
+</head>
+<body>
+
+<h1>Cours de Mathématiques<br>Les Quadrilatères<br><small>Définition — Losange — Parallélogramme — Rectangle — Carré</small></h1>
+<p class="center"><strong>Niveau : 4<sup>ème</sup> Année Primaire (4 AP)</strong></p>
+
+<!-- ===================== SECTION 1 ===================== -->
+<h2>1. Définition</h2>
+
+<div class="defbox">
+Un <strong>quadrilatère</strong> est un <strong>polygone</strong> qui possède <strong>4 côtés</strong>, <strong>4 sommets</strong> et <strong>4 angles</strong>.
+</div>
+
+<h3>Vocabulaire</h3>
+
+<table>
+  <tr>
+    <th>Élément</th>
+    <th>Définition</th>
+    <th>Exemple</th>
+  </tr>
+  <tr>
+    <td><strong>Côté</strong></td>
+    <td>Segment qui relie 2 sommets</td>
+    <td>[AB], [BC], [CD], [DA]</td>
+  </tr>
+  <tr>
+    <td><strong>Sommet</strong></td>
+    <td>Point où se rejoignent 2 côtés</td>
+    <td>A, B, C, D</td>
+  </tr>
+  <tr>
+    <td><strong>Angle</strong></td>
+    <td>Ouverture entre 2 côtés</td>
+    <td>Â, B̂, Ĉ, D̂</td>
+  </tr>
+  <tr>
+    <td><strong>Diagonale</strong></td>
+    <td>Segment qui relie 2 sommets opposés</td>
+    <td>[AC] et [BD]</td>
+  </tr>
+  <tr>
+    <td><strong>Périmètre</strong></td>
+    <td>Somme des longueurs des 4 côtés</td>
+    <td>P = AB + BC + CD + DA</td>
+  </tr>
+</table>
+
+<h3>Exemple de quadrilatère</h3>
+
+<div class="figure">
+<svg width="360" height="220" viewBox="0 0 360 220" xmlns="http://www.w3.org/2000/svg">
+  <!-- Quadrilatère quelconque -->
+  <polygon points="60,30 300,30 250,190 20,190" fill="#d6eaf8" stroke="#2874a6" stroke-width="2.5"/>
+  <!-- Diagonales -->
+  <line x1="60" y1="30" x2="250" y2="190" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="300" y1="30" x2="20" y2="190" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <!-- Sommets -->
+  <circle cx="60" cy="30" r="4" fill="#1a5276"/>
+  <circle cx="300" cy="30" r="4" fill="#1a5276"/>
+  <circle cx="250" cy="190" r="4" fill="#1a5276"/>
+  <circle cx="20" cy="190" r="4" fill="#1a5276"/>
+  <!-- Lettres -->
+  <text x="48" y="22" font-size="18" font-weight="bold" fill="#1a5276">A</text>
+  <text x="308" y="22" font-size="18" font-weight="bold" fill="#1a5276">B</text>
+  <text x="258" y="210" font-size="18" font-weight="bold" fill="#1a5276">C</text>
+  <text x="8" y="210" font-size="18" font-weight="bold" fill="#1a5276">D</text>
+</svg>
+<p style="font-size:14px;color:#555;">Quadrilatère ABCD — les diagonales [AC] et [BD] sont en pointillé rouge.</p>
+</div>
+
+<div class="note">
+<strong>À retenir :</strong> La somme des angles d'un quadrilatère est toujours égale à <strong>360°</strong>.
+</div>
+
+<!-- ===================== SECTION 2 ===================== -->
+<h2>2. Le Losange</h2>
+
+<div class="defbox">
+Un <strong>losange</strong> est un quadrilatère qui a <strong>4 côtés égaux</strong>.
+</div>
+
+<h3>Figure</h3>
+
+<div class="figure">
+<svg width="360" height="240" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- Losange -->
+  <polygon points="180,20 320,120 180,220 40,120" fill="#eafaf1" stroke="#27ae60" stroke-width="2.5"/>
+  <!-- Diagonales -->
+  <line x1="180" y1="20" x2="180" y2="220" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="40" y1="120" x2="320" y2="120" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <!-- Sommets -->
+  <circle cx="180" cy="20" r="4" fill="#1a5276"/>
+  <circle cx="320" cy="120" r="4" fill="#1a5276"/>
+  <circle cx="180" cy="220" r="4" fill="#1a5276"/>
+  <circle cx="40" cy="120" r="4" fill="#1a5276"/>
+  <circle cx="180" cy="120" r="3" fill="#e74c3c"/>
+  <!-- Lettres -->
+  <text x="172" y="14" font-size="18" font-weight="bold" fill="#1a5276">A</text>
+  <text x="330" y="126" font-size="18" font-weight="bold" fill="#1a5276">B</text>
+  <text x="172" y="240" font-size="18" font-weight="bold" fill="#1a5276">C</text>
+  <text x="20" y="126" font-size="18" font-weight="bold" fill="#1a5276">D</text>
+  <!-- Marques côtés égaux -->
+  <line x1="140" y1="70" x2="150" y2="80" stroke="#27ae60" stroke-width="2"/>
+  <line x1="250" y1="70" x2="260" y2="80" stroke="#27ae60" stroke-width="2"/>
+  <line x1="250" y1="160" x2="260" y2="170" stroke="#27ae60" stroke-width="2"/>
+  <line x1="140" y1="160" x2="150" y2="170" stroke="#27ae60" stroke-width="2"/>
+</svg>
+<p style="font-size:14px;color:#555;">Losange ABCD — AB = BC = CD = DA</p>
+</div>
+
+<div class="propbox">
+<strong>Propriétés du losange :</strong>
+<ul>
+  <li>Les <strong>4 côtés</strong> sont <strong>égaux</strong> : AB = BC = CD = DA</li>
+  <li>Les côtés opposés sont <strong>parallèles</strong> : [AB] // [CD] et [BC] // [AD]</li>
+  <li>Les <strong>diagonales</strong> se coupent en leur milieu et sont <strong>perpendiculaires</strong></li>
+  <li>Les <strong>angles opposés</strong> sont <strong>égaux</strong> : Â = Ĉ et B̂ = D̂</li>
+</ul>
+</div>
+
+<!-- ===================== SECTION 3 ===================== -->
+<h2>3. Le Parallélogramme</h2>
+
+<div class="defbox">
+Un <strong>parallélogramme</strong> est un quadrilatère dont les <strong>côtés opposés sont parallèles</strong> deux à deux.
+</div>
+
+<h3>Figure</h3>
+
+<div class="figure">
+<svg width="360" height="240" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- Parallélogramme -->
+  <polygon points="80,40 320,40 260,200 20,200" fill="#eaf2f8" stroke="#2874a6" stroke-width="2.5"/>
+  <!-- Diagonales -->
+  <line x1="80" y1="40" x2="260" y2="200" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="320" y1="40" x2="20" y2="200" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <!-- Sommets -->
+  <circle cx="80" cy="40" r="4" fill="#1a5276"/>
+  <circle cx="320" cy="40" r="4" fill="#1a5276"/>
+  <circle cx="260" cy="200" r="4" fill="#1a5276"/>
+  <circle cx="20" cy="200" r="4" fill="#1a5276"/>
+  <!-- Lettres -->
+  <text x="68" y="34" font-size="18" font-weight="bold" fill="#1a5276">A</text>
+  <text x="328" y="34" font-size="18" font-weight="bold" fill="#1a5276">B</text>
+  <text x="268" y="220" font-size="18" font-weight="bold" fill="#1a5276">C</text>
+  <text x="8" y="220" font-size="18" font-weight="bold" fill="#1a5276">D</text>
+  <!-- Flèches de parallélisme -->
+  <polygon points="180,32 190,37 180,42" fill="#e67e22"/>
+  <polygon points="140,192 150,197 140,202" fill="#e67e22"/>
+  <polygon points="188,120 193,130 183,130" fill="#e67e22"/>
+  <polygon points="298,120 303,130 293,130" fill="#e67e22"/>
+</svg>
+<p style="font-size:14px;color:#555;">Parallélogramme ABCD — [AB] // [DC] et [AD] // [BC]</p>
+</div>
+
+<div class="propbox">
+<strong>Propriétés du parallélogramme :</strong>
+<ul>
+  <li>Les <strong>côtés opposés</strong> sont <strong>parallèles</strong> et de <strong>même longueur</strong></li>
+  <li>Les <strong>angles opposés</strong> sont <strong>égaux</strong> : Â = Ĉ et B̂ = D̂</li>
+  <li>Les <strong>diagonales</strong> se coupent en leur <strong>milieu</strong></li>
+  <li>Les <strong>angles consécutifs</strong> sont <strong>supplémentaires</strong> (somme = 180°)</li>
+</ul>
+</div>
+
+<!-- ===================== SECTION 4 ===================== -->
+<h2>4. Le Rectangle</h2>
+
+<div class="defbox">
+Un <strong>rectangle</strong> est un quadrilatère qui a <strong>4 angles droits</strong> (90°).
+</div>
+
+<h3>Figure</h3>
+
+<div class="figure">
+<svg width="360" height="240" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+  <!-- Rectangle -->
+  <rect x="40" y="50" width="280" height="140" fill="#eaf2f8" stroke="#2874a6" stroke-width="2.5"/>
+  <!-- Diagonales -->
+  <line x1="40" y1="50" x2="320" y2="190" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="320" y1="50" x2="40" y2="190" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <!-- Sommets -->
+  <circle cx="40" cy="50" r="4" fill="#1a5276"/>
+  <circle cx="320" cy="50" r="4" fill="#1a5276"/>
+  <circle cx="320" cy="190" r="4" fill="#1a5276"/>
+  <circle cx="40" cy="190" r="4" fill="#1a5276"/>
+  <!-- Lettres -->
+  <text x="26" y="44" font-size="18" font-weight="bold" fill="#1a5276">A</text>
+  <text x="328" y="44" font-size="18" font-weight="bold" fill="#1a5276">B</text>
+  <text x="328" y="212" font-size="18" font-weight="bold" fill="#1a5276">C</text>
+  <text x="26" y="212" font-size="18" font-weight="bold" fill="#1a5276">D</text>
+  <!-- Angles droits -->
+  <polyline points="40,70 60,70 60,50" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <polyline points="300,50 300,70 320,70" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <polyline points="320,170 300,170 300,190" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <polyline points="60,190 60,170 40,170" fill="none" stroke="#e67e22" stroke-width="2"/>
+</svg>
+<p style="font-size:14px;color:#555;">Rectangle ABCD — Â = B̂ = Ĉ = D̂ = 90°</p>
+</div>
+
+<div class="propbox">
+<strong>Propriétés du rectangle :</strong>
+<ul>
+  <li>Les <strong>4 angles</strong> sont <strong>droits</strong> (90°)</li>
+  <li>Les <strong>côtés opposés</strong> sont <strong>parallèles</strong> et de <strong>même longueur</strong></li>
+  <li>Les <strong>diagonales sont égales</strong> et se coupent en leur milieu</li>
+  <li>C'est un <strong>cas particulier du parallélogramme</strong></li>
+</ul>
+</div>
+
+<!-- ===================== SECTION 5 ===================== -->
+<h2>5. Le Carré</h2>
+
+<div class="defbox">
+Un <strong>carré</strong> est un quadrilatère qui a <strong>4 côtés égaux</strong> et <strong>4 angles droits</strong>.
+</div>
+
+<h3>Figure</h3>
+
+<div class="figure">
+<svg width="360" height="260" viewBox="0 0 360 260" xmlns="http://www.w3.org/2000/svg">
+  <!-- Carré -->
+  <rect x="70" y="30" width="200" height="200" fill="#eafaf1" stroke="#27ae60" stroke-width="2.5"/>
+  <!-- Diagonales -->
+  <line x1="70" y1="30" x2="270" y2="230" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="270" y1="30" x2="70" y2="230" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <!-- Sommets -->
+  <circle cx="70" cy="30" r="4" fill="#1a5276"/>
+  <circle cx="270" cy="30" r="4" fill="#1a5276"/>
+  <circle cx="270" cy="230" r="4" fill="#1a5276"/>
+  <circle cx="70" cy="230" r="4" fill="#1a5276"/>
+  <!-- Lettres -->
+  <text x="56" y="24" font-size="18" font-weight="bold" fill="#1a5276">A</text>
+  <text x="278" y="24" font-size="18" font-weight="bold" fill="#1a5276">B</text>
+  <text x="278" y="252" font-size="18" font-weight="bold" fill="#1a5276">C</text>
+  <text x="56" y="252" font-size="18" font-weight="bold" fill="#1a5276">D</text>
+  <!-- Angles droits -->
+  <polyline points="70,50 90,50 90,30" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <polyline points="250,30 250,50 270,50" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <polyline points="270,210 250,210 250,230" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <polyline points="90,230 90,210 70,210" fill="none" stroke="#e67e22" stroke-width="2"/>
+</svg>
+<p style="font-size:14px;color:#555;">Carré ABCD — 4 côtés égaux + 4 angles droits</p>
+</div>
+
+<div class="propbox">
+<strong>Propriétés du carré :</strong>
+<ul>
+  <li>Les <strong>4 côtés</strong> sont <strong>égaux</strong></li>
+  <li>Les <strong>4 angles</strong> sont <strong>droits</strong> (90°)</li>
+  <li>Les <strong>diagonales</strong> sont <strong>égales</strong>, <strong>perpendiculaires</strong> et se coupent en leur milieu</li>
+  <li>Le carré est à la fois un <strong>rectangle</strong> et un <strong>losange</strong></li>
+</ul>
+</div>
+
+<!-- ===================== SECTION 6 ===================== -->
+<h2>6. Tableau comparatif des propriétés</h2>
+
+<table>
+  <tr>
+    <th>Quadrilatère</th>
+    <th>Côtés égaux</th>
+    <th>Angles droits</th>
+    <th>Côtés parallèles</th>
+    <th>Diagonales</th>
+  </tr>
+  <tr>
+    <td><strong>Losange</strong></td>
+    <td>Oui (4)</td>
+    <td>Non</td>
+    <td>Oui (2 à 2)</td>
+    <td>Perpendiculaires</td>
+  </tr>
+  <tr>
+    <td><strong>Parallélogramme</strong></td>
+    <td>Non (2 à 2)</td>
+    <td>Non</td>
+    <td>Oui (2 à 2)</td>
+    <td>Se coupent en leur milieu</td>
+  </tr>
+  <tr>
+    <td><strong>Rectangle</strong></td>
+    <td>Non (2 à 2)</td>
+    <td>Oui (4)</td>
+    <td>Oui (2 à 2)</td>
+    <td>Égales</td>
+  </tr>
+  <tr>
+    <td><strong>Carré</strong></td>
+    <td>Oui (4)</td>
+    <td>Oui (4)</td>
+    <td>Oui (2 à 2)</td>
+    <td>Égales et perpendiculaires</td>
+  </tr>
+</table>
+
+<!-- ===================== SECTION 7 ===================== -->
+<h2>7. Exercices d'Application</h2>
+
+<div class="exercise">
+  <h3>Exercice 1 : Vrai ou Faux</h3>
+  <ol type="a">
+    <li>Un carré est un rectangle. → ........</li>
+    <li>Un losange a 4 angles droits. → ........</li>
+    <li>Un parallélogramme a ses côtés opposés parallèles. → ........</li>
+    <li>Un rectangle a 4 côtés égaux. → ........</li>
+    <li>Le carré est à la fois un rectangle et un losange. → ........</li>
+  </ol>
+</div>
+
+<div class="exercise">
+  <h3>Exercice 2 : Complète</h3>
+  <ol>
+    <li>Un quadrilatère a ........ côtés, ........ sommets et ........ angles.</li>
+    <li>La somme des angles d'un quadrilatère est égale à ........ °.</li>
+    <li>Un losange a ............................................... .</li>
+    <li>Un rectangle a ............................................... .</li>
+  </ol>
+</div>
+
+<div class="exercise">
+  <h3>Exercice 3 : Reconnaître</h3>
+  <p>Associe chaque propriété au bon quadrilatère :</p>
+  <table>
+    <tr>
+      <th>Propriété</th>
+      <th>Quadrilatère</th>
+    </tr>
+    <tr><td>4 côtés égaux</td><td>........</td></tr>
+    <tr><td>4 angles droits</td><td>........</td></tr>
+    <tr><td>Côtés opposés parallèles</td><td>........</td></tr>
+    <tr><td>4 côtés égaux + 4 angles droits</td><td>........</td></tr>
+  </table>
+</div>
+
+<div class="exercise">
+  <h3>Exercice 4 : Problème</h3>
+  <p>Observe les figures suivantes et dis à quel quadrilatère elles correspondent (losange, parallélogramme, rectangle ou carré) :</p>
+  <ol type="a">
+    <li>Une figure avec 4 angles droits et 2 longueurs différentes → ................</li>
+    <li>Une figure avec 4 côtés égaux mais pas d'angle droit → ................</li>
+    <li>Une figure avec 4 côtés égaux et 4 angles droits → ................</li>
+    <li>Une figure avec côtés opposés parallèles mais pas d'angle droit ni côtés égaux → ................</li>
+  </ol>
+</div>
+
+<!-- ===================== SECTION 8 ===================== -->
+<h2>8. Corrigés</h2>
+
+<div class="correction">
+  <h3>Exercice 1</h3>
+  <ul>
+    <li>a) <strong>VRAI</strong> (un carré est un rectangle particulier)</li>
+    <li>b) <strong>FAUX</strong> (le losange n'a pas forcément d'angles droits)</li>
+    <li>c) <strong>VRAI</strong></li>
+    <li>d) <strong>FAUX</strong> (le rectangle a seulement ses côtés opposés égaux)</li>
+    <li>e) <strong>VRAI</strong></li>
+  </ul>
+</div>
+
+<div class="correction">
+  <h3>Exercice 2</h3>
+  <ol>
+    <li>Un quadrilatère a <strong>4</strong> côtés, <strong>4</strong> sommets et <strong>4</strong> angles.</li>
+    <li>La somme des angles = <strong>360°</strong>.</li>
+    <li>Un losange a <strong>4 côtés égaux</strong>.</li>
+    <li>Un rectangle a <strong>4 angles droits</strong>.</li>
+  </ol>
+</div>
+
+<div class="correction">
+  <h3>Exercice 3</h3>
+  <table>
+    <tr>
+      <th>Propriété</th>
+      <th>Quadrilatère</th>
+    </tr>
+    <tr><td>4 côtés égaux</td><td><strong>Losange</strong></td></tr>
+    <tr><td>4 angles droits</td><td><strong>Rectangle</strong></td></tr>
+    <tr><td>Côtés opposés parallèles</td><td><strong>Parallélogramme</strong></td></tr>
+    <tr><td>4 côtés égaux + 4 angles droits</td><td><strong>Carré</strong></td></tr>
+  </table>
+</div>
+
+<div class="correction">
+  <h3>Exercice 4</h3>
+  <ol type="a">
+    <li>4 angles droits + longueurs différentes → <strong>Rectangle</strong></li>
+    <li>4 côtés égaux sans angle droit → <strong>Losange</strong></li>
+    <li>4 côtés égaux + 4 angles droits → <strong>Carré</strong></li>
+    <li>Côtés opposés parallèles sans angle droit ni côtés égaux → <strong>Parallélogramme</strong></li>
+  </ol>
+</div>
+
+<!-- ===================== SECTION 9 ===================== -->
+<h2>9. Conseils pour les Élèves (Talamid)</h2>
+<ul class="checklist">
+  <li><strong>Compter les côtés</strong> : un quadrilatère a toujours 4 côtés.</li>
+  <li><strong>Vérifier les angles</strong> : chercher les angles droits (90°) avec une équerre.</li>
+  <li><strong>Comparer les côtés</strong> : mesurer avec une règle pour vérifier l'égalité.</li>
+  <li><strong>Retenir les mots-clés</strong> : égaux, droits, parallèles, perpendiculaires.</li>
+  <li><strong>S'entraîner</strong> à reconnaître les figures dans la vie quotidienne (fenêtre, carrelage, cerf-volant...).</li>
+</ul>
+
+<p class="footer">Fin du cours — Bon courage les élèves ! 📐</p>
+
+</body>
+</html>
