@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2. La Soustraction</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; line-height: 1.6; color: #2c3e50; max-width: 900px; margin: auto; padding: 15px; background: #fdfdfd; font-size: 16px; }
+  h2 { color: #fff; background: #2874a6; padding: 10px 14px; border-radius: 6px; margin-top: 25px; font-size: 1.3em; line-height: 1.3; }
+  h3 { color: #1a5276; border-left: 5px solid #2874a6; padding-left: 10px; margin-top: 20px; font-size: 1.1em; }
+  .calc { font-family: "Courier New", monospace; background: #f4f6f7; border-left: 4px solid #2874a6; padding: 10px 14px; margin: 10px 0; white-space: pre-wrap; word-break: break-word; font-size: 0.95em; line-height: 1.5; overflow-x: auto; border-radius: 0 6px 6px 0; }
+  .note { background: #fef9e7; border-left: 5px solid #f1c40f; padding: 10px 15px; margin: 15px 0; border-radius: 4px; font-size: 0.98em; }
+  .result { background: #eafaf1; border-left: 5px solid #27ae60; padding: 8px 15px; margin: 10px 0; font-weight: bold; border-radius: 0 6px 6px 0; overflow-x: auto; }
+  .defbox { background: #eaf2f8; border-left: 5px solid #2874a6; padding: 12px 18px; margin: 15px 0; border-radius: 6px; font-size: 1em; }
+  ol { padding-left: 20px; }
+  li { margin-bottom: 6px; }
+  .footer { text-align: center; margin-top: 30px; font-weight: bold; color: #1a5276; font-size: 1em; }
+  .open-link-container { text-align: center; margin: 25px 0 20px; }
+  .open-link-btn { background: #2874a6; color: #fff; border: none; padding: 12px 20px; font-size: 1em; border-radius: 8px; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15); transition: background 0.2s ease, transform 0.1s ease; max-width: 100%; white-space: normal; line-height: 1.4; }
+  .open-link-btn:hover { background: #1a5276; transform: translateY(-1px); }
+  .open-link-btn i { margin-right: 8px; }
+  @media (max-width: 600px) {
+    body { padding: 10px; font-size: 15px; }
+    h2 { font-size: 1.15em; padding: 8px 10px; }
+    h3 { font-size: 1.02em; }
+    .defbox, .note { padding: 10px 12px; }
+    .calc { padding: 8px 10px; font-size: 0.88em; }
+    .result { padding: 8px 10px; font-size: 0.95em; }
+    .open-link-btn { padding: 10px 14px; font-size: 0.9em; width: 100%; }
+  }
+  @media (max-width: 380px) { body { font-size: 14px; } .calc { font-size: 0.8em; } }
+</style>
+</head>
+<body>
+
+<h2>2. La Soustraction</h2>
+
+<div class="defbox">
+<p><strong>Définition :</strong> La soustraction est une opération qui permet de <strong>retirer</strong> une quantité d'une autre ou de calculer une <strong>différence</strong>.</p>
+</div>
+
+<h3>Technique de calcul (avec emprunts)</h3>
+<p>Comme pour l'addition, on aligne bien les chiffres. Si le chiffre du haut est plus petit que celui du bas, on fait un <strong>emprunt</strong> à la colonne de gauche.</p>
+
+<p><strong>Exemple : 84 352 − 27 678</strong></p>
+<div class="calc">     8 4 3 5 2
+−    2 7 6 7 8
+---------------
+     5 6 6 7 4</div>
+
+<p><strong>Étapes :</strong></p>
+<ol>
+  <li>Unités : 2 − 8 (impossible). J'emprunte 1 dizaine : 12 − 8 = 4.</li>
+  <li>Dizaines : Il reste 4 (5−1). 4 − 7 (impossible). J'emprunte : 14 − 7 = 7.</li>
+  <li>Centaines : Il reste 2 (3−1). 2 − 6 (impossible). J'emprunte : 12 − 6 = 6.</li>
+  <li>Milliers : Il reste 3 (4−1). 3 − 7 (impossible). J'emprunte : 13 − 7 = 6.</li>
+  <li>Dizaines de mille : Il reste 7 (8−1). 7 − 2 = 5.</li>
+</ol>
+
+<div class="result">Résultat : 84 352 − 27 678 = 56 674</div>
+
+<div class="note">
+<strong>⚠️ Attention :</strong> Quand on emprunte 1 à la colonne de gauche, on ajoute 10 à la colonne actuelle. Et on n'oublie pas d'enlever 1 à la colonne de gauche !
+</div>
+
+<p class="footer">Fin de la partie 2 — Bon courage les élèves ! 🎓</p>
+
+<div class="open-link-container">
+    <button class="open-link-btn" onclick="openHtmlPage()">
+        <i class="fas fa-window-restore"></i>
+        Si la page ne s'affiche pas correctement : Cliquez ici
+    </button>
+</div>
+
+<script>
+  function openHtmlPage() { window.open(window.location.href, '_blank'); }
+</script>
+
+</body>
+</html>
