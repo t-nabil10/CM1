@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>2. Le Parallélogramme - Les Quadrilatères</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; line-height: 1.6; color: #2c3e50; max-width: 900px; margin: auto; padding: 15px; background: #fdfdfd; font-size: 16px; }
+  h2 { color: #fff; background: #2874a6; padding: 10px 14px; border-radius: 6px; margin-top: 25px; font-size: 1.4em; line-height: 1.3; }
+  h3 { color: #1a5276; border-left: 5px solid #2874a6; padding-left: 10px; margin-top: 20px; font-size: 1.15em; }
+  .defbox { background: #eaf2f8; border-left: 5px solid #2874a6; padding: 12px 18px; margin: 15px 0; border-radius: 6px; }
+  .propbox { background: #eafaf1; border-left: 5px solid #27ae60; padding: 12px 18px; margin: 15px 0; border-radius: 6px; }
+  .propbox ul { padding-left: 20px; margin: 8px 0; }
+  .propbox li { margin-bottom: 6px; }
+  .figure { background: #f8f9f9; border: 1px dashed #7fb3d5; padding: 15px; margin: 15px 0; text-align: center; border-radius: 6px; }
+  .figure svg { max-width: 100%; height: auto; }
+  .figure p { font-size: 0.85em; color: #555; margin-top: 8px; }
+  .footer { text-align: center; margin-top: 30px; font-weight: bold; color: #1a5276; font-size: 1em; }
+  .open-link-container { text-align: center; margin: 25px 0 20px; }
+  .open-link-btn { background: #2874a6; color: #fff; border: none; padding: 12px 20px; font-size: 1em; border-radius: 8px; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15); transition: background 0.2s ease, transform 0.1s ease; max-width: 100%; white-space: normal; line-height: 1.4; }
+  .open-link-btn:hover { background: #1a5276; transform: translateY(-1px); }
+  .open-link-btn i { margin-right: 8px; }
+
+  @media (max-width: 600px) {
+    body { padding: 10px; font-size: 15px; }
+    h2 { font-size: 1.2em; padding: 8px 10px; }
+    h3 { font-size: 1.05em; }
+    .defbox, .propbox { padding: 10px 12px; }
+    .figure { padding: 10px; }
+    .open-link-btn { padding: 10px 14px; font-size: 0.9em; width: 100%; }
+    .footer { font-size: 0.95em; }
+  }
+  @media (max-width: 380px) { body { font-size: 14px; } }
+</style>
+</head>
+<body>
+
+<h2>2. Le Parallélogramme</h2>
+
+<div class="defbox">
+Un <strong>parallélogramme</strong> est un quadrilatère dont les <strong>côtés opposés sont parallèles</strong> deux à deux.
+</div>
+
+<h3>Figure</h3>
+
+<div class="figure">
+<svg width="360" height="240" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="80,40 320,40 260,200 20,200" fill="#eaf2f8" stroke="#2874a6" stroke-width="2.5"/>
+  <line x1="80" y1="40" x2="260" y2="200" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="320" y1="40" x2="20" y2="200" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <circle cx="80" cy="40" r="4" fill="#1a5276"/>
+  <circle cx="320" cy="40" r="4" fill="#1a5276"/>
+  <circle cx="260" cy="200" r="4" fill="#1a5276"/>
+  <circle cx="20" cy="200" r="4" fill="#1a5276"/>
+  <text x="68" y="34" font-size="18" font-weight="bold" fill="#1a5276">A</text>
+  <text x="328" y="34" font-size="18" font-weight="bold" fill="#1a5276">B</text>
+  <text x="268" y="220" font-size="18" font-weight="bold" fill="#1a5276">C</text>
+  <text x="8" y="220" font-size="18" font-weight="bold" fill="#1a5276">D</text>
+  <polygon points="180,32 190,37 180,42" fill="#e67e22"/>
+  <polygon points="140,192 150,197 140,202" fill="#e67e22"/>
+  <polygon points="188,120 193,130 183,130" fill="#e67e22"/>
+  <polygon points="298,120 303,130 293,130" fill="#e67e22"/>
+</svg>
+<p>Parallélogramme ABCD — [AB] // [DC] et [AD] // [BC]</p>
+</div>
+
+<div class="propbox">
+<strong>Propriétés du parallélogramme :</strong>
+<ul>
+  <li>Les <strong>côtés opposés</strong> sont <strong>parallèles</strong> et de <strong>même longueur</strong></li>
+  <li>Les <strong>angles opposés</strong> sont <strong>égaux</strong> : Â = Ĉ et B̂ = D̂</li>
+  <li>Les <strong>diagonales</strong> se coupent en leur <strong>milieu</strong></li>
+  <li>Les <strong>angles consécutifs</strong> sont <strong>supplémentaires</strong> (somme = 180°)</li>
+</ul>
+</div>
+
+<p class="footer">Fin de la partie 2 — Bon courage les élèves ! 📐</p>
+
+<div class="open-link-container">
+    <button class="open-link-btn" onclick="openHtmlPage()">
+        <i class="fas fa-window-restore"></i>
+        Si la page ne s'affiche pas correctement : Cliquez ici
+    </button>
+</div>
+
+<script>
+  function openHtmlPage() { window.open(window.location.href, '_blank'); }
+</script>
+
+</body>
+</html>

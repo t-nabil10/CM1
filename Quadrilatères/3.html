@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>3. Le Rectangle - Les Quadrilatères</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; line-height: 1.6; color: #2c3e50; max-width: 900px; margin: auto; padding: 15px; background: #fdfdfd; font-size: 16px; }
+  h2 { color: #fff; background: #2874a6; padding: 10px 14px; border-radius: 6px; margin-top: 25px; font-size: 1.4em; line-height: 1.3; }
+  h3 { color: #1a5276; border-left: 5px solid #2874a6; padding-left: 10px; margin-top: 20px; font-size: 1.15em; }
+  .defbox { background: #eaf2f8; border-left: 5px solid #2874a6; padding: 12px 18px; margin: 15px 0; border-radius: 6px; }
+  .propbox { background: #eafaf1; border-left: 5px solid #27ae60; padding: 12px 18px; margin: 15px 0; border-radius: 6px; }
+  .propbox ul { padding-left: 20px; margin: 8px 0; }
+  .propbox li { margin-bottom: 6px; }
+  .figure { background: #f8f9f9; border: 1px dashed #7fb3d5; padding: 15px; margin: 15px 0; text-align: center; border-radius: 6px; }
+  .figure svg { max-width: 100%; height: auto; }
+  .figure p { font-size: 0.85em; color: #555; margin-top: 8px; }
+  .footer { text-align: center; margin-top: 30px; font-weight: bold; color: #1a5276; font-size: 1em; }
+  .open-link-container { text-align: center; margin: 25px 0 20px; }
+  .open-link-btn { background: #2874a6; color: #fff; border: none; padding: 12px 20px; font-size: 1em; border-radius: 8px; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15); transition: background 0.2s ease, transform 0.1s ease; max-width: 100%; white-space: normal; line-height: 1.4; }
+  .open-link-btn:hover { background: #1a5276; transform: translateY(-1px); }
+  .open-link-btn i { margin-right: 8px; }
+
+  @media (max-width: 600px) {
+    body { padding: 10px; font-size: 15px; }
+    h2 { font-size: 1.2em; padding: 8px 10px; }
+    h3 { font-size: 1.05em; }
+    .defbox, .propbox { padding: 10px 12px; }
+    .figure { padding: 10px; }
+    .open-link-btn { padding: 10px 14px; font-size: 0.9em; width: 100%; }
+    .footer { font-size: 0.95em; }
+  }
+  @media (max-width: 380px) { body { font-size: 14px; } }
+</style>
+</head>
+<body>
+
+<h2>3. Le Rectangle</h2>
+
+<div class="defbox">
+Un <strong>rectangle</strong> est un quadrilatère qui a <strong>4 angles droits</strong> (90°).
+</div>
+
+<h3>Figure</h3>
+
+<div class="figure">
+<svg width="360" height="240" viewBox="0 0 360 240" xmlns="http://www.w3.org/2000/svg">
+  <rect x="40" y="50" width="280" height="140" fill="#eaf2f8" stroke="#2874a6" stroke-width="2.5"/>
+  <line x1="40" y1="50" x2="320" y2="190" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <line x1="320" y1="50" x2="40" y2="190" stroke="#e74c3c" stroke-width="1.5" stroke-dasharray="6,4"/>
+  <circle cx="40" cy="50" r="4" fill="#1a5276"/>
+  <circle cx="320" cy="50" r="4" fill="#1a5276"/>
+  <circle cx="320" cy="190" r="4" fill="#1a5276"/>
+  <circle cx="40" cy="190" r="4" fill="#1a5276"/>
+  <text x="26" y="44" font-size="18" font-weight="bold" fill="#1a5276">A</text>
+  <text x="328" y="44" font-size="18" font-weight="bold" fill="#1a5276">B</text>
+  <text x="328" y="212" font-size="18" font-weight="bold" fill="#1a5276">C</text>
+  <text x="26" y="212" font-size="18" font-weight="bold" fill="#1a5276">D</text>
+  <polyline points="40,70 60,70 60,50" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <polyline points="300,50 300,70 320,70" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <polyline points="320,170 300,170 300,190" fill="none" stroke="#e67e22" stroke-width="2"/>
+  <polyline points="60,190 60,170 40,170" fill="none" stroke="#e67e22" stroke-width="2"/>
+</svg>
+<p>Rectangle ABCD — Â = B̂ = Ĉ = D̂ = 90°</p>
+</div>
+
+<div class="propbox">
+<strong>Propriétés du rectangle :</strong>
+<ul>
+  <li>Les <strong>4 angles</strong> sont <strong>droits</strong> (90°)</li>
+  <li>Les <strong>côtés opposés</strong> sont <strong>parallèles</strong> et de <strong>même longueur</strong></li>
+  <li>Les <strong>diagonales sont égales</strong> et se coupent en leur milieu</li>
+  <li>C'est un <strong>cas particulier du parallélogramme</strong></li>
+</ul>
+</div>
+
+<p class="footer">Fin de la partie 3 — Bon courage les élèves ! 📐</p>
+
+<div class="open-link-container">
+    <button class="open-link-btn" onclick="openHtmlPage()">
+        <i class="fas fa-window-restore"></i>
+        Si la page ne s'affiche pas correctement : Cliquez ici
+    </button>
+</div>
+
+<script>
+  function openHtmlPage() { window.open(window.location.href, '_blank'); }
+</script>
+
+</body>
+</html>
