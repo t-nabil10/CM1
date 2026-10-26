@@ -1,77 +1,192 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>3. Exercices d'application</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>La Soustraction</title>
 <style>
-  * { box-sizing: border-box; }
-  body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; line-height: 1.6; color: #2c3e50; max-width: 900px; margin: auto; padding: 15px; background: #fdfdfd; font-size: 16px; }
-  h2 { color: #fff; background: #2874a6; padding: 10px 14px; border-radius: 6px; margin-top: 25px; font-size: 1.3em; line-height: 1.3; }
-  h3 { color: #1a5276; border-left: 5px solid #2874a6; padding-left: 10px; margin-top: 20px; font-size: 1.1em; }
-  .exercise { background: #eaf2f8; border: 1px solid #aed6f1; padding: 12px 18px; border-radius: 6px; margin: 15px 0; }
-  .exercise ol { padding-left: 20px; }
-  .exercise li { margin-bottom: 6px; }
-  .footer { text-align: center; margin-top: 30px; font-weight: bold; color: #1a5276; font-size: 1em; }
-  .open-link-container { text-align: center; margin: 25px 0 20px; }
-  .open-link-btn { background: #2874a6; color: #fff; border: none; padding: 12px 20px; font-size: 1em; border-radius: 8px; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15); transition: background 0.2s ease, transform 0.1s ease; max-width: 100%; white-space: normal; line-height: 1.4; }
-  .open-link-btn:hover { background: #1a5276; transform: translateY(-1px); }
-  .open-link-btn i { margin-right: 8px; }
-  @media (max-width: 600px) {
-    body { padding: 10px; font-size: 15px; }
-    h2 { font-size: 1.15em; padding: 8px 10px; }
-    h3 { font-size: 1.02em; }
-    .exercise { padding: 10px 12px; }
-    .open-link-btn { padding: 10px 14px; font-size: 0.9em; width: 100%; }
+  /* ألوان زاهية ومبهجة للأطفال */
+  :root {
+    --primary: #0284c7;       /* أزرق سماوي */
+    --primary-light: #e0f2fe; 
+    --secondary: #f59e0b;     /* أصفر/برتقالي */
+    --secondary-light: #fef3c7;
+    --accent: #10b981;        /* أخضر */
+    --accent-light: #d1fae5;  
+    --pink: #ec4899;          /* وردي */
+    --pink-light: #fce7f3;
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --bg-body: #f0f9ff;       
+    --bg-card: #ffffff;
+    --border-color: #e5e7eb;
   }
-  @media (max-width: 380px) { body { font-size: 14px; } }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Tahoma, Arial, sans-serif;
+    line-height: 1.7; color: var(--text-main); margin: 0; padding: 15px; 
+    background: var(--bg-body);
+    word-wrap: break-word; overflow-wrap: break-word;
+  }
+
+  .container {
+    max-width: 900px; margin: 0 auto; background: var(--bg-card);
+    padding: 25px 20px; border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15), 0 4px 10px rgba(0,0,0,0.05);
+    border: 4px solid var(--primary-light);
+  }
+
+  h1 {
+    color: #fff; text-align: center; 
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    font-weight: 900; letter-spacing: 0.5px;
+    margin: 0 0 25px; padding: 15px;
+    background: linear-gradient(135deg, var(--primary), #38bdf8);
+    border-radius: 12px;
+    box-shadow: 0 4px 0 #0369a1;
+  }
+
+  h2 {
+    color: var(--primary); background: var(--primary-light);
+    padding: 12px 18px; border-left: 8px solid var(--primary); border-radius: 8px;
+    margin-top: 35px; margin-bottom: 20px;
+    font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 800;
+  }
+
+  h3 { color: var(--secondary); margin-top: 20px; font-size: clamp(1rem, 3.5vw, 1.2rem); font-weight: 800; }
+  
+  p, li { font-size: clamp(0.95rem, 3.2vw, 1.1rem); color: var(--text-muted); }
+  strong { color: var(--primary); font-weight: 700; }
+  
+  hr { border: none; border-top: 3px dashed var(--primary-light); margin: 30px 0; }
+
+  /* الصندوق الأزرق (Mémo/Définition) */
+  .defbox {
+    background: #e0f2fe; border: 2px solid var(--primary); 
+    border-radius: 12px; padding: 15px 20px; margin: 20px 0;
+    box-shadow: 0 4px 0 var(--primary);
+  }
+  .defbox ul { margin: 0; padding-left: 20px; }
+  .defbox li { margin-bottom: 8px; color: #0c4a6e; }
+  
+  /* تلوين الكلمات المهمة مثل الصورة */
+  .word-purple { color: #8b5cf6; font-weight: bold; }
+  .word-cyan { color: #06b6d4; font-weight: bold; }
+  .word-pink { color: #ec4899; font-weight: bold; }
+  .word-red { color: #ef4444; font-weight: bold; }
+
+  /* صندوق العمليات (Calc) */
+  .calc-container {
+    display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 20px 0;
+  }
+  .calc-box {
+    background: #f8fafc; border: 3px solid var(--border-color);
+    border-radius: 12px; padding: 15px 20px; min-width: 200px;
+    box-shadow: 0 4px 0 var(--border-color);
+  }
+  .calc-title {
+    text-align: center; font-weight: 800; color: var(--primary); margin-bottom: 10px;
+    font-size: 1.1rem;
+  }
+  .calc {
+    font-family: "Courier New", Courier, monospace;
+    font-size: clamp(1.1rem, 4vw, 1.3rem);
+    line-height: 1.8; color: #1e293b; font-weight: bold;
+    white-space: pre; text-align: right;
+  }
+  .calc .line { border-bottom: 3px solid #333; margin: 5px 0; }
+  
+  /* الملاحظات */
+  .note {
+    background: var(--secondary-light); border-left: 6px solid var(--secondary); 
+    padding: 15px 20px; margin: 20px 0; border-radius: 8px;
+    color: #9a3412; font-weight: 600; box-shadow: 0 4px 0 var(--secondary);
+  }
+
+  /* التجاوب مع الهواتف */
+  @media (max-width: 600px) {
+    body { padding: 10px; }
+    .container { padding: 15px 12px; border-radius: 16px; border-width: 3px; }
+    h1 { font-size: 1.3rem; padding: 12px; }
+    h2 { font-size: 1.1rem; padding: 10px 12px; border-left-width: 6px; }
+    .calc-box { width: 100%; }
+  }
 </style>
+
 </head>
-<body>
+<body >
+<div class="container">
 
-<h2>3. Exercices d'application</h2>
-
-<div class="exercise">
-<h3>Exercice 1 : Addition</h3>
-<p>Pose et effectue les additions suivantes :</p>
-<ol type="a">
-  <li>34 567 + 12 345</li>
-  <li>125 408 + 234 502</li>
-  <li>450 320 + 149 680</li>
-</ol>
+<h2>3. La Soustraction</h2>
+<p>Pour soustraire, on écrit toujours le <strong>plus grand nombre en haut</strong>. On aligne les chiffres de la même classe et on commence par la droite.</p>
+<div class="calc-container">
+  <div class="calc-box">
+    <div class="calc-title">Exemple 2 :</div>
+    <div class="calc">
+      8 5 6 2 4 3
+    - 3 2 1 1 2 1
+    <div class="line">---------------</div>
+      5 3 5 1 2 2</div>
+  </div>
 </div>
-
-<div class="exercise">
-<h3>Exercice 2 : Soustraction</h3>
-<p>Pose et effectue les soustractions suivantes :</p>
-<ol type="a">
-  <li>78 654 − 23 210</li>
-  <li>500 000 − 145 678</li>
-  <li>345 200 − 127 456</li>
-</ol>
+<div class="calc-container">
+  <div class="calc-box">
+    <div class="calc-title">Exemple 3 (avec emprunt) :</div>
+    <div class="calc">
+      7 0 0 0 0 0
+    - 2 3 4 5 6 7
+    <div class="line">---------------</div>
+      4 6 5 4 3 3</div>
+  </div>
 </div>
-
-<div class="exercise">
-<h3>Exercice 3 : Problème</h3>
-<p>Une ville compte <strong>254 300</strong> habitants. <strong>125 450</strong> personnes habitent dans le centre-ville, et le reste habite en banlieue.</p>
-<ol>
-  <li>Combien de personnes habitent en banlieue ?</li>
-</ol>
+<div class="note">
+  <strong>⚠️ Attention aux emprunts :</strong> Si le chiffre du haut est plus petit que celui du bas (exemple : 2 - 5), on emprunte 1 dizaine à gauche. Cela devient 12 - 5 = 7.
 </div>
+<p style="text-align: center; font-weight: 900; color: var(--primary); font-size: 1.2rem; margin-top: 30px;">
+  Fin du cours — Bon courage les élèves ! 🎓🧮
+</p>
 
-<p class="footer">Fin de la partie 3 — Bon courage les élèves ! 🎓</p>
-
+<!-- Bouton en bas de page -->
 <div class="open-link-container">
     <button class="open-link-btn" onclick="openHtmlPage()">
-        <i class="fas fa-window-restore"></i>
         Si la page ne s'affiche pas correctement : Cliquez ici
     </button>
 </div>
 
+<style>
+  .open-link-container {
+    display: flex; justify-content: center; align-items: center;
+    margin: 30px auto 20px; padding: 0 12px; width: 100%;
+    box-sizing: border-box;
+  }
+  .open-link-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 10px; background: linear-gradient(135deg, #1a5276, #2874a6);
+    color: #ffffff; border: none; padding: 16px 28px;
+    font-size: 1rem; font-weight: 700; border-radius: 12px;
+    cursor: pointer; box-shadow: 0 6px 18px rgba(26, 82, 118, 0.35);
+    font-family: inherit; max-width: 100%; text-align: center;
+    line-height: 1.35;
+  }
+  .open-link-btn:hover {
+    background: linear-gradient(135deg, #154360, #1f5b85);
+  }
+  @media (max-width: 480px) {
+    .open-link-btn { padding: 14px 20px; font-size: 0.9rem; width: 100%; }
+  }
+</style>
+
 <script>
-  function openHtmlPage() { window.open(window.location.href, '_blank'); }
+  function openHtmlPage() {
+    window.open(window.location.href, '_blank');
+  }
 </script>
+
+</div>
 
 </body>
 </html>
