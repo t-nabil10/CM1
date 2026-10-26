@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Qu&#39;est-ce qu&#39;une aire ?</title>
+<style>
+  /* ألوان زاهية ومبهجة للأطفال */
+  :root {
+    --primary: #0284c7;       /* أزرق سماوي */
+    --primary-light: #e0f2fe; 
+    --secondary: #f59e0b;     /* أصفر/برتقالي */
+    --secondary-light: #fef3c7;
+    --accent: #10b981;        /* أخضر */
+    --accent-light: #d1fae5;  
+    --pink: #ec4899;          /* وردي */
+    --pink-light: #fce7f3;
+    --red: #ef4444;           /* أحمر */
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --bg-body: #f0f9ff;       
+    --bg-card: #ffffff;
+    --border-color: #e5e7eb;
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Tahoma, Arial, sans-serif;
+    line-height: 1.7; color: var(--text-main); margin: 0; padding: 15px; 
+    background: var(--bg-body);
+    word-wrap: break-word; overflow-wrap: break-word;
+  }
+
+  .container {
+    max-width: 900px; margin: 0 auto; background: var(--bg-card);
+    padding: 25px 20px; border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15), 0 4px 10px rgba(0,0,0,0.05);
+    border: 4px solid var(--primary-light);
+  }
+
+  h1 {
+    color: #fff; text-align: center; 
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    font-weight: 900; letter-spacing: 0.5px;
+    margin: 0 0 25px; padding: 15px;
+    background: linear-gradient(135deg, var(--primary), #38bdf8);
+    border-radius: 12px;
+    box-shadow: 0 4px 0 #0369a1;
+  }
+
+  h2 {
+    color: var(--primary); background: var(--primary-light);
+    padding: 12px 18px; border-left: 8px solid var(--primary); border-radius: 8px;
+    margin-top: 35px; margin-bottom: 20px;
+    font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 800;
+  }
+
+  h3 { color: var(--secondary); margin-top: 20px; font-size: clamp(1rem, 3.5vw, 1.2rem); font-weight: 800; }
+  
+  p, li { font-size: clamp(0.95rem, 3.2vw, 1.1rem); color: var(--text-muted); }
+  strong { color: var(--primary); font-weight: 700; }
+  
+  hr { border: none; border-top: 3px dashed var(--primary-light); margin: 30px 0; }
+
+  /* الصناديق الملونة */
+  .defbox {
+    background: #e0f2fe; border: 2px solid var(--primary); 
+    border-radius: 12px; padding: 15px 20px; margin: 20px 0;
+    box-shadow: 0 4px 0 var(--primary);
+  }
+  .defbox p { margin: 0 0 10px 0; color: #0c4a6e; }
+
+  /* تلوين الكلمات المهمة */
+  .word-pink { color: #ec4899; font-weight: 800; }
+  .word-red { color: #ef4444; font-weight: 800; }
+  .word-orange { color: #f97316; font-weight: 800; }
+
+  /* تنسيق الأمثلة */
+  .example-box {
+    background: #ffffff; border: 2px dashed var(--pink);
+    border-radius: 12px; padding: 15px; margin: 20px 0;
+  }
+  .example-box h4 { color: var(--pink); margin-top: 0; font-size: 1.1rem; }
+
+  /* تنسيق الرسمة */
+  .svg-container {
+    display: flex; justify-content: center; align-items: center;
+    margin: 15px 0; background: #fff; padding: 10px; border-radius: 8px;
+    border: 1px solid var(--border-color);
+  }
+
+  /* الجدول */
+  .responsive-table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 25px 0; border-radius: 12px; border: 2px solid var(--primary); box-shadow: 0 6px 0 var(--primary); }
+  table { border-collapse: collapse; width: 100%; min-width: 700px; background: var(--bg-card); font-size: clamp(0.75rem, 2.5vw, 0.95rem); }
+  th, td { border: 2px solid var(--border-color); padding: 8px 4px; text-align: center; }
+  th { background: var(--secondary); color: #fff; font-weight: 700; }
+  
+  /* تمييز خانة m² */
+  .col-m2 { background: var(--pink-light); color: #be185d; font-weight: bold; }
+  .th-m2 { background: #ec4899 !important; }
+
+  /* الملاحظات */
+  .note {
+    background: var(--secondary-light); border-left: 6px solid var(--secondary); 
+    padding: 15px 20px; margin: 20px 0; border-radius: 8px;
+    color: #9a3412; font-weight: 600; box-shadow: 0 4px 0 var(--secondary);
+  }
+
+  /* التجاوب مع الهواتف */
+  @media (max-width: 600px) {
+    body { padding: 10px; }
+    .container { padding: 15px 12px; border-radius: 16px; border-width: 3px; }
+    h1 { font-size: 1.3rem; padding: 12px; }
+    h2 { font-size: 1.1rem; padding: 10px 12px; border-left-width: 6px; }
+    .defbox { padding: 12px 15px; }
+  }
+</style>
+
+</head>
+<body >
+<div class="container">
+<h1>Cours de Mathématiques<br>Mesure des aires</h1>
+<p style="text-align: center; font-weight: bold; color: var(--primary); font-size: 1.1rem; margin-top: -15px;">
+  Niveau : CM1 (4<sup>ème</sup> Année Primaire)
+</p>
+<h2>1. Qu'est-ce qu'une aire ?</h2>
+<div class="defbox">
+  <p><strong style="color: var(--pink);">• L'aire</strong> d'une figure est la mesure de <strong class="word-pink">sa superficie</strong> (ou surface) qu'elle occupe.</p>
+  <p><strong style="color: var(--pink);">• Un pavage</strong> consiste à recouvrir entièrement une surface à l'aide d'une unité d'aire donnée.</p>
+</div>
+<hr>
+
+<!-- Bouton en bas de page -->
+<div class="open-link-container">
+    <button class="open-link-btn" onclick="openHtmlPage()">
+        Si la page ne s'affiche pas correctement : Cliquez ici
+    </button>
+</div>
+
+<style>
+  .open-link-container {
+    display: flex; justify-content: center; align-items: center;
+    margin: 30px auto 20px; padding: 0 12px; width: 100%;
+    box-sizing: border-box;
+  }
+  .open-link-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 10px; background: linear-gradient(135deg, #1a5276, #2874a6);
+    color: #ffffff; border: none; padding: 16px 28px;
+    font-size: 1rem; font-weight: 700; border-radius: 12px;
+    cursor: pointer; box-shadow: 0 6px 18px rgba(26, 82, 118, 0.35);
+    font-family: inherit; max-width: 100%; text-align: center;
+    line-height: 1.35;
+  }
+  .open-link-btn:hover {
+    background: linear-gradient(135deg, #154360, #1f5b85);
+  }
+  @media (max-width: 480px) {
+    .open-link-btn { padding: 14px 20px; font-size: 0.9rem; width: 100%; }
+  }
+</style>
+
+<script>
+  function openHtmlPage() {
+    window.open(window.location.href, '_blank');
+  }
+</script>
+
+</div>
+
+</body>
+</html>
