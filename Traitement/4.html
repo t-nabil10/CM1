@@ -1,115 +1,177 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>4. Exercices d'application</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Le graphique en ligne</title>
 <style>
-  * { box-sizing: border-box; }
-  body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; line-height: 1.6; color: #2c3e50; max-width: 900px; margin: auto; padding: 15px; background: #fdfdfd; font-size: 16px; }
-  h2 { color: #fff; background: #2874a6; padding: 10px 14px; border-radius: 6px; margin-top: 25px; font-size: 1.3em; line-height: 1.3; }
-  h3 { color: #1a5276; border-left: 5px solid #2874a6; padding-left: 10px; margin-top: 20px; font-size: 1.1em; }
-  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 15px 0; }
-  table { border-collapse: collapse; margin: 0 auto; width: 100%; min-width: 480px; }
-  th, td { border: 1px solid #2874a6; padding: 8px 10px; text-align: center; font-size: 0.95em; }
-  th { background: #d6eaf8; color: #1a5276; }
-  .exercise { background: #eaf2f8; border: 1px solid #aed6f1; padding: 12px 18px; border-radius: 6px; margin: 15px 0; }
-  .exercise ol { padding-left: 20px; }
-  .exercise li { margin-bottom: 6px; }
-  .footer { text-align: center; margin-top: 30px; font-weight: bold; color: #1a5276; font-size: 1em; }
-  .open-link-container { text-align: center; margin: 25px 0 20px; }
-  .open-link-btn { background: #2874a6; color: #fff; border: none; padding: 12px 20px; font-size: 1em; border-radius: 8px; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15); transition: background 0.2s ease, transform 0.1s ease; max-width: 100%; white-space: normal; line-height: 1.4; }
-  .open-link-btn:hover { background: #1a5276; transform: translateY(-1px); }
-  .open-link-btn i { margin-right: 8px; }
-  @media (max-width: 600px) {
-    body { padding: 10px; font-size: 15px; }
-    h2 { font-size: 1.15em; padding: 8px 10px; }
-    h3 { font-size: 1.02em; }
-    th, td { padding: 6px 8px; font-size: 0.88em; }
-    .exercise { padding: 10px 12px; }
-    .open-link-btn { padding: 10px 14px; font-size: 0.9em; width: 100%; }
+  /* ألوان زاهية ومبهجة للأطفال */
+  :root {
+    --primary: #0284c7;       /* أزرق سماوي */
+    --primary-light: #e0f2fe; 
+    --secondary: #f59e0b;     /* أصفر/برتقالي */
+    --secondary-light: #fef3c7;
+    --accent: #10b981;        /* أخضر */
+    --accent-light: #d1fae5;  
+    --pink: #ec4899;          /* وردي */
+    --pink-light: #fce7f3;
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --bg-body: #f0f9ff;       
+    --bg-card: #ffffff;
+    --border-color: #e5e7eb;
   }
-  @media (max-width: 380px) { body { font-size: 14px; } th, td { padding: 5px 6px; font-size: 0.82em; } }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Tahoma, Arial, sans-serif;
+    line-height: 1.7; color: var(--text-main); margin: 0; padding: 15px; 
+    background: var(--bg-body);
+    word-wrap: break-word; overflow-wrap: break-word;
+  }
+
+  .container {
+    max-width: 900px; margin: 0 auto; background: var(--bg-card);
+    padding: 25px 20px; border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15), 0 4px 10px rgba(0,0,0,0.05);
+    border: 4px solid var(--primary-light);
+  }
+
+  h1 {
+    color: #fff; text-align: center; 
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    font-weight: 900; letter-spacing: 0.5px;
+    margin: 0 0 25px; padding: 15px;
+    background: linear-gradient(135deg, var(--primary), #38bdf8);
+    border-radius: 12px;
+    box-shadow: 0 4px 0 #0369a1;
+  }
+
+  h2 {
+    color: var(--primary); background: var(--primary-light);
+    padding: 12px 18px; border-left: 8px solid var(--primary); border-radius: 8px;
+    margin-top: 35px; margin-bottom: 20px;
+    font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 800;
+  }
+
+  h3 { color: var(--secondary); margin-top: 20px; font-size: clamp(1rem, 3.5vw, 1.2rem); font-weight: 800; }
+  
+  p, li { font-size: clamp(0.95rem, 3.2vw, 1.1rem); color: var(--text-muted); }
+  strong { color: var(--primary); font-weight: 700; }
+  
+  hr { border: none; border-top: 3px dashed var(--primary-light); margin: 30px 0; }
+
+  /* الصندوق الأزرق (Définition) */
+  .defbox {
+    background: #e0f2fe; border: 2px solid var(--primary); 
+    border-radius: 12px; padding: 15px 20px; margin: 20px 0;
+    box-shadow: 0 4px 0 var(--primary);
+  }
+  .defbox p { margin: 0; color: #0c4a6e; font-size: clamp(1rem, 3.5vw, 1.15rem); }
+  .defbox strong { color: #0369a1; }
+
+  /* تنسيق الرسومات (Graphiques Grid) */
+  .graph-grid {
+    display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 25px 0;
+  }
+  .graph-card {
+    flex: 1 1 250px; max-width: 100%;
+    background: #ffffff; border: 3px solid var(--border-color);
+    border-radius: 16px; padding: 20px; text-align: center;
+    box-shadow: 0 6px 0 var(--border-color);
+    transition: transform 0.2s ease;
+  }
+  .graph-card:hover { transform: translateY(-5px); }
+  .graph-card h4 {
+    color: var(--pink); font-size: 1.1rem; margin-top: 0; margin-bottom: 15px;
+  }
+  
+  /* الحاوية ديال SVG باش تكون متجاوبة */
+  .svg-container {
+    width: 100%; height: auto; display: flex; justify-content: center; align-items: center;
+  }
+  .svg-container svg {
+    max-width: 100%; height: auto;
+  }
+
+  /* الملاحظات */
+  .note {
+    background: var(--secondary-light); border-left: 6px solid var(--secondary); 
+    padding: 15px 20px; margin: 20px 0; border-radius: 8px;
+    color: #9a3412; font-weight: 600; box-shadow: 0 4px 0 var(--secondary);
+  }
+
+  /* التجاوب مع الهواتف */
+  @media (max-width: 600px) {
+    body { padding: 10px; }
+    .container { padding: 15px 12px; border-radius: 16px; border-width: 3px; }
+    h1 { font-size: 1.3rem; padding: 12px; }
+    h2 { font-size: 1.1rem; padding: 10px 12px; border-left-width: 6px; }
+    .graph-card { padding: 15px; }
+  }
 </style>
+
 </head>
-<body>
+<body >
+<div class="container">
 
-<h2>4. Exercices d'application</h2>
-
-<div class="exercise">
-<h3>Exercice 1 : Lire un tableau</h3>
-<p>Voici le nombre de livres lus par les élèves pendant le mois :</p>
-
-<div class="table-wrap">
-<table>
-  <tr>
-    <th>Nombre de livres</th>
-    <th>1 livre</th>
-    <th>2 livres</th>
-    <th>3 livres</th>
-    <th>4 livres</th>
-  </tr>
-  <tr>
-    <td><strong>Nombre d'élèves</strong></td>
-    <td>6</td>
-    <td>10</td>
-    <td>8</td>
-    <td>4</td>
-  </tr>
-</table>
+<h2>4. Le graphique en ligne</h2>
+<p>Le graphique en ligne (ou courbe) sert à montrer une évolution dans le temps. Ici, il montre les variations de quelque chose (par exemple la température) sur une semaine.</p>
+<ul>
+  <li>L'axe horizontal indique les <strong>jours de la semaine</strong> (du Lundi au Dimanche).</li>
+  <li>Les <strong>points</strong> sont reliés par des lignes.</li>
+  <li>Quand la ligne monte, la valeur augmente. Quand elle descend, la valeur diminue.</li>
+</ul>
+<div class="note">
+<strong>📌 À retenir :</strong> Chaque type de graphique a son utilité. 
+<br>• Les <strong>bâtons</strong> pour comparer des quantités.
+<br>• Le <strong>circulaire</strong> pour voir des proportions (des parts).
+<br>• La <strong>ligne</strong> pour voir une évolution (une progression).
 </div>
+<p style="text-align: center; font-weight: 900; color: var(--primary); font-size: 1.2rem; margin-top: 30px;">
+  Fin du cours — Bon courage les élèves ! 🎓📊
+</p>
 
-<ol>
-  <li>Combien d'élèves ont lu 2 livres ?</li>
-  <li>Combien d'élèves ont lu 4 livres ?</li>
-  <li>Combien y a-t-il d'élèves en tout dans la classe ?</li>
-</ol>
-</div>
-
-<div class="exercise">
-<h3>Exercice 2 : Compléter le tableau</h3>
-<p>Dans une ferme, il y a 15 poules, 8 vaches, 5 moutons et 2 chevaux.</p>
-<ol>
-  <li>Complète le tableau :</li>
-</ol>
-
-<div class="table-wrap">
-<table>
-  <tr>
-    <th>Animaux</th>
-    <th>Poules</th>
-    <th>Vaches</th>
-    <th>Moutons</th>
-    <th>Chevaux</th>
-  </tr>
-  <tr>
-    <td><strong>Nombre</strong></td>
-    <td>...</td>
-    <td>...</td>
-    <td>...</td>
-    <td>...</td>
-  </tr>
-</table>
-</div>
-
-<ol start="2">
-  <li>Combien y a-t-il d'animaux en tout ?</li>
-</ol>
-</div>
-
-<p class="footer">Fin de la partie 4 — Bon courage les élèves ! 🎓</p>
-
+<!-- Bouton en bas de page -->
 <div class="open-link-container">
     <button class="open-link-btn" onclick="openHtmlPage()">
-        <i class="fas fa-window-restore"></i>
         Si la page ne s'affiche pas correctement : Cliquez ici
     </button>
 </div>
 
+<style>
+  .open-link-container {
+    display: flex; justify-content: center; align-items: center;
+    margin: 30px auto 20px; padding: 0 12px; width: 100%;
+    box-sizing: border-box;
+  }
+  .open-link-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 10px; background: linear-gradient(135deg, #1a5276, #2874a6);
+    color: #ffffff; border: none; padding: 16px 28px;
+    font-size: 1rem; font-weight: 700; border-radius: 12px;
+    cursor: pointer; box-shadow: 0 6px 18px rgba(26, 82, 118, 0.35);
+    font-family: inherit; max-width: 100%; text-align: center;
+    line-height: 1.35;
+  }
+  .open-link-btn:hover {
+    background: linear-gradient(135deg, #154360, #1f5b85);
+  }
+  @media (max-width: 480px) {
+    .open-link-btn { padding: 14px 20px; font-size: 0.9rem; width: 100%; }
+  }
+</style>
+
 <script>
-  function openHtmlPage() { window.open(window.location.href, '_blank'); }
+  function openHtmlPage() {
+    window.open(window.location.href, '_blank');
+  }
 </script>
+
+</div>
 
 </body>
 </html>

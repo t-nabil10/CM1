@@ -1,87 +1,275 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
+
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>1. Lire et compléter un tableau</title>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<title>Qu&#39;est-ce qu&#39;un graphique ?</title>
 <style>
-  * { box-sizing: border-box; }
-  body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; line-height: 1.6; color: #2c3e50; max-width: 900px; margin: auto; padding: 15px; background: #fdfdfd; font-size: 16px; }
-  h2 { color: #fff; background: #2874a6; padding: 10px 14px; border-radius: 6px; margin-top: 25px; font-size: 1.3em; line-height: 1.3; }
-  h3 { color: #1a5276; border-left: 5px solid #2874a6; padding-left: 10px; margin-top: 20px; font-size: 1.1em; }
-  .table-wrap { overflow-x: auto; -webkit-overflow-scrolling: touch; margin: 15px 0; }
-  table { border-collapse: collapse; margin: 0 auto; width: 100%; min-width: 480px; }
-  th, td { border: 1px solid #2874a6; padding: 8px 10px; text-align: center; font-size: 0.95em; }
-  th { background: #d6eaf8; color: #1a5276; }
-  .note { background: #fef9e7; border-left: 5px solid #f1c40f; padding: 10px 15px; margin: 15px 0; border-radius: 4px; font-size: 0.98em; }
-  .defbox { background: #eaf2f8; border-left: 5px solid #2874a6; padding: 12px 18px; margin: 15px 0; border-radius: 6px; font-size: 1em; }
-  .footer { text-align: center; margin-top: 30px; font-weight: bold; color: #1a5276; font-size: 1em; }
-  .open-link-container { text-align: center; margin: 25px 0 20px; }
-  .open-link-btn { background: #2874a6; color: #fff; border: none; padding: 12px 20px; font-size: 1em; border-radius: 8px; cursor: pointer; box-shadow: 0 3px 8px rgba(0,0,0,0.15); transition: background 0.2s ease, transform 0.1s ease; max-width: 100%; white-space: normal; line-height: 1.4; }
-  .open-link-btn:hover { background: #1a5276; transform: translateY(-1px); }
-  .open-link-btn i { margin-right: 8px; }
-  @media (max-width: 600px) {
-    body { padding: 10px; font-size: 15px; }
-    h2 { font-size: 1.15em; padding: 8px 10px; }
-    h3 { font-size: 1.02em; }
-    th, td { padding: 6px 8px; font-size: 0.88em; }
-    .defbox, .note { padding: 10px 12px; }
-    .open-link-btn { padding: 10px 14px; font-size: 0.9em; width: 100%; }
+  /* ألوان زاهية ومبهجة للأطفال */
+  :root {
+    --primary: #0284c7;       /* أزرق سماوي */
+    --primary-light: #e0f2fe; 
+    --secondary: #f59e0b;     /* أصفر/برتقالي */
+    --secondary-light: #fef3c7;
+    --accent: #10b981;        /* أخضر */
+    --accent-light: #d1fae5;  
+    --pink: #ec4899;          /* وردي */
+    --pink-light: #fce7f3;
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --bg-body: #f0f9ff;       
+    --bg-card: #ffffff;
+    --border-color: #e5e7eb;
   }
-  @media (max-width: 380px) { body { font-size: 14px; } th, td { padding: 5px 6px; font-size: 0.82em; } }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Tahoma, Arial, sans-serif;
+    line-height: 1.7; color: var(--text-main); margin: 0; padding: 15px; 
+    background: var(--bg-body);
+    word-wrap: break-word; overflow-wrap: break-word;
+  }
+
+  .container {
+    max-width: 900px; margin: 0 auto; background: var(--bg-card);
+    padding: 25px 20px; border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15), 0 4px 10px rgba(0,0,0,0.05);
+    border: 4px solid var(--primary-light);
+  }
+
+  h1 {
+    color: #fff; text-align: center; 
+    font-size: clamp(1.4rem, 5vw, 2rem);
+    font-weight: 900; letter-spacing: 0.5px;
+    margin: 0 0 25px; padding: 15px;
+    background: linear-gradient(135deg, var(--primary), #38bdf8);
+    border-radius: 12px;
+    box-shadow: 0 4px 0 #0369a1;
+  }
+
+  h2 {
+    color: var(--primary); background: var(--primary-light);
+    padding: 12px 18px; border-left: 8px solid var(--primary); border-radius: 8px;
+    margin-top: 35px; margin-bottom: 20px;
+    font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 800;
+  }
+
+  h3 { color: var(--secondary); margin-top: 20px; font-size: clamp(1rem, 3.5vw, 1.2rem); font-weight: 800; }
+  
+  p, li { font-size: clamp(0.95rem, 3.2vw, 1.1rem); color: var(--text-muted); }
+  strong { color: var(--primary); font-weight: 700; }
+  
+  hr { border: none; border-top: 3px dashed var(--primary-light); margin: 30px 0; }
+
+  /* الصندوق الأزرق (Définition) */
+  .defbox {
+    background: #e0f2fe; border: 2px solid var(--primary); 
+    border-radius: 12px; padding: 15px 20px; margin: 20px 0;
+    box-shadow: 0 4px 0 var(--primary);
+  }
+  .defbox p { margin: 0; color: #0c4a6e; font-size: clamp(1rem, 3.5vw, 1.15rem); }
+  .defbox strong { color: #0369a1; }
+
+  /* تنسيق الرسومات (Graphiques Grid) */
+  .graph-grid {
+    display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; margin: 25px 0;
+  }
+  .graph-card {
+    flex: 1 1 250px; max-width: 100%;
+    background: #ffffff; border: 3px solid var(--border-color);
+    border-radius: 16px; padding: 20px; text-align: center;
+    box-shadow: 0 6px 0 var(--border-color);
+    transition: transform 0.2s ease;
+  }
+  .graph-card:hover { transform: translateY(-5px); }
+  .graph-card h4 {
+    color: var(--pink); font-size: 1.1rem; margin-top: 0; margin-bottom: 15px;
+  }
+  
+  /* الحاوية ديال SVG باش تكون متجاوبة */
+  .svg-container {
+    width: 100%; height: auto; display: flex; justify-content: center; align-items: center;
+  }
+  .svg-container svg {
+    max-width: 100%; height: auto;
+  }
+
+  /* الملاحظات */
+  .note {
+    background: var(--secondary-light); border-left: 6px solid var(--secondary); 
+    padding: 15px 20px; margin: 20px 0; border-radius: 8px;
+    color: #9a3412; font-weight: 600; box-shadow: 0 4px 0 var(--secondary);
+  }
+
+  /* التجاوب مع الهواتف */
+  @media (max-width: 600px) {
+    body { padding: 10px; }
+    .container { padding: 15px 12px; border-radius: 16px; border-width: 3px; }
+    h1 { font-size: 1.3rem; padding: 12px; }
+    h2 { font-size: 1.1rem; padding: 10px 12px; border-left-width: 6px; }
+    .graph-card { padding: 15px; }
+  }
 </style>
+
 </head>
-<body>
-
-<h2>1. Lire et compléter un tableau</h2>
-
+<body >
+<div class="container">
+<h1>Cours de Mathématiques<br>Organisation et traitement des données</h1>
+<p style="text-align: center; font-weight: bold; color: var(--primary); font-size: 1.1rem; margin-top: -15px;">
+  Niveau : CM1 (4<sup>ème</sup> Année Primaire)
+</p>
+<hr>
+<h2>1. Qu'est-ce qu'un graphique ?</h2>
 <div class="defbox">
-<p>Un <strong>tableau</strong> sert à organiser des informations (des données) pour mieux les comprendre. Il est composé de <strong>lignes</strong> et de <strong>colonnes</strong>.</p>
+<p>Un <strong>graphique</strong> est une façon pour représenter <strong style="color: #ec4899;">des données numériques</strong>.</p>
+<p style="margin-top: 10px;">On peut représenter un graphique sous <strong style="color: #ec4899;">différentes formes</strong> :</p>
 </div>
+<p>Il existe 3 types de graphiques principaux que tu dois connaître :</p>
+<div class="graph-grid">
 
-<h3>Exemple : Les fruits préférés des élèves</h3>
-<p>Voici les fruits préférés des élèves d'une classe de 4AP :</p>
+  <!-- 1. Diagramme en bâtons -->
+  <div class="graph-card">
+    <h4>1. Graphique en bâtons<br><small style="color:var(--text-muted); font-weight:normal;">(Histogramme)</small></h4>
+    <div class="svg-container">
+      <svg viewBox="0 0 200 160" width="100%">
+        <!-- Axes -->
+        <line x1="30" y1="140" x2="190" y2="140" stroke="#333" stroke-width="2"></line>
+        <line x1="30" y1="140" x2="30" y2="20" stroke="#333" stroke-width="2"></line>
+        
+        <!-- Axe Y (Nombres) -->
+        <text x="10" y="145" font-size="10" fill="#666">0</text>
+        <text x="10" y="120" font-size="10" fill="#666">2</text>
+        <text x="10" y="95" font-size="10" fill="#666">4</text>
+        <text x="10" y="70" font-size="10" fill="#666">6</text>
+        <text x="10" y="45" font-size="10" fill="#666">8</text>
+        <text x="5" y="20" font-size="10" fill="#666">12</text>
+        
+        <!-- Barres (Bâtons) -->
+        <!-- Bleus (8) -->
+        <rect x="50" y="40" width="20" height="100" fill="#38bdf8"></rect>
+        <!-- Marron (12) -->
+        <rect x="100" y="20" width="20" height="120" fill="#d97706"></rect>
+        <!-- Rose (4) -->
+        <rect x="150" y="90" width="20" height="50" fill="#ec4899"></rect>
 
-<div class="table-wrap">
-<table>
-  <tr>
-    <th>Fruits</th>
-    <th>Pommes</th>
-    <th>Bananes</th>
-    <th>Oranges</th>
-    <th>Fraises</th>
-  </tr>
-  <tr>
-    <td><strong>Nombre d'élèves</strong></td>
-    <td>8</td>
-    <td>12</td>
-    <td>5</td>
-    <td>10</td>
-  </tr>
-</table>
+        <!-- Axe X (Couleurs) -->
+        <text x="60" y="155" font-size="9" text-anchor="middle" fill="#666">Bleus</text>
+        <text x="110" y="155" font-size="9" text-anchor="middle" fill="#666">Marron</text>
+        <text x="160" y="155" font-size="9" text-anchor="middle" fill="#666">Roses</text>
+
+        <!-- Titre Axe Y -->
+        <text x="10" y="10" font-size="10" fill="#333" font-weight="bold">Nombre</text>
+        <!-- Titre Axe X -->
+        <text x="190" y="155" font-size="10" fill="#333" font-weight="bold" text-anchor="end">Yeux</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 2. Diagramme circulaire -->
+  <div class="graph-card">
+    <h4>2. Diagramme circulaire<br><small style="color:var(--text-muted); font-weight:normal;">(Camembert)</small></h4>
+    <div class="svg-container">
+      <svg viewBox="0 0 200 180" width="100%">
+        <g transform="translate(100, 80)">
+            <!-- Bleus (8) : angle de 8/24 * 360 = 120° -->
+            <path d="M 0 0 L 0 -60 A 60 60 0 0 1 51.96 30 Z" fill="#38bdf8" stroke="#fff" stroke-width="2"></path>
+            <!-- Marron (12) : angle de 12/24 * 360 = 180° -->
+            <path d="M 0 0 L 51.96 30 A 60 60 0 0 1 -51.96 30 Z" fill="#fbbf24" stroke="#fff" stroke-width="2"></path>
+            <!-- Roses (4) : angle de 4/24 * 360 = 60° -->
+            <path d="M 0 0 L -51.96 30 A 60 60 0 0 1 0 -60 Z" fill="#ec4899" stroke="#fff" stroke-width="2"></path>
+            
+            <!-- Labels avec lignes -->
+            <!-- Bleus -->
+            <polyline points="40,-20 80,-30 90,-30" fill="none" stroke="#666" stroke-width="1"></polyline>
+            <text x="95" y="-27" font-size="10" fill="#333">Bleus</text>
+            <text x="95" y="-17" font-size="9" fill="#666">8 élèves</text>
+            
+            <!-- Marron -->
+            <polyline points="-40,-10 -80,-20 -90,-20" fill="none" stroke="#666" stroke-width="1"></polyline>
+            <text x="-95" y="-17" font-size="10" fill="#333" text-anchor="end">Marron</text>
+            <text x="-95" y="-7" font-size="9" fill="#666" text-anchor="end">12 élèves</text>
+        </g>
+        <text x="100" y="170" font-size="11" fill="#333" text-anchor="middle">Couleur des yeux des élèves</text>
+      </svg>
+    </div>
+  </div>
+
+  <!-- 3. Graphique en ligne -->
+  <div class="graph-card">
+    <h4>3. Graphique en ligne<br><small style="color:var(--text-muted); font-weight:normal;">(Courbe)</small></h4>
+    <div class="svg-container">
+      <svg viewBox="0 0 200 160" width="100%">
+        <!-- Grille -->
+        <line x1="30" y1="140" x2="190" y2="140" stroke="#333" stroke-width="2"></line>
+        <line x1="30" y1="140" x2="30" y2="20" stroke="#333" stroke-width="2"></line>
+        
+        <!-- Lignes verticales des jours -->
+        <text x="35" y="155" font-size="7" fill="#666" transform="rotate(-45 35,155)">Lundi</text>
+        <text x="60" y="155" font-size="7" fill="#666" transform="rotate(-45 60,155)">Mardi</text>
+        <text x="85" y="155" font-size="7" fill="#666" transform="rotate(-45 85,155)">Mercredi</text>
+        <text x="110" y="155" font-size="7" fill="#666" transform="rotate(-45 110,155)">Jeudi</text>
+        <text x="135" y="155" font-size="7" fill="#666" transform="rotate(-45 135,155)">Vendredi</text>
+        <text x="160" y="155" font-size="7" fill="#666" transform="rotate(-45 160,155)">Samedi</text>
+        <text x="185" y="155" font-size="7" fill="#666" transform="rotate(-45 185,155)">Dimanche</text>
+
+        <!-- Courbe -->
+        <polyline points="35,40 60,70 85,110 110,50 135,60 160,30 185,40" fill="none" stroke="#10b981" stroke-width="3"></polyline>
+        
+        <!-- Points -->
+        <circle cx="35" cy="40" r="3" fill="#10b981"></circle>
+        <circle cx="60" cy="70" r="3" fill="#10b981"></circle>
+        <circle cx="85" cy="110" r="3" fill="#10b981"></circle>
+        <circle cx="110" cy="50" r="3" fill="#10b981"></circle>
+        <circle cx="135" cy="60" r="3" fill="#10b981"></circle>
+        <circle cx="160" cy="30" r="3" fill="#10b981"></circle>
+        <circle cx="185" cy="40" r="3" fill="#10b981"></circle>
+      </svg>
+    </div>
+  </div>
+
 </div>
+<hr>
 
-<div class="note">
-<strong>💡 Comment lire le tableau ?</strong><br>
-• 8 élèves préfèrent les pommes.<br>
-• 12 élèves préfèrent les bananes.<br>
-• 5 élèves préfèrent les oranges.<br>
-• 10 élèves préfèrent les fraises.
-</div>
-
-<p class="footer">Fin de la partie 1 — Bon courage les élèves ! 🎓</p>
-
+<!-- Bouton en bas de page -->
 <div class="open-link-container">
     <button class="open-link-btn" onclick="openHtmlPage()">
-        <i class="fas fa-window-restore"></i>
         Si la page ne s'affiche pas correctement : Cliquez ici
     </button>
 </div>
 
+<style>
+  .open-link-container {
+    display: flex; justify-content: center; align-items: center;
+    margin: 30px auto 20px; padding: 0 12px; width: 100%;
+    box-sizing: border-box;
+  }
+  .open-link-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 10px; background: linear-gradient(135deg, #1a5276, #2874a6);
+    color: #ffffff; border: none; padding: 16px 28px;
+    font-size: 1rem; font-weight: 700; border-radius: 12px;
+    cursor: pointer; box-shadow: 0 6px 18px rgba(26, 82, 118, 0.35);
+    font-family: inherit; max-width: 100%; text-align: center;
+    line-height: 1.35;
+  }
+  .open-link-btn:hover {
+    background: linear-gradient(135deg, #154360, #1f5b85);
+  }
+  @media (max-width: 480px) {
+    .open-link-btn { padding: 14px 20px; font-size: 0.9rem; width: 100%; }
+  }
+</style>
+
 <script>
-  function openHtmlPage() { window.open(window.location.href, '_blank'); }
+  function openHtmlPage() {
+    window.open(window.location.href, '_blank');
+  }
 </script>
+
+</div>
 
 </body>
 </html>
