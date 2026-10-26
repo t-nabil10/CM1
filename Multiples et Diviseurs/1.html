@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Les règles à retenir (Mémo)</title>
+<style>
+  /* ألوان زاهية ومبهجة للأطفال */
+  :root {
+    --primary: #0284c7;       /* أزرق سماوي */
+    --primary-light: #e0f2fe; 
+    --secondary: #f59e0b;     /* أصفر/برتقالي */
+    --secondary-light: #fef3c7;
+    --accent: #10b981;        /* أخضر */
+    --accent-light: #d1fae5;  
+    --pink: #ec4899;          /* وردي */
+    --pink-light: #fce7f3;
+    --purple: #8b5cf6;        /* بنفسجي */
+    --purple-light: #ede9fe;
+    --red: #ef4444;           /* أحمر */
+    --text-main: #1f2937;
+    --text-muted: #4b5563;
+    --bg-body: #f0f9ff;       
+    --bg-card: #ffffff;
+    --border-color: #e5e7eb;
+  }
+
+  * { box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
+  html { font-size: 16px; -webkit-text-size-adjust: 100%; }
+  
+  body {
+    font-family: 'Segoe UI', -apple-system, BlinkMacSystemFont, Roboto, Tahoma, Arial, sans-serif;
+    line-height: 1.7; color: var(--text-main); margin: 0; padding: 15px; 
+    background: var(--bg-body);
+    word-wrap: break-word; overflow-wrap: break-word;
+  }
+
+  .container {
+    max-width: 900px; margin: 0 auto; background: var(--bg-card);
+    padding: 25px 20px; border-radius: 20px;
+    box-shadow: 0 10px 30px rgba(2, 132, 199, 0.15), 0 4px 10px rgba(0,0,0,0.05);
+    border: 4px solid var(--primary-light);
+  }
+
+  h1 {
+    color: #fff; text-align: center; 
+    font-size: clamp(1.3rem, 5vw, 2rem);
+    font-weight: 900; letter-spacing: 0.5px;
+    margin: 0 0 25px; padding: 15px;
+    background: linear-gradient(135deg, var(--primary), #38bdf8);
+    border-radius: 12px;
+    box-shadow: 0 4px 0 #0369a1;
+  }
+
+  h2 {
+    color: var(--primary); background: var(--primary-light);
+    padding: 12px 18px; border-left: 8px solid var(--primary); border-radius: 8px;
+    margin-top: 35px; margin-bottom: 20px;
+    font-size: clamp(1.1rem, 4vw, 1.4rem); font-weight: 800;
+  }
+
+  h3 { color: var(--secondary); margin-top: 20px; font-size: clamp(1rem, 3.5vw, 1.2rem); font-weight: 800; }
+  
+  p, li { font-size: clamp(0.95rem, 3.2vw, 1.1rem); color: var(--text-muted); }
+  strong { color: var(--primary); font-weight: 700; }
+  
+  hr { border: none; border-top: 3px dashed var(--primary-light); margin: 30px 0; }
+
+  /* الصندوق الأزرق (Mémo) */
+  .defbox {
+    background: #e0f2fe; border: 2px solid var(--primary); 
+    border-radius: 12px; padding: 15px 20px; margin: 20px 0;
+    box-shadow: 0 4px 0 var(--primary);
+  }
+  .defbox ul { margin: 0; padding-left: 20px; }
+  .defbox li { margin-bottom: 12px; color: #0c4a6e; font-size: clamp(0.95rem, 3.2vw, 1.1rem); }
+  
+  /* تلوين الكلمات المهمة مثل الصورة */
+  .word-cyan { color: #06b6d4; font-weight: 800; }
+  .word-pink { color: #ec4899; font-weight: 800; }
+  .word-orange { color: #f97316; font-weight: 800; }
+
+  /* الملاحظات */
+  .note {
+    background: var(--secondary-light); border-left: 6px solid var(--secondary); 
+    padding: 15px 20px; margin: 20px 0; border-radius: 8px;
+    color: #9a3412; font-weight: 600; box-shadow: 0 4px 0 var(--secondary);
+  }
+
+  /* التجاوب مع الهواتف */
+  @media (max-width: 600px) {
+    body { padding: 10px; }
+    .container { padding: 15px 12px; border-radius: 16px; border-width: 3px; }
+    h1 { font-size: 1.3rem; padding: 12px; }
+    h2 { font-size: 1.1rem; padding: 10px 12px; border-left-width: 6px; }
+    .defbox { padding: 12px 15px; }
+  }
+</style>
+
+</head>
+<body >
+<div class="container">
+<h1>Cours de Mathématiques<br>Multiples et Diviseurs</h1>
+<p style="text-align: center; font-weight: bold; color: var(--primary); font-size: 1.1rem; margin-top: -15px;">
+  Niveau : CM1 (4<sup>ème</sup> Année Primaire)
+</p>
+<h2>1. Les règles à retenir (Mémo)</h2>
+<div class="defbox">
+  <ul>
+    <li>Chaque nombre possède un infini de <strong class="word-cyan">multiples</strong> et au moins deux <strong class="word-cyan">diviseurs</strong> : <strong class="word-pink">1</strong> et <strong class="word-pink">lui même</strong>.</li>
+    
+    <li>Un nombre est <strong class="word-cyan">divisible par 2</strong> s'il <strong class="word-pink">se termine par</strong> 0, 2, 4, 6 et 8.</li>
+    
+    <li>Un nombre est <strong class="word-cyan">divisible par 5</strong> s'il <strong class="word-pink">se termine par</strong> 0 ou 5.</li>
+    
+    <li>Un nombre est <strong class="word-cyan">divisible par 3</strong> si <strong class="word-orange">la somme de ses chiffres</strong> est <strong class="word-cyan">divisible par 3</strong>.</li>
+    
+    <li>Un nombre est <strong class="word-cyan">divisible par 9</strong> si <strong class="word-orange">la somme des chiffres</strong> qui le composent est <strong class="word-cyan">divisible par 9</strong>.</li>
+  </ul>
+</div>
+<div class="note">
+  <strong>💡 Astuce :</strong> Retiens bien ces règles ! Elles t'aident à trouver rapidement si un grand nombre peut être divisé par 2, 3, 5 ou 9, sans avoir à poser la division.
+</div>
+<hr>
+
+<!-- Bouton en bas de page -->
+<div class="open-link-container">
+    <button class="open-link-btn" onclick="openHtmlPage()">
+        Si la page ne s'affiche pas correctement : Cliquez ici
+    </button>
+</div>
+
+<style>
+  .open-link-container {
+    display: flex; justify-content: center; align-items: center;
+    margin: 30px auto 20px; padding: 0 12px; width: 100%;
+    box-sizing: border-box;
+  }
+  .open-link-btn {
+    display: inline-flex; align-items: center; justify-content: center;
+    gap: 10px; background: linear-gradient(135deg, #1a5276, #2874a6);
+    color: #ffffff; border: none; padding: 16px 28px;
+    font-size: 1rem; font-weight: 700; border-radius: 12px;
+    cursor: pointer; box-shadow: 0 6px 18px rgba(26, 82, 118, 0.35);
+    font-family: inherit; max-width: 100%; text-align: center;
+    line-height: 1.35;
+  }
+  .open-link-btn:hover {
+    background: linear-gradient(135deg, #154360, #1f5b85);
+  }
+  @media (max-width: 480px) {
+    .open-link-btn { padding: 14px 20px; font-size: 0.9rem; width: 100%; }
+  }
+</style>
+
+<script>
+  function openHtmlPage() {
+    window.open(window.location.href, '_blank');
+  }
+</script>
+
+</div>
+
+</body>
+</html>
